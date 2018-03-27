@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e816eb91420c24eaa00e21e2de5998, type: 3}
+  m_Name: m8config
+  m_EditorClassIdentifier: 
+  _values:
+  - _key: input.textAction
+    iVal: 0
+    fVal: 0
+    sVal: 
+    oVal: {fileID: 4900000, guid: 9e96634c27674564fb59dedb0aa69173, type: 3}
+  - _key: input.scriptFolder
+    iVal: 0
+    fVal: 0
+    sVal: D:/Lab/Legends of Learning/LL_ESS1C1/Assets/Scripts
+    oVal: {fileID: 0}
+  - _key: input.scriptGenerate
+    iVal: 1
+    fVal: 0
+    sVal: 
+    oVal: {fileID: 0}
+  - _key: input.textBind
+    iVal: 0
+    fVal: 0
+    sVal: 
+    oVal: {fileID: 4900000, guid: 68cca0cfa67fd664cb7e257ab586c194, type: 3}
+  - _key: localizeFromTextAsset
+    iVal: 0
+    fVal: 0
+    sVal: 
+    oVal: {fileID: 0}
