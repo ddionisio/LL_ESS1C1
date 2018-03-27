@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "maxChars": {
+      "welcome": 20
+    }
+  },
+  "en": {
+	"welcome": "Welcome!",
+	
+	"test": "TEST"
+  }
+}
