@@ -6,6 +6,11 @@ using UnityEngine;
 using fastJSON;
 
 public class LoLLocalize : Localize {
+    [System.Serializable]
+    public class LanguageExtraInfo {
+        public float voiceDuration;
+    }
+
     public static new LoLLocalize instance {
         get {
             return (LoLLocalize)Localize.instance;
@@ -23,7 +28,10 @@ public class LoLLocalize : Localize {
     }
 #endif
 
+    public TextAsset languageExtraInfo; //json file that contains further information for certain keys in the language such as voice length, etc.
+
     private Dictionary<string, LocalizeData> mEntries;
+    private Dictionary<string, LanguageExtraInfo> mEntryExtras;
 
     private string mCurLang;
 
@@ -50,6 +58,7 @@ public class LoLLocalize : Localize {
         if(mCurLang == null) //langCode shouldn't be null
             mCurLang = "";
 
+        //load up the language
         Dictionary<string, object> defs;
         if(!string.IsNullOrEmpty(json)) {
             defs = JSON.Parse(json) as Dictionary<string, object>;
@@ -68,7 +77,21 @@ public class LoLLocalize : Localize {
             mEntries.Add(key, dat);
         }
 
+        //load extras if we haven't yet
+        if(mEntryExtras == null && languageExtraInfo) {
+            mEntryExtras = JSON.ToObject<Dictionary<string, LanguageExtraInfo>>(languageExtraInfo.text);
+        }        
+
         Refresh();
+    }
+
+    public LanguageExtraInfo GetExtraInfo(string key) {
+        LanguageExtraInfo ret;
+        if(!mEntryExtras.TryGetValue(key, out ret)) {
+            Debug.LogWarning("No extra info for: " + key);
+        }
+
+        return ret;
     }
 
     public override bool Exists(string key) {

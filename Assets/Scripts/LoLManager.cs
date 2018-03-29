@@ -52,7 +52,7 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
 
     public delegate void OnChanged(LoLManager mgr, int delta);
     public delegate void OnCallback(LoLManager mgr);
-    public delegate void OnSpeakCallback(LoLManager mgr, string key, string group);
+    public delegate void OnSpeakCallback(LoLManager mgr, string key);
 
     [SerializeField]
     string _gameID = "com.daviddionisio.LoLGame";
@@ -70,6 +70,8 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
     float _fadeMusicScale = 1.0f;
     [SerializeField]
     protected bool _ignorePlaySoundOnMute = false;
+    [SerializeField]
+    float _speakQueueStartDelay = 0.3f;
 
     protected int mCurProgress;
     protected int mCurScore;
@@ -77,6 +79,8 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
     protected bool mPaused;
 
     protected string mLangCode = "en";
+
+    private bool mIsFocus;
 
     public string gameID { get { return _gameID; } }
 
@@ -167,6 +171,10 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
 
     private bool mIsLanguageHandled;
     private string mLanguageJson;
+
+    private Coroutine mSpeakQueueRout;
+    private string mSpeakQueueGroup;
+    private LinkedList<string> mSpeakQueues = new LinkedList<string>();
     
     public virtual void PlaySound(string path, bool background, bool loop) {
         if(background && !string.IsNullOrEmpty(mLastSoundBackgroundPath)) {
@@ -193,17 +201,50 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
             mLastSoundBackgroundPath = null;
     }
 
-    public virtual void SpeakText(string key, string group) {
-        if(!_ignorePlaySoundOnMute || mSoundVolume > 0f) {
-            LOLSDK.Instance.SpeakText(key);
+    protected virtual void _SpeakText(string key) {
+        LOLSDK.Instance.SpeakText(key);
+    }
 
-            SpeakCalled(key, group);
+    public void SpeakText(string key) {
+        if(!_ignorePlaySoundOnMute || mSoundVolume > 0f) {
+            //cancel speak queue
+            StopSpeakQueue();
+
+            _SpeakText(key);
+
+            if(speakCallback != null)
+                speakCallback(this, key);
         }
     }
 
-    protected void SpeakCalled(string key, string group) {
-        if(speakCallback != null)
-            speakCallback(this, key, group);
+    public void SpeakTextQueue(string key, string group, int index) {
+        if(!_ignorePlaySoundOnMute || mSoundVolume > 0f) {
+            //cancel speak queue if we are in a different group
+            if(mSpeakQueueRout != null && group != mSpeakQueueGroup)
+                StopSpeakQueue();
+
+            mSpeakQueueGroup = group;
+
+            //add to queue based on index
+            int nodeIndex = 0;
+            var nodeToAddAfter = index >= 0 ? mSpeakQueues.First : null;
+            while(nodeToAddAfter != null) {
+                if(nodeIndex == index)
+                    break;
+
+                nodeToAddAfter = nodeToAddAfter.Next;
+                nodeIndex++;
+            }
+
+            if(nodeToAddAfter != null)
+                mSpeakQueues.AddAfter(nodeToAddAfter, key);
+            else
+                mSpeakQueues.AddLast(key);
+
+            //start up routine if not yet started
+            if(mSpeakQueueRout == null)
+                mSpeakQueueRout = StartCoroutine(DoSpeakQueue());
+        }
     }
 
     public virtual void StopCurrentBackgroundSound() {
@@ -340,12 +381,18 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
             completeCallback(this);
     }
 
+    void OnApplicationFocus(bool focus) {
+        mIsFocus = focus;
+    }
+
     protected virtual IEnumerator Start() {
         mLangCode = "en";
         mIsReady = false;
 
         mIsGameStartHandled = false;
         mIsLanguageHandled = false;
+
+        mIsFocus = Application.isFocused;
 
         //force run in background as requirement
         Application.runInBackground = false;
@@ -497,6 +544,59 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
             mLanguageJson = json;
             mIsLanguageHandled = true;
         }
+    }
+
+    private void StopSpeakQueue() {
+        if(mSpeakQueueRout != null) {
+            StopCoroutine(mSpeakQueueRout);
+            mSpeakQueueRout = null;
+        }
+
+        mSpeakQueueGroup = null;
+        mSpeakQueues.Clear();
+    }
+
+    private IEnumerator DoWait(float delay) {
+        float lastTime = Time.realtimeSinceStartup;
+        while(Time.realtimeSinceStartup - lastTime < delay) {
+            //focus lost
+            if(!mIsFocus) {
+                float timePassed = Time.realtimeSinceStartup - lastTime;
+
+                //wait for focus to return
+                while(!mIsFocus)
+                    yield return null;
+
+                //refresh lastTime
+                lastTime = Time.realtimeSinceStartup - timePassed;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator DoSpeakQueue() {
+        if(_speakQueueStartDelay > 0f)
+            yield return DoWait(_speakQueueStartDelay);
+
+        while(mSpeakQueues.Count > 0) {
+            string key = mSpeakQueues.First.Value;
+            mSpeakQueues.RemoveFirst();
+
+            //play
+            _SpeakText(key);
+
+            //wait a bit
+            float playDelay = 1.0f;
+
+            var extraInfo = LoLLocalize.instance.GetExtraInfo(key);
+            if(extraInfo != null)
+                playDelay = extraInfo.voiceDuration;
+
+            yield return DoWait(playDelay);
+        }
+
+        mSpeakQueueRout = null;
     }
 
 #if UNITY_EDITOR

@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugLanguageCode: en
   debugLanguageRef: language.json
+  languageExtraInfo: {fileID: 4900000, guid: f6269365379ad2344868bc283dd8fba5, type: 3}
 --- !u!114 &114936811060178804
 MonoBehaviour:
   m_ObjectHideFlags: 1

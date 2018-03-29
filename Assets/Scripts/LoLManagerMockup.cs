@@ -61,8 +61,8 @@ public class LoLManagerMockup : LoLManager {
             mLastSoundBackgroundPath = null;
     }
 
-    public override void SpeakText(string key, string group) {
-        SpeakCalled(key, group);
+    protected override void _SpeakText(string key) {
+        
     }
 
     public override void StopCurrentBackgroundSound() {
