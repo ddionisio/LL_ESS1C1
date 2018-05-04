@@ -470,7 +470,7 @@ namespace ProGrids
 			instance = this;
 			SceneView.onSceneGUIDelegate += OnSceneGUI;
 			EditorApplication.update += Update;
-			EditorApplication.hierarchyWindowChanged += HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged += hierarchyChanged;
 		}
 
 		void OnEnable()
@@ -485,11 +485,11 @@ namespace ProGrids
 		{
 			SceneView.onSceneGUIDelegate -= OnSceneGUI;
 			EditorApplication.update -= Update;
-			EditorApplication.hierarchyWindowChanged -= HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged -= hierarchyChanged;
 
 			SceneView.onSceneGUIDelegate += OnSceneGUI;
 			EditorApplication.update += Update;
-			EditorApplication.hierarchyWindowChanged += HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged += hierarchyChanged;
 
 			LoadGUIResources();
 			LoadPreferences();
@@ -531,7 +531,7 @@ namespace ProGrids
 
 			SceneView.onSceneGUIDelegate -= OnSceneGUI;
 			EditorApplication.update -= Update;
-			EditorApplication.hierarchyWindowChanged -= HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged -= hierarchyChanged;
 
 			instance = null;
 
@@ -1444,7 +1444,7 @@ namespace ProGrids
 			}
 		}
 
-		void HierarchyWindowChanged()
+		void hierarchyChanged()
 		{
 			if (Selection.activeTransform != null)
 				lastPosition = Selection.activeTransform.position;
