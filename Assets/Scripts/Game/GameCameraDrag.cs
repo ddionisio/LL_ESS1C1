@@ -50,7 +50,7 @@ public class GameCameraDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if(mIsLocked)
             return;
 
-        mDragLastPos = _gameCamera.camera2D.unityCamera.ScreenToWorldPoint(eventData.position);
+        mDragLastPos = eventData.pressEventCamera.ScreenToWorldPoint(eventData.position);
         mIsDragging = true;
     }
 
@@ -60,7 +60,7 @@ public class GameCameraDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         //TODO: fancy acceleration/decceleration
 
-        Vector2 curPos = _gameCamera.camera2D.unityCamera.ScreenToWorldPoint(eventData.position);
+        Vector2 curPos = eventData.pressEventCamera.ScreenToWorldPoint(eventData.position);
 
         Vector2 delta = (curPos - mDragLastPos) * dragScale;
 
