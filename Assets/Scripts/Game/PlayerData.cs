@@ -11,12 +11,19 @@ public class PlayerData : ScriptableObject {
     [M8.RangeMinMax(0f, 1f)]
     public M8.RangeFloat powerScaleRange;
 
+    [Header("Physics")]
+    public float restSpeedThreshold = 0.1f;
+    public float groundSlopeAngleLimit = 50f;
+
+    [Header("Camera")]
+    public float cameraTime = 0.15f;
+
     [Header("State Signals")]
     public EntityStateSignalInvoke[] stateSignalInvokes;
 
     [Header("Display")]
 
-    public float pullLength = 10f;
+    public float pullDistanceLimit = 3f;
     public int pullStepCount = 5;
 
     public void InvokeStateSignal(EntityState state) {
@@ -26,5 +33,9 @@ public class PlayerData : ScriptableObject {
                 break;
             }
         }
+    }
+
+    public float GetPower(float t) {
+        return powerMax * powerScaleRange.Lerp(t);
     }
 }

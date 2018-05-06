@@ -11,20 +11,34 @@ MonoBehaviour:
   m_Script: {fileID: 680703436, guid: 4f0627da958b4bb78c260446066f065f, type: 3}
   m_Name: ProBuilderPreferences
   m_EditorClassIdentifier: 
-  m_Bool_keys: []
+  m_Bool_keys:
+  - pbDisableAutoUV2Generation
+  - pbMeshesAreAssets
+  - pbForceConvex
+  - pbStripProBuilderOnBuild
   m_Int_keys:
+  - pbDefaultEditLevel
   - pbHandleAlignment
+  - pbDefaultSelectionMode
+  - pb_GIWorkflowMode
+  - pbDefaultStaticFlags
+  - pbShadowCastingMode
+  - pbDefaultCollider
   m_Float_keys:
   - pbEditorScroll.x
   - pbEditorScroll.y
-  m_String_keys: []
+  m_String_keys:
+  - pbCurrentMaterialPalette
   m_Color_keys: []
-  m_Material_keys: []
-  m_Bool_values: 
-  m_Int_values: 00000000
+  m_Material_keys:
+  - pbDefaultMaterial
+  m_Bool_values: 01000001
+  m_Int_values: 00000000000000000000000001000000ffffffff0000000000000000
   m_Float_values:
   - 0
   - 0
-  m_String_values: []
+  m_String_values:
+  - Assets/Data/Material Palette.asset
   m_Color_values: []
-  m_Material_values: []
+  m_Material_values:
+  - {fileID: 2100000, guid: 8c3546411c8706840941c8bd9796e2a6, type: 2}

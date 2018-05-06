@@ -14,7 +14,20 @@ public class GameCameraDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public M8.Signal lockSignal;
     public M8.Signal unlockSignal;
 
+    public bool isLocked {
+        get { return mIsLocked; }
+        set {
+            if(mIsLocked != value) {
+                mIsLocked = value;
+
+                if(mColl) mColl.enabled = !mIsLocked;
+            }
+        }
+    }
+
     private bool mIsLocked;
+    private Collider2D mColl;
+
     private bool mIsDragging;
 
     private Vector2 mDragLastPos;
@@ -33,21 +46,25 @@ public class GameCameraDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if(!_gameCamera)
             _gameCamera = GetComponentInParent<GameCamera>();
 
+        mColl = GetComponent<Collider2D>();
+        if(mColl)
+            mIsLocked = mColl.enabled;
+
         if(lockSignal) lockSignal.callback += OnSignalLock;
         if(unlockSignal) unlockSignal.callback += OnSignalUnlock;
     }
 
     void OnSignalLock() {
-        mIsLocked = true;
+        isLocked = true;
         mIsDragging = false;
     }
 
     void OnSignalUnlock() {
-        mIsLocked = false;
+        isLocked = false;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {
-        if(mIsLocked)
+        if(isLocked)
             return;
 
         mDragLastPos = eventData.pressEventCamera.ScreenToWorldPoint(eventData.position);
@@ -55,7 +72,7 @@ public class GameCameraDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData) {
-        if(mIsLocked || !mIsDragging)
+        if(isLocked || !mIsDragging)
             return;
 
         //TODO: fancy acceleration/decceleration

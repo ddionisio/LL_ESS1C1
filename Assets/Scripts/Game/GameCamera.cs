@@ -23,9 +23,13 @@ public class GameCamera : MonoBehaviour {
 
     public void MoveTo(Vector2 dest) {
         StopMoveTo();
-
+                
         //clamp
         dest = bounds.Clamp(dest, cameraViewExtents);
+
+        //ignore if we are exactly on dest
+        if(position == dest)
+            return;
 
         mMoveToRout = StartCoroutine(DoMoveTo(dest));
     }

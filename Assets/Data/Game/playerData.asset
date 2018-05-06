@@ -15,5 +15,27 @@ MonoBehaviour:
   powerScaleRange:
     min: 0
     max: 1
-  pullLength: 10
+  restSpeedThreshold: 0.1
+  groundSlopeAngleLimit: 50
+  cameraTime: 0.15
+  stateSignalInvokes:
+  - state: 0
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  - state: 1
+    signals:
+    - {fileID: 11400000, guid: 5e418023e9c7820429301c22e2d05458, type: 2}
+  - state: 2
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  - state: 3
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  - state: 4
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  - state: 5
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  pullDistanceLimit: 2
   pullStepCount: 5
