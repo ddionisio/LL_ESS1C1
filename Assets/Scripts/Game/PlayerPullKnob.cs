@@ -67,6 +67,9 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     void OnSignalUnlock() {
         isLocked = false;
 
+        //refresh position
+        transform.position = _player.physicsBody.position;
+
         if(indicatorGO) indicatorGO.SetActive(!mIsDragging);
     }
 
@@ -112,7 +115,8 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     void ResetDrag() {
         mIsDragging = false;
 
-        transform.localPosition = Vector3.zero;
+        //refresh position
+        transform.position = _player.physicsBody.position;
 
         if(indicatorGO) indicatorGO.SetActive(!isLocked);
         if(pullActiveGO) pullActiveGO.SetActive(false);
@@ -157,8 +161,9 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             ResetDrag();
 
-            //move player
-            _player.Move();
+            //move player if we have power, otherwise just cancel
+            if(powerStep > 0)
+                _player.Move();
         }
     }
 }

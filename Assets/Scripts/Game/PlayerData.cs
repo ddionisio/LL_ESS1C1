@@ -12,6 +12,11 @@ public class PlayerData : ScriptableObject {
     public M8.RangeFloat powerScaleRange;
 
     [Header("Physics")]
+    public float density = 0.5f;
+
+    public float drag = 0.5f;
+    public float dragAngular = 0.1f;
+
     public float restSpeedThreshold = 0.1f;
     public float groundSlopeAngleLimit = 50f;
 

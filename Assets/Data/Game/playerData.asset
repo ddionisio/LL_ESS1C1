@@ -11,11 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937e40a500f1e4a4cbeed6e72b39331d, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  powerMax: 50
+  powerMax: 600
   powerScaleRange:
     min: 0
     max: 1
-  restSpeedThreshold: 0.1
+  density: 0.5
+  drag: 0.5
+  dragAngular: 0.05
+  restSpeedThreshold: 1
   groundSlopeAngleLimit: 50
   cameraTime: 0.15
   stateSignalInvokes:
@@ -38,4 +41,4 @@ MonoBehaviour:
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
   pullDistanceLimit: 2
-  pullStepCount: 5
+  pullStepCount: 6

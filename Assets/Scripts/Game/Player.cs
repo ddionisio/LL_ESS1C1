@@ -131,10 +131,10 @@ public class Player : M8.EntityBase {
         base.Awake();
 
         //initialize data/variables
-        mGroundSlopeLimitCos = Mathf.Cos(data.groundSlopeAngleLimit * Mathf.Deg2Rad);
-
         physicsCircleCollider = GetComponent<CircleCollider2D>();
         physicsBody = GetComponent<Rigidbody2D>();
+
+        ApplyPhysicsSettings();
 
         mPhysicsMode = PhysicsMode.Disabled;
         ApplyPhysicsMode();
@@ -148,6 +148,12 @@ public class Player : M8.EntityBase {
     }
 
     void Update() {
+#if UNITY_EDITOR
+        //editor mode update for settings
+        if(physicsMode == PhysicsMode.Dynamic)
+            ApplyPhysicsSettings();
+#endif
+
         EntityState entState = (EntityState)state;
         switch(entState) {
             case EntityState.PlayerMove:
@@ -218,21 +224,44 @@ public class Player : M8.EntityBase {
         if(physicsMode != PhysicsMode.Dynamic)
             return;
 
-        //check if we left any ground
-        for(int i = 0; i < mContactPointsCount; i++) {
-            var contactPt = mContactPoints[i];
+        if(mContactPointsCount > 0) {
+            //check if we left any ground
+            for(int i = 0; i < mContactPointsCount; i++) {
+                var contactPt = mContactPoints[i];
 
-            //ignore contacts with body or for some reason has no collider
-            if(contactPt.rigidbody || !contactPt.collider)
-                continue;
+                //ignore contacts with body or for some reason has no collider
+                if(contactPt.rigidbody || !contactPt.collider)
+                    continue;
 
-            for(int j = 0; j < mGroundCollContacts.Count; j++) {
-                if(contactPt.collider == mGroundCollContacts[j]) {
-                    mGroundCollContacts.RemoveAt(j);
-                    break;
+                for(int j = 0; j < mGroundCollContacts.Count; j++) {
+                    if(contactPt.collider == mGroundCollContacts[j]) {
+                        mGroundCollContacts.RemoveAt(j);
+                        break;
+                    }
                 }
             }
         }
+        else { //check single collider
+            //check if we left any ground            
+            if(!coll.rigidbody) {
+                for(int i = 0; i < mGroundCollContacts.Count; i++) {
+                    if(coll.collider == mGroundCollContacts[i]) {
+                        mGroundCollContacts.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private void ApplyPhysicsSettings() {
+        mGroundSlopeLimitCos = Mathf.Cos(data.groundSlopeAngleLimit * Mathf.Deg2Rad);
+
+        physicsBody.useAutoMass = true;
+        physicsBody.drag = data.drag;
+        physicsBody.angularDrag = data.dragAngular;
+
+        physicsCircleCollider.density = data.density;
     }
 
     private void ApplyPhysicsMode() {
