@@ -51,7 +51,9 @@ public class Player : M8.EntityBase {
     public void Move() {
         state = (int)EntityState.PlayerMove;
 
-        physicsBody.AddForce(moveDir * movePower, ForceMode2D.Force);
+        Vector2 toPos = physicsBody.position - moveDir * physicsCircleCollider.radius;
+
+        physicsBody.AddForceAtPosition(moveDir * movePower, toPos, ForceMode2D.Impulse);
     }
 
     protected override void OnDespawned() {
@@ -189,11 +191,11 @@ public class Player : M8.EntityBase {
 
         //fancy fx
 
-        //check if we contact ground, ignore the ones with a body
+        //check if we contact ground
         for(int i = 0; i < mContactPointsCount; i++) {
             var contactPt = mContactPoints[i];
 
-            if(contactPt.rigidbody || !contactPt.collider)
+            if(!contactPt.collider)
                 continue;
 
             //check if it exists
@@ -229,8 +231,8 @@ public class Player : M8.EntityBase {
             for(int i = 0; i < mContactPointsCount; i++) {
                 var contactPt = mContactPoints[i];
 
-                //ignore contacts with body or for some reason has no collider
-                if(contactPt.rigidbody || !contactPt.collider)
+                //ignore contacts with no collider
+                if(!contactPt.collider)
                     continue;
 
                 for(int j = 0; j < mGroundCollContacts.Count; j++) {
@@ -243,12 +245,10 @@ public class Player : M8.EntityBase {
         }
         else { //check single collider
             //check if we left any ground            
-            if(!coll.rigidbody) {
-                for(int i = 0; i < mGroundCollContacts.Count; i++) {
-                    if(coll.collider == mGroundCollContacts[i]) {
-                        mGroundCollContacts.RemoveAt(i);
-                        break;
-                    }
+            for(int i = 0; i < mGroundCollContacts.Count; i++) {
+                if(coll.collider == mGroundCollContacts[i]) {
+                    mGroundCollContacts.RemoveAt(i);
+                    break;
                 }
             }
         }

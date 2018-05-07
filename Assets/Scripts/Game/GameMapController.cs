@@ -18,4 +18,10 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         if(gameCameraGO)
             gameCamera = gameCameraGO.GetComponent<GameCamera>();
     }
+
+    protected override void OnInstanceDeinit() {
+        //clear out game spawns
+        if(GameMapPool.isInstantiated)
+            GameMapPool.instance.ReleaseAll();
+    }
 }
