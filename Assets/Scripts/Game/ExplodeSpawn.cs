@@ -25,6 +25,11 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
 
     private int mTakeExplodeInd;
 
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
     void Awake() {
         if(animator) {
             mTakeExplodeInd = animator.GetTakeIndex(takeExplode);
@@ -38,6 +43,9 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
     void IPoolSpawn.OnSpawned(GenericParams parms) {
         if(!mPoolCtrl)
             mPoolCtrl = GetComponent<PoolDataController>();
+
+        if(animator)
+            animator.ResetTake(mTakeExplodeInd);
 
         Vector2 explodePos;
 

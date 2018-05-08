@@ -28,7 +28,6 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     public float pullDistance { get; private set; }
-    public int powerStep { get; private set; }
 
     private bool mIsLocked;
     private Collider2D mColl;
@@ -74,42 +73,41 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     void UpdatePosition(Vector2 newPos) {
-        int prevPowerStep = powerStep;
+        int prevPowerStep = _player.explodeCount;
 
         Vector2 playerPos = _player.physicsBody.position;
 
         Vector2 delta = playerPos - newPos;
 
-        pullDistance = delta.magnitude;
-                
-        if(pullDistance > 0f) {
-            Vector2 dir = delta / pullDistance;
+        float dist = delta.magnitude;
+
+        if(dist > 0f) {
+            Vector2 dir = delta / dist;
 
             //update player direction
             _player.moveDir = dir;
-
-            //limit distance
-            if(pullDistance > _player.data.pullDistanceLimit) {
-                pullDistance = _player.data.pullDistanceLimit;
-
-                newPos = playerPos - dir * _player.data.pullDistanceLimit;
-
-                powerStep = _player.data.pullStepCount;
+                        
+            //limit position distance
+            float limitDist = _player.data.pullDistanceLimit + _player.physicsCircleCollider.radius;
+            if(dist > limitDist) {
+                newPos = playerPos - dir * limitDist;
             }
+
+            pullDistance = dist - _player.physicsCircleCollider.radius;
+            if(pullDistance > 0f)
+                _player.explodeCount = Mathf.RoundToInt(Mathf.Lerp(0f, _player.data.pullStepCount, pullDistance / _player.data.pullDistanceLimit));
             else
-                powerStep = Mathf.RoundToInt((pullDistance / _player.data.pullDistanceLimit) * _player.data.pullStepCount);
+                _player.explodeCount = 0;
         }
-        else
-            powerStep = 0;
+        else {
+            newPos = playerPos;
+
+            _player.explodeCount = 0;
+        }
 
         transform.position = newPos;
 
-        //compute power
-        if(powerStep != prevPowerStep) {
-            float powerT = (float)powerStep / _player.data.pullStepCount;
-
-            _player.movePower = _player.data.GetPower(powerT);
-        }
+        if(pullActiveGO) pullActiveGO.SetActive(_player.explodeCount > 0);
     }
 
     void ResetDrag() {
@@ -129,8 +127,7 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         mIsDragging = true;
 
-        if(indicatorGO) indicatorGO.SetActive(false);
-        if(pullActiveGO) pullActiveGO.SetActive(true);
+        if(indicatorGO) indicatorGO.SetActive(false);        
         if(knobGO) knobGO.SetActive(true);
 
         //focus camera to player
@@ -162,7 +159,7 @@ public class PlayerPullKnob : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             ResetDrag();
 
             //move player if we have power, otherwise just cancel
-            if(powerStep > 0)
+            if(_player.explodeCount > 0)
                 _player.Move();
         }
     }

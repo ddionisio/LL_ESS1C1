@@ -11,13 +11,40 @@ public class Player : M8.EntityBase {
 
     public PlayerData data;
 
+    [Header("Signals")]
+    public SignalInt signalExplodeCount;
+    public SignalInt signalPowerCount;
+
     public Vector2 moveDir { get; set; }
-    public float movePower { get; set; }
 
     public CircleCollider2D physicsCircleCollider { get; private set; }
     public Rigidbody2D physicsBody { get; private set; }
 
     public bool isGrounded { get { return mGroundCollContacts.Count > 0; } }
+
+    public int explodeCount {
+        get { return mCurExplodeCount; }
+        set {
+            if(mCurExplodeCount != value) {
+                mCurExplodeCount = value;
+
+                if(signalExplodeCount)
+                    signalExplodeCount.Invoke(mCurExplodeCount);
+            }
+        }
+    }
+
+    public int curPowerCount {
+        get { return mCurPowerCount; }
+        private set {
+            if(mCurPowerCount != value) {
+                mCurPowerCount = value;
+
+                if(signalPowerCount)
+                    signalPowerCount.Invoke(mCurPowerCount);
+            }
+        }
+    }
 
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
@@ -30,6 +57,9 @@ public class Player : M8.EntityBase {
     }
 
     private PhysicsMode mPhysicsMode;
+
+    private int mCurExplodeCount;
+    private int mCurPowerCount;
 
     private const int contactCacheCount = 16;
 
@@ -45,20 +75,35 @@ public class Player : M8.EntityBase {
 
     private Vector2 mSpawnPos;
 
+    private float mLastMoveTime;
+
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
     /// </summary>
     public void Move() {
         state = (int)EntityState.PlayerMove;
 
-        Vector2 toPos = physicsBody.position - moveDir * physicsCircleCollider.radius;
+        this.explodeCount = explodeCount;
 
-        physicsBody.AddForceAtPosition(moveDir * movePower, toPos, ForceMode2D.Impulse);
+        //initial impulse
+        Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
+
+        physicsBody.AddForceAtPosition(moveDir * data.moveInitialImpulse, initialImpulsePos, ForceMode2D.Impulse);
+                        
+        //initial explode
+        Vector2 explodePos = physicsBody.position - moveDir * (physicsCircleCollider.radius + data.explodeInitialOffset);
+
+        if(explodeCount > 0)
+            explodeCount--;
+
+        GameMapPool.instance.ExplodeAt(explodePos);
     }
 
     protected override void OnDespawned() {
         //reset stuff here
         ClearRoutine();
+
+        explodeCount = 0;
 
         physicsMode = PhysicsMode.Disabled;
     }
@@ -66,6 +111,15 @@ public class Player : M8.EntityBase {
     protected override void OnSpawned(M8.GenericParams parms) {
         //populate data/state for ai, player control, etc.
         mSpawnPos = transform.position;
+
+        //stats
+        mCurPowerCount = data.powerCount;
+        if(signalPowerCount)
+            signalPowerCount.Invoke(mCurPowerCount);
+
+        mCurExplodeCount = 0;
+        if(signalExplodeCount)
+            signalExplodeCount.Invoke(mCurExplodeCount);
 
         //start ai, player control, etc
         state = (int)EntityState.Spawn;
@@ -85,12 +139,10 @@ public class Player : M8.EntityBase {
                 break;
 
             case EntityState.PlayerIdle:
-                physicsMode = PhysicsMode.Disabled;
+                physicsMode = PhysicsMode.Static;
 
                 //save current position for respawn
                 mSpawnPos = transform.position;
-
-                movePower = 0f;
 
                 //focus camera to player
                 Vector2 playerPos = physicsBody.position;
@@ -107,6 +159,8 @@ public class Player : M8.EntityBase {
                 physicsMode = PhysicsMode.Dynamic;
 
                 mGameCamCurVel = Vector2.zero;
+
+                mLastMoveTime = Time.time;
                 break;
 
             case EntityState.PlayerDeath:
@@ -174,6 +228,10 @@ public class Player : M8.EntityBase {
                     float speedSqr = physicsBody.velocity.sqrMagnitude;
                     float restSpeedThresholdSqr = data.restSpeedThreshold * data.restSpeedThreshold;
                     if(speedSqr <= restSpeedThresholdSqr) {
+                        //deplete power
+                        if(curPowerCount > 0)
+                            curPowerCount--;
+
                         //set to idle
                         state = (int)EntityState.PlayerIdle;
                     }
@@ -186,17 +244,21 @@ public class Player : M8.EntityBase {
         mContactPointsCount = coll.GetContacts(mContactPoints);
 
         //don't do anything else if we are not dynamic
-        if(physicsMode != PhysicsMode.Dynamic)
+        if(physicsMode != PhysicsMode.Dynamic && mContactPointsCount > 0)
             return;
 
         //fancy fx
 
-        //check if we contact ground
+        float contactSumCount = 0f;
+        Vector2 contactSum = Vector2.zero;
+                
         for(int i = 0; i < mContactPointsCount; i++) {
             var contactPt = mContactPoints[i];
 
             if(!contactPt.collider)
                 continue;
+
+            //check if we contact ground
 
             //check if it exists
             int groundCollContactInd = -1;
@@ -215,6 +277,20 @@ public class Player : M8.EntityBase {
 
             if(dot >= mGroundSlopeLimitCos) {
                 mGroundCollContacts.Add(contactPt.collider);
+            }
+
+            contactSum += contactPt.point;
+            contactSumCount += 1f;
+        }
+
+        //explode at contact
+        if(explodeCount > 0) {
+            if(Time.time - mLastMoveTime >= data.explodeContactStartDelay) { //don't allow first contact (don't explode upon launch)
+                Vector2 explodePos = contactSum / contactSumCount;
+
+                GameMapPool.instance.ExplodeAt(explodePos);
+
+                explodeCount--;
             }
         }
     }

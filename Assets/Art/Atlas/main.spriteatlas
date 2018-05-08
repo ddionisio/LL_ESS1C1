@@ -34,6 +34,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: b34ea9a87a544194f8649e50cc4a2aef, type: 3}
+  - {fileID: 21300000, guid: b7ec1234c8f03a84eb9aeed151c72377, type: 3}
   - {fileID: 21300000, guid: 7168da6aea1c4154bbc52d54856e6639, type: 3}
   - {fileID: 21300006, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300000, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
@@ -41,6 +42,7 @@ SpriteAtlas:
   - {fileID: 21300004, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   m_PackedSpriteNamesToIndex:
   - ballBase
+  - ballArrow
   - gradient8x8
   - blank4x4_bottomLeft
   - blank4x4_bottom

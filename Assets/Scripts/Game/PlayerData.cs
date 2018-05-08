@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerData : ScriptableObject {
     [Header("Attributes")]
 
-    public float powerMax;
+    public float moveInitialImpulse = 5f; //initial impulse upon launch
 
-    [M8.RangeMinMax(0f, 1f)]
-    public M8.RangeFloat powerScaleRange;
+    public float explodeContactStartDelay = 0.1f; //when to start exploding on collision contacts
+    public float explodeInitialOffset = 0.015f; //offset from opposite direction outside the player's radius
 
+    public int powerCount = 8; //bonus stuff
+    
     [Header("Physics")]
     public float density = 0.5f;
 
@@ -28,7 +30,7 @@ public class PlayerData : ScriptableObject {
 
     [Header("Display")]
 
-    public float pullDistanceLimit = 3f;
+    public float pullDistanceLimit = 2f;
     public int pullStepCount = 5;
 
     public void InvokeStateSignal(EntityState state) {
@@ -38,9 +40,5 @@ public class PlayerData : ScriptableObject {
                 break;
             }
         }
-    }
-
-    public float GetPower(float t) {
-        return powerMax * powerScaleRange.Lerp(t);
     }
 }
