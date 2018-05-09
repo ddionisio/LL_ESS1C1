@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 830f3301faa2a7b45981fcf8a4018bc3, type: 2}
+  bounds: {fileID: 0}
+  _boundLocked: 1
 --- !u!114 &114997066806332608
 MonoBehaviour:
   m_ObjectHideFlags: 1

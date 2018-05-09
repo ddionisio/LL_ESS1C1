@@ -25,6 +25,9 @@ public class GameFlowProxy : MonoBehaviour {
     }
 
     public void Complete() {
-        LoLManager.instance.Complete();
+        if(LoLManager.isInstantiated)
+            LoLManager.instance.Complete();
+        else
+            Debug.Log("END");
     }
 }

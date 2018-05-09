@@ -37,3 +37,8 @@ MonoBehaviour:
     fVal: 0
     sVal: 
     oVal: {fileID: 0}
+  - _key: localizeSelector
+    iVal: 0
+    fVal: 0
+    sVal: 
+    oVal: {fileID: 114781030823432642, guid: 84edc9a52c60ca74ca2ac627050c0ec5, type: 2}

@@ -531,7 +531,7 @@ MonoBehaviour:
   activator: {fileID: 0}
   data: {fileID: 11400000, guid: 5e7a46fb404b3f248a2be2aff13a2dcd, type: 2}
   signalExplodeCount: {fileID: 11400000, guid: adf132f568bd16b49be9677be0975be2, type: 2}
-  signalPowerCount: {fileID: 11400000, guid: 53f805ae7d93948499c2c525de8c7aad, type: 2}
+  signalGoal: {fileID: 11400000, guid: dcbf2c6d01fd8ac4e9a944e50e2a1063, type: 2}
 --- !u!114 &114918433980416590
 MonoBehaviour:
   m_ObjectHideFlags: 1

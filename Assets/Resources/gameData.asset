@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Name: gameData
   m_EditorClassIdentifier: 
   introScene:
-    name: 
-    path: 
+    name: intro
+    path: Assets/Scenes/intro.unity
+  endScene:
+    name: end
+    path: Assets/Scenes/end.unity
+  levelIntroScene:
+    name: levelIntro
+    path: Assets/Scenes/levelIntro.unity
+  levelEndScene:
+    name: levelEnd
+    path: Assets/Scenes/levelEnd.unity
   levels:
-  - scenes:
-    - name: test
-      path: Assets/Scenes/test.unity
-    - name: test
-      path: Assets/Scenes/test.unity
-    - name: test
-      path: Assets/Scenes/test.unity
-  - scenes:
-    - name: _Init
-      path: Assets/Scenes/_Init.unity
-    - name: _Init
-      path: Assets/Scenes/_Init.unity
-    - name: _Init
-      path: Assets/Scenes/_Init.unity
+  - scene:
+      name: level1
+      path: Assets/Scenes/level1.unity
+  - scene:
+      name: level2
+      path: Assets/Scenes/level2.unity

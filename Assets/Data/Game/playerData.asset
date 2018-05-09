@@ -24,12 +24,9 @@ MonoBehaviour:
   - state: 0
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
-  - state: 1
-    signals:
-    - {fileID: 11400000, guid: 5e418023e9c7820429301c22e2d05458, type: 2}
   - state: 2
     signals:
-    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+    - {fileID: 11400000, guid: 5e418023e9c7820429301c22e2d05458, type: 2}
   - state: 3
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
@@ -37,6 +34,9 @@ MonoBehaviour:
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
   - state: 5
+    signals:
+    - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+  - state: 1
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
   pullDistanceLimit: 1.5

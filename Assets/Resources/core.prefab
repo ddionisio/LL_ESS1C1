@@ -248,3 +248,4 @@ MonoBehaviour:
   _useFadeMusicScale: 1
   _fadeMusicScale: 0.8
   _ignorePlaySoundOnMute: 1
+  _speakQueueStartDelay: 0.3

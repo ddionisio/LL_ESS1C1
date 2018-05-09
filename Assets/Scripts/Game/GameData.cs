@@ -7,33 +7,32 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu(fileName = "gameData", menuName = "Game/Game Data", order = 0)]
 public class GameData : M8.SingletonScriptableObject<GameData> {    
-    public const int progressPerLevel = 3; //for now: per scene on each level
-
-    public enum LevelScene {
-        Intro,
-        Play,
-        Post
-    }
+    public const int progressPerLevel = 3; //includes: intro, play, end
 
     [System.Serializable]
     public class LevelData {
-        public M8.SceneAssetPath[] scenes;
+        public M8.SceneAssetPath scene;
     }
 
+    [Header("Scenes")]
     public M8.SceneAssetPath introScene;
+    public M8.SceneAssetPath endScene;
+    public M8.SceneAssetPath levelIntroScene;
+    public M8.SceneAssetPath levelEndScene;
 
-    [HideInInspector]
+    [Header("Levels")]
     public LevelData[] levels;
 
+    public bool isGameStarted { get; private set; } //true: we got through start normally, false: debug
     public int curLevelIndex { get; private set; }
 
-    private bool mIsBeginCalled; //true: we got through start normally, false: debug
+    private bool mIsDebugCurLevelApplied;
 
     /// <summary>
     /// Called in start scene
     /// </summary>
     public void Begin() {
-        mIsBeginCalled = true;
+        isGameStarted = true;
 
         if(LoLManager.instance.curProgress == 0)
             introScene.Load();
@@ -44,91 +43,116 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     }
 
     /// <summary>
-    /// Load current level-scene from current progress
+    /// Update level index based on current progress, and load scene
     /// </summary>
     public void Current() {
-        var nextScene = GetSceneFromCurrentProgress(LoLManager.instance.curProgress);
-        nextScene.Load();
+        int progress = LoLManager.instance.curProgress;
+
+        UpdateLevelIndexFromProgress(progress);
+
+        if(curLevelIndex < levels.Length) {
+            int sceneIndex = progress % progressPerLevel;
+            switch(sceneIndex) {
+                case 0:
+                    levelIntroScene.Load();
+                    break;
+                case 1:
+                    levels[curLevelIndex].scene.Load();
+                    break;
+                case 2:
+                    levelEndScene.Load();
+                    break;
+                default:
+                    M8.SceneManager.instance.Reload();
+                    break;
+            }
+        }
+        else
+            endScene.Load();
     }
 
     /// <summary>
     /// Update progress, go to next level-scene
     /// </summary>
     public void Progress() {
-        if(mIsBeginCalled) {
-            //complete if we are already at max
-            if(LoLManager.instance.curProgress == LoLManager.instance.progressMax)
-                LoLManager.instance.Complete();
+        var curScene = M8.SceneManager.instance.curScene;
+
+        if(isGameStarted) {
+            //we are in intro, proceed
+            if(curScene.name == introScene.name) {
+                Current();
+            }
+            //ending if we are already at max
+            else if(LoLManager.instance.curProgress == LoLManager.instance.progressMax)
+                endScene.Load();
+            //proceed to next progress
             else {
                 LoLManager.instance.ApplyProgress(LoLManager.instance.curProgress + 1);
                 Current();
             }
         }
-        else {
-            var curScene = M8.SceneManager.instance.curScene;
+        else { //debug
+            if(curScene.name == introScene.name) {
+                //play first level intro
+                curLevelIndex = 0;
+                mIsDebugCurLevelApplied = true;
+                                
+                levelIntroScene.Load();
+            }
+            else if(curScene.name == levelIntroScene.name) {
+                //grab level index via debug control
+                if(!mIsDebugCurLevelApplied) {
+                    curLevelIndex = DebugControl.instance.levelIndex;
+                    mIsDebugCurLevelApplied = true;
+                }
 
-            int nextLevelInd = -1;
-            int nextSceneInd = -1;
+                //play level
+                levels[curLevelIndex].scene.Load();
+            }
+            else if(curScene.name == levelEndScene.name) {
+                //grab level index via debug control
+                if(!mIsDebugCurLevelApplied) {
+                    curLevelIndex = DebugControl.instance.levelIndex;
+                    mIsDebugCurLevelApplied = true;
+                }
 
-            //figure out which progress we are in based on current scene
-            for(int levelInd = 0; levelInd < levels.Length; levelInd++) {
-                var level = levels[levelInd];
+                //go to next level intro
+                if(curLevelIndex < levels.Length) {
+                    curLevelIndex++;
+                    levelIntroScene.Load();
+                }
+                else
+                    endScene.Load(); //completed
+            }
+            else {
+                //check levels and load level ending
+                int levelFoundInd = -1;
 
-                for(int sceneInd = 0; sceneInd < level.scenes.Length; sceneInd++) {
-                    if(level.scenes[sceneInd].name == curScene.name) {
-                        //proceed to next level
-                        if(sceneInd == level.scenes.Length - 1) {
-                            nextLevelInd = levelInd + 1;
-                            nextSceneInd = 0;
-                        }
-                        //proceed to next scene
-                        else {
-                            nextLevelInd = levelInd;
-                            nextSceneInd++;
-                        }
+                for(int i = 0; i < levels.Length; i++) {
+                    if(curScene.name == levels[i].scene.name) {
+                        levelFoundInd = i;
                         break;
                     }
                 }
 
-                if(nextLevelInd != -1)
-                    break;
-            }
-
-            if(nextLevelInd == -1) {
-                //no match, just reload level
-                M8.SceneManager.instance.Reload();
-            }
-            else if(nextLevelInd >= levels.Length) {
-                //complete
-                Debug.Log("Finish");
-            }
-            else {
-                curLevelIndex = nextLevelInd;
-
-                levels[nextLevelInd].scenes[nextSceneInd].Load();
+                if(levelFoundInd != -1) {
+                    curLevelIndex = levelFoundInd;
+                    levelEndScene.Load();
+                }
+                else
+                    M8.SceneManager.instance.Reload(); //not found, just reload current
             }
         }
     }
 
     protected override void OnInstanceInit() {
         //compute max progress
-        if(LoLManager.isInstantiated) {
-            int progressCount = 0;
-
-            for(int levelInd = 0; levelInd < levels.Length; levelInd++) {
-                progressCount += levels[levelInd].scenes.Length;                                
-            }
-
-            LoLManager.instance.progressMax = progressCount;
+        if(LoLManager.isInstantiated) {            
+            LoLManager.instance.progressMax = levels.Length * progressPerLevel;
         }
     }
 
-    private M8.SceneAssetPath GetSceneFromCurrentProgress(int progress) {
-
-        curLevelIndex = Mathf.Clamp(progress / progressPerLevel, 0, levels.Length - 1);
-
-        int sceneIndex = progress % levels[curLevelIndex].scenes.Length;
-
-        return levels[curLevelIndex].scenes[sceneIndex];
+    private void UpdateLevelIndexFromProgress(int progress) {
+        curLevelIndex = Mathf.Clamp(progress / progressPerLevel, 0, levels.Length);        
     }
 }
