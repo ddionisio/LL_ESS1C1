@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameMapController : M8.SingletonBehaviour<GameMapController> {
     public GameMapData mapData;
 
+    [Header("Camera")]
+    public GameBounds2D cameraBounds;
+
+    [Header("Signal Listen")]
+    public M8.Signal signalGoal;
+
     public Player player { get; private set; }
     public GameCamera gameCamera { get; private set; }
 
@@ -15,8 +21,13 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
             player = playerGO.GetComponent<Player>();
 
         var gameCameraGO = GameObject.FindGameObjectWithTag(Tags.gameCamera);
-        if(gameCameraGO)
+        if(gameCameraGO) {
             gameCamera = gameCameraGO.GetComponent<GameCamera>();
+
+            //apply camera bound
+            gameCamera.bounds = cameraBounds;
+            gameCamera.boundLocked = true;
+        }
     }
 
     protected override void OnInstanceDeinit() {

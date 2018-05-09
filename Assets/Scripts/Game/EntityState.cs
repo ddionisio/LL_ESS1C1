@@ -6,11 +6,11 @@ public enum EntityState {
     Invalid = -1,
 
     Spawn,
+    Death, //died somehow
 
     PlayerIdle, //ready for new move
     PlayerMove, //moving, wait to stop
     PlayerLock, //locked down to do other things
-    PlayerDeath, //died somehow
-    
+        
     Victory
 }

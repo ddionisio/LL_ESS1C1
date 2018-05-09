@@ -5,11 +5,20 @@ using UnityEngine;
 public class GameCamera : MonoBehaviour {
     public GameCameraData data;
 
-    public GameBounds2D bounds { get; private set; }
+    [SerializeField]
+    public GameBounds2D bounds;
 
+    [SerializeField]
+    bool _boundLocked = true;
+        
     public M8.Camera2D camera2D { get; private set; }
 
     public Vector2 position { get { return transform.position; } }
+
+    public bool boundLocked {
+        get { return _boundLocked && bounds; }
+        set { _boundLocked = value; }
+    }
 
     /// <summary>
     /// Local space
@@ -18,14 +27,15 @@ public class GameCamera : MonoBehaviour {
     public Vector2 cameraViewExtents { get; private set; }
 
     public bool isMoving { get { return mMoveToRout != null; } }
-
+        
     private Coroutine mMoveToRout;
 
     public void MoveTo(Vector2 dest) {
         StopMoveTo();
                 
         //clamp
-        dest = bounds.Clamp(dest, cameraViewExtents);
+        if(boundLocked)
+            dest = bounds.Clamp(dest, cameraViewExtents);
 
         //ignore if we are exactly on dest
         if(position == dest)
@@ -43,7 +53,8 @@ public class GameCamera : MonoBehaviour {
 
     public void SetPosition(Vector2 pos) {
         //clamp
-        pos = bounds.Clamp(pos, cameraViewExtents);
+        if(boundLocked)
+            pos = bounds.Clamp(pos, cameraViewExtents);
 
         transform.position = pos;
     }
@@ -59,8 +70,6 @@ public class GameCamera : MonoBehaviour {
     }
 
     void Awake() {
-        bounds = data.GetBoundsFromScene();
-
         camera2D = GetComponentInChildren<M8.Camera2D>();
 
         var unityCam = camera2D.unityCamera;

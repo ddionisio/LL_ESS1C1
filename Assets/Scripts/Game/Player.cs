@@ -13,7 +13,7 @@ public class Player : M8.EntityBase {
 
     [Header("Signals")]
     public SignalInt signalExplodeCount;
-    public SignalInt signalPowerCount;
+    public M8.Signal signalGoal; //triggered goal
 
     public Vector2 moveDir { get; set; }
 
@@ -33,19 +33,7 @@ public class Player : M8.EntityBase {
             }
         }
     }
-
-    public int curPowerCount {
-        get { return mCurPowerCount; }
-        private set {
-            if(mCurPowerCount != value) {
-                mCurPowerCount = value;
-
-                if(signalPowerCount)
-                    signalPowerCount.Invoke(mCurPowerCount);
-            }
-        }
-    }
-
+    
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
         set {
@@ -59,7 +47,6 @@ public class Player : M8.EntityBase {
     private PhysicsMode mPhysicsMode;
 
     private int mCurExplodeCount;
-    private int mCurPowerCount;
 
     private const int contactCacheCount = 16;
 
@@ -74,6 +61,7 @@ public class Player : M8.EntityBase {
     private Coroutine mRout;
 
     private Vector2 mSpawnPos;
+    private Vector2 mVictoryPos;
 
     private float mLastMoveTime;
 
@@ -99,6 +87,12 @@ public class Player : M8.EntityBase {
         GameMapPool.instance.ExplodeAt(explodePos);
     }
 
+    public void Victory(Vector2 goalPos) {
+        mVictoryPos = goalPos;
+
+        state = (int)EntityState.Victory;
+    }
+
     protected override void OnDespawned() {
         //reset stuff here
         ClearRoutine();
@@ -113,10 +107,6 @@ public class Player : M8.EntityBase {
         mSpawnPos = transform.position;
 
         //stats
-        mCurPowerCount = data.powerCount;
-        if(signalPowerCount)
-            signalPowerCount.Invoke(mCurPowerCount);
-
         mCurExplodeCount = 0;
         if(signalExplodeCount)
             signalExplodeCount.Invoke(mCurExplodeCount);
@@ -163,7 +153,7 @@ public class Player : M8.EntityBase {
                 mLastMoveTime = Time.time;
                 break;
 
-            case EntityState.PlayerDeath:
+            case EntityState.Death:
                 physicsMode = PhysicsMode.Disabled;
 
                 mRout = StartCoroutine(DoDeath());
@@ -171,6 +161,10 @@ public class Player : M8.EntityBase {
 
             case EntityState.Victory:
                 physicsMode = PhysicsMode.Disabled;
+
+                mGameCamCurVel = Vector2.zero;
+
+                mRout = StartCoroutine(DoVictory());
                 break;
         }
 
@@ -213,25 +207,14 @@ public class Player : M8.EntityBase {
         EntityState entState = (EntityState)state;
         switch(entState) {
             case EntityState.PlayerMove:
-                Vector2 playerPos = physicsBody.position;
-
                 //camera follow
-                var gameCam = GameMapController.instance.gameCamera;
-                var gameCamPos = gameCam.position;
-
-                var gameCamNewPos = Vector2.SmoothDamp(gameCamPos, playerPos, ref mGameCamCurVel, data.cameraTime);
-
-                gameCam.SetPosition(gameCamNewPos);
+                CameraFollowUpdate();
 
                 if(isGrounded) {
                     //check if we need to rest
                     float speedSqr = physicsBody.velocity.sqrMagnitude;
                     float restSpeedThresholdSqr = data.restSpeedThreshold * data.restSpeedThreshold;
                     if(speedSqr <= restSpeedThresholdSqr) {
-                        //deplete power
-                        if(curPowerCount > 0)
-                            curPowerCount--;
-
                         //set to idle
                         state = (int)EntityState.PlayerIdle;
                     }
@@ -364,6 +347,17 @@ public class Player : M8.EntityBase {
         }
     }
 
+    private void CameraFollowUpdate() {
+        Vector2 playerPos = physicsBody.position;
+
+        var gameCam = GameMapController.instance.gameCamera;
+        var gameCamPos = gameCam.position;
+
+        var gameCamNewPos = Vector2.SmoothDamp(gameCamPos, playerPos, ref mGameCamCurVel, data.cameraTime);
+
+        gameCam.SetPosition(gameCamNewPos);
+    }
+
     private void ClearPhysicsData() {
         mContactPointsCount = 0;
         mGroundCollContacts.Clear();
@@ -397,5 +391,24 @@ public class Player : M8.EntityBase {
 
         //respawn
         state = (int)EntityState.Spawn;
+    }
+
+    IEnumerator DoVictory() {
+        yield return null;
+
+        //move towards victory
+        transform.position = mVictoryPos;
+
+        //CameraFollowUpdate()
+
+        //play victory animation
+
+        //move upwards
+
+        //signal victory
+        if(signalGoal)
+            signalGoal.Invoke();
+
+        mRout = null;
     }
 }

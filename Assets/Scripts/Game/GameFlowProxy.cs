@@ -3,31 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Helper Behaviour to hookup calls to GameFlowController
+/// Helper Behaviour to hookup calls to GameData's flow
 /// </summary>
 public class GameFlowProxy : MonoBehaviour {
-    public void LoadScene(string toScene) {
-        M8.SceneManager.instance.LoadScene(toScene);
+    /// <summary>
+    /// Called in start scene
+    /// </summary>
+    public void Begin() {
+        GameData.instance.Begin();
     }
 
-    public void ProgressBegin(string introScene) {
-        if(LoLManager.instance.curProgress == 0)
-            M8.SceneManager.instance.LoadScene(introScene);
-        else {
-            LoLMusicPlaylist.instance.PlayStartMusic();
-            GameFlowController.LoadCurrentProgressScene();
-        }
+    public void Current() {
+        GameData.instance.Current();
     }
 
-    public void ProgressStart() {
-        GameFlowController.LoadCurrentProgressScene();
-    }
-
+    /// <summary>
+    /// Go to next level
+    /// </summary>
     public void Progress() {
-        GameFlowController.ProgressAndLoadNextScene();
+        GameData.instance.Progress();
     }
 
     public void Complete() {
-        GameFlowController.Complete();
+        LoLManager.instance.Complete();
     }
 }

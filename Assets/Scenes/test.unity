@@ -194,7 +194,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-125944
+  m_Name: pb_Mesh14390
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -340,7 +340,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-134842
+  m_Name: pb_Mesh14362
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -702,7 +702,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh14376
+  m_Name: pb_Mesh14434
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -887,6 +887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData: {fileID: 11400000, guid: cede16b650a1d2c40897b4555ab3701b, type: 2}
+  cameraBounds: {fileID: 1112605905}
+  signalGoal: {fileID: 0}
 --- !u!1 &341688061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1245,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-139340
+  m_Name: pb_Mesh14454
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -1943,7 +1945,7 @@ GameObject:
   - component: {fileID: 1112605905}
   m_Layer: 0
   m_Name: cameraBounds
-  m_TagString: GameCameraBounds
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1986,7 +1988,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-152218
+  m_Name: pb_Mesh14374
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2132,7 +2134,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-160456
+  m_Name: pb_Mesh14410
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2452,7 +2454,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-128278
+  m_Name: pb_Mesh14340
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

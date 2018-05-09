@@ -11,8 +11,6 @@ public class PlayerData : ScriptableObject {
     public float explodeContactStartDelay = 0.1f; //when to start exploding on collision contacts
     public float explodeInitialOffset = 0.015f; //offset from opposite direction outside the player's radius
 
-    public int powerCount = 8; //bonus stuff
-    
     [Header("Physics")]
     public float density = 0.5f;
 
