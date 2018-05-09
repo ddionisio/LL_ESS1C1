@@ -11,3 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef0625a3800cf84fba40e7236032b61, type: 3}
   m_Name: gameData
   m_EditorClassIdentifier: 
+  introScene:
+    name: 
+    path: 
+  levels:
+  - scenes:
+    - name: test
+      path: Assets/Scenes/test.unity
+    - name: test
+      path: Assets/Scenes/test.unity
+    - name: test
+      path: Assets/Scenes/test.unity
+  - scenes:
+    - name: _Init
+      path: Assets/Scenes/_Init.unity
+    - name: _Init
+      path: Assets/Scenes/_Init.unity
+    - name: _Init
+      path: Assets/Scenes/_Init.unity
