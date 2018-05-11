@@ -5,4 +5,5 @@ using UnityEngine;
 public struct Tags {
     public const string player = "Player";
     public const string gameCamera = "GameCamera";
+    public const string gameCheckpoint = "GameCheckpoint";
 }

@@ -11,29 +11,37 @@ public class Player : M8.EntityBase {
 
     public PlayerData data;
 
+    public GameObject displayRoot;
+
     [Header("Signals")]
-    public SignalInt signalExplodeCount;
+    public SignalBool signalCanExplodeUpdate; //update on when we can explode
+    public M8.Signal signalExplode;
     public M8.Signal signalGoal; //triggered goal
+    public M8.Signal signalDeath;
 
     public Vector2 moveDir { get; set; }
+    public float movePower { get; set; }
 
     public CircleCollider2D physicsCircleCollider { get; private set; }
     public Rigidbody2D physicsBody { get; private set; }
 
     public bool isGrounded { get { return mGroundCollContacts.Count > 0; } }
 
-    public int explodeCount {
-        get { return mCurExplodeCount; }
-        set {
-            if(mCurExplodeCount != value) {
-                mCurExplodeCount = value;
+    //if true, we can explode at explodablePosition
+    public bool canExplode {
+        get { return mCanExplode; }
+        private set {
+            if(mCanExplode != value) {
+                mCanExplode = value;
 
-                if(signalExplodeCount)
-                    signalExplodeCount.Invoke(mCurExplodeCount);
+                if(signalCanExplodeUpdate) signalCanExplodeUpdate.Invoke(mCanExplode);
             }
         }
     }
-    
+
+
+    public Vector2 explodablePosition { get { return mExplodableHit.point; } }
+
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
         set {
@@ -46,8 +54,6 @@ public class Player : M8.EntityBase {
 
     private PhysicsMode mPhysicsMode;
 
-    private int mCurExplodeCount;
-
     private const int contactCacheCount = 16;
 
     private ContactPoint2D[] mContactPoints = new ContactPoint2D[contactCacheCount];
@@ -59,32 +65,40 @@ public class Player : M8.EntityBase {
     private Vector2 mGameCamCurVel;
 
     private Coroutine mRout;
-
-    private Vector2 mSpawnPos;
+    
     private Vector2 mVictoryPos;
 
-    private float mLastMoveTime;
+    private bool mCanExplode;
+    private RaycastHit2D mExplodableHit; //raycast hit info of explodable point
+
+    private Vector2[] mExplodeCheckDirs = {
+        Vector2.up, Vector2.down, Vector2.left, Vector2.right
+    };
+
+    private RaycastHit2D[] mExplodeCheckHits;
+
+    private float mLastExplodeTime;
 
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
     /// </summary>
     public void Move() {
         state = (int)EntityState.PlayerMove;
-
-        this.explodeCount = explodeCount;
-
+        
         //initial impulse
         Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
 
-        physicsBody.AddForceAtPosition(moveDir * data.moveInitialImpulse, initialImpulsePos, ForceMode2D.Impulse);
-                        
-        //initial explode
-        Vector2 explodePos = physicsBody.position - moveDir * (physicsCircleCollider.radius + data.explodeInitialOffset);
+        physicsBody.AddForceAtPosition(moveDir * movePower, initialImpulsePos, ForceMode2D.Impulse);
+    }
 
-        if(explodeCount > 0)
-            explodeCount--;
+    public void Explode() {
+        if(canExplode) {
+            //spawn explosion at explode hit
+            GameMapPool.instance.ExplodeAt(mExplodableHit.point);
 
-        GameMapPool.instance.ExplodeAt(explodePos);
+            mLastExplodeTime = Time.time;
+            canExplode = false;
+        }
     }
 
     public void Victory(Vector2 goalPos) {
@@ -97,22 +111,18 @@ public class Player : M8.EntityBase {
         //reset stuff here
         ClearRoutine();
 
-        explodeCount = 0;
-
         physicsMode = PhysicsMode.Disabled;
+
+        //hide display
+        if(displayRoot) displayRoot.SetActive(false);
     }
 
     protected override void OnSpawned(M8.GenericParams parms) {
         //populate data/state for ai, player control, etc.
-        mSpawnPos = transform.position;
 
         //stats
-        mCurExplodeCount = 0;
-        if(signalExplodeCount)
-            signalExplodeCount.Invoke(mCurExplodeCount);
 
         //start ai, player control, etc
-        state = (int)EntityState.Spawn;
     }
 
     protected override void StateChanged() {
@@ -129,11 +139,8 @@ public class Player : M8.EntityBase {
                 break;
 
             case EntityState.PlayerIdle:
-                physicsMode = PhysicsMode.Static;
-
-                //save current position for respawn
-                mSpawnPos = transform.position;
-
+                physicsMode = PhysicsMode.Disabled;
+                
                 //focus camera to player
                 Vector2 playerPos = physicsBody.position;
 
@@ -150,7 +157,7 @@ public class Player : M8.EntityBase {
 
                 mGameCamCurVel = Vector2.zero;
 
-                mLastMoveTime = Time.time;
+                mLastExplodeTime = Time.time;
                 break;
 
             case EntityState.Death:
@@ -180,7 +187,12 @@ public class Player : M8.EntityBase {
     protected override void Awake() {
         base.Awake();
 
+        //hide display
+        if(displayRoot) displayRoot.SetActive(false);
+
         //initialize data/variables
+        mExplodeCheckHits = new RaycastHit2D[mExplodeCheckDirs.Length];
+
         physicsCircleCollider = GetComponent<CircleCollider2D>();
         physicsBody = GetComponent<Rigidbody2D>();
 
@@ -215,10 +227,12 @@ public class Player : M8.EntityBase {
                     float speedSqr = physicsBody.velocity.sqrMagnitude;
                     float restSpeedThresholdSqr = data.restSpeedThreshold * data.restSpeedThreshold;
                     if(speedSqr <= restSpeedThresholdSqr) {
-                        //set to idle
-                        state = (int)EntityState.PlayerIdle;
+                        //set to death
+                        state = (int)EntityState.Death;
                     }
                 }
+
+                UpdateExplodablePoint();
                 break;
         }
     }
@@ -264,17 +278,6 @@ public class Player : M8.EntityBase {
 
             contactSum += contactPt.point;
             contactSumCount += 1f;
-        }
-
-        //explode at contact
-        if(explodeCount > 0) {
-            if(Time.time - mLastMoveTime >= data.explodeContactStartDelay) { //don't allow first contact (don't explode upon launch)
-                Vector2 explodePos = contactSum / contactSumCount;
-
-                GameMapPool.instance.ExplodeAt(explodePos);
-
-                explodeCount--;
-            }
         }
     }
 
@@ -347,6 +350,42 @@ public class Player : M8.EntityBase {
         }
     }
 
+    private void UpdateExplodablePoint() {
+        //check delay from move
+        if(Time.time - mLastExplodeTime < data.explodeCooldown) {
+            canExplode = false;
+            return;
+        }
+
+        //cast in 4-direction and check nearest distance
+        Vector2 checkPos = physicsBody.position;
+        float dist = data.explodeCastDistance + physicsCircleCollider.radius;
+
+        for(int i = 0; i < mExplodeCheckDirs.Length; i++) {
+            mExplodeCheckHits[i] = Physics2D.Raycast(checkPos, mExplodeCheckDirs[i], dist, data.explodeCastLayerMask);
+        }
+
+        //grab nearest
+        float nearestDist = float.MaxValue;
+        int nearestInd = -1;
+
+        for(int i = 0; i < mExplodeCheckHits.Length; i++) {
+            if(mExplodeCheckHits[i].collider != null) {
+                if(mExplodeCheckHits[i].distance < nearestDist) {
+                    nearestDist = mExplodeCheckHits[i].distance;
+                    nearestInd = i;
+                }
+            }
+        }
+
+        if(nearestInd != -1) {
+            mExplodableHit = mExplodeCheckHits[nearestInd];
+            canExplode = true;
+        }
+        else
+            canExplode = false;
+    }
+
     private void CameraFollowUpdate() {
         Vector2 playerPos = physicsBody.position;
 
@@ -361,6 +400,8 @@ public class Player : M8.EntityBase {
     private void ClearPhysicsData() {
         mContactPointsCount = 0;
         mGroundCollContacts.Clear();
+
+        canExplode = false;
     }
 
     private void ClearRoutine() {
@@ -371,8 +412,8 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoSpawn() {
-        //set current position
-        transform.position = mSpawnPos;
+        //show display
+        if(displayRoot) displayRoot.SetActive(true);
 
         //do fancy stuff
         yield return new WaitForSeconds(1f);
@@ -389,8 +430,10 @@ public class Player : M8.EntityBase {
 
         mRout = null;
 
-        //respawn
-        state = (int)EntityState.Spawn;
+        //hide display
+        if(displayRoot) displayRoot.SetActive(false);
+
+        if(signalDeath) signalDeath.Invoke();
     }
 
     IEnumerator DoVictory() {

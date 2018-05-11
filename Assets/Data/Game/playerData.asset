@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937e40a500f1e4a4cbeed6e72b39331d, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  moveInitialImpulse: 10
-  explodeContactStartDelay: 0.1
-  explodeInitialOffset: 0.1
+  explodeCastLayerMask:
+    serializedVersion: 2
+    m_Bits: 2049
+  explodeCastDistance: 0.5
+  explodeCooldown: 0.5
   density: 5
   drag: 0.3
   dragAngular: 0.025
@@ -27,6 +29,7 @@ MonoBehaviour:
   - state: 2
     signals:
     - {fileID: 11400000, guid: 5e418023e9c7820429301c22e2d05458, type: 2}
+    - {fileID: 11400000, guid: 343c3baecdde16a40958a1ba4d1482b0, type: 2}
   - state: 3
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}

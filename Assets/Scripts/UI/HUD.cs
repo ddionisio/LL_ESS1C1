@@ -5,18 +5,30 @@ using UnityEngine;
 [M8.PrefabFromResource("UI")]
 public class HUD : M8.SingletonBehaviour<HUD> {
     public RectTransform root;
-     
-    /// <summary>
-    /// Show gameplay related hud elements
-    /// </summary>
-    public void ShowGame() {
 
+    public GameObject gameRootGO; //gameplay related hud elements
+
+    [Header("Signals")]
+    public SignalBool signalGameActiveUpdate;
+
+    /// <summary>
+    /// Show/Hide gameplay related hud elements
+    /// </summary>
+    public bool isGameActive {
+        get { return gameRootGO && gameRootGO.activeSelf; }
+        set {
+            if(gameRootGO) {
+                if(gameRootGO.activeSelf != value) {
+                    gameRootGO.SetActive(value);
+
+                    if(signalGameActiveUpdate)
+                        signalGameActiveUpdate.Invoke(value);
+                }
+            }
+        }
     }
 
-    /// <summary>
-    /// Hide gameplay related hud elements
-    /// </summary>
-    public void HideGame() {
-
+    protected override void OnInstanceInit() {
+        if(gameRootGO) gameRootGO.SetActive(false);
     }
 }

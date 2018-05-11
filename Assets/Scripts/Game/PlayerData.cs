@@ -5,11 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "playerData", menuName = "Game/Player Data")]
 public class PlayerData : ScriptableObject {
     [Header("Attributes")]
-
-    public float moveInitialImpulse = 5f; //initial impulse upon launch
-
-    public float explodeContactStartDelay = 0.1f; //when to start exploding on collision contacts
-    public float explodeInitialOffset = 0.015f; //offset from opposite direction outside the player's radius
+    public LayerMask explodeCastLayerMask;
+    public float explodeCastDistance = 0.5f;
+    public float explodeCooldown = 0.5f;
 
     [Header("Physics")]
     public float density = 0.5f;
