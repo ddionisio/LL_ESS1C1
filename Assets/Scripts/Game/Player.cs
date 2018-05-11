@@ -40,7 +40,7 @@ public class Player : M8.EntityBase {
     }
 
 
-    public Vector2 explodablePosition { get { return mExplodableHit.point; } }
+    public Vector2 explodablePosition { get { return mExplodeCheckHit.point; } }
 
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
@@ -60,7 +60,9 @@ public class Player : M8.EntityBase {
     private int mContactPointsCount;
 
     private M8.CacheList<Collider2D> mGroundCollContacts = new M8.CacheList<Collider2D>(contactCacheCount);
+
     private float mGroundSlopeLimitCos;
+    private float mAboveLimitCos;
 
     private Vector2 mGameCamCurVel;
 
@@ -69,15 +71,11 @@ public class Player : M8.EntityBase {
     private Vector2 mVictoryPos;
 
     private bool mCanExplode;
-    private RaycastHit2D mExplodableHit; //raycast hit info of explodable point
-
-    private Vector2[] mExplodeCheckDirs = {
-        Vector2.up, Vector2.down, Vector2.left, Vector2.right
-    };
-
-    private RaycastHit2D[] mExplodeCheckHits;
+    private RaycastHit2D mExplodeCheckHit;
 
     private float mLastExplodeTime;
+        
+    private Vector2 mGroundMoveDir = Vector2.zero;
 
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
@@ -89,12 +87,14 @@ public class Player : M8.EntityBase {
         Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
 
         physicsBody.AddForceAtPosition(moveDir * movePower, initialImpulsePos, ForceMode2D.Impulse);
+
+        mGroundMoveDir.x = Mathf.Sign(moveDir.x);
     }
 
     public void Explode() {
         if(canExplode) {
             //spawn explosion at explode hit
-            GameMapPool.instance.ExplodeAt(mExplodableHit.point);
+            GameMapPool.instance.ExplodeAt(explodablePosition);
 
             mLastExplodeTime = Time.time;
             canExplode = false;
@@ -191,7 +191,6 @@ public class Player : M8.EntityBase {
         if(displayRoot) displayRoot.SetActive(false);
 
         //initialize data/variables
-        mExplodeCheckHits = new RaycastHit2D[mExplodeCheckDirs.Length];
 
         physicsCircleCollider = GetComponent<CircleCollider2D>();
         physicsBody = GetComponent<Rigidbody2D>();
@@ -222,17 +221,20 @@ public class Player : M8.EntityBase {
                 //camera follow
                 CameraFollowUpdate();
 
-                if(isGrounded) {
-                    //check if we need to rest
-                    float speedSqr = physicsBody.velocity.sqrMagnitude;
-                    float restSpeedThresholdSqr = data.restSpeedThreshold * data.restSpeedThreshold;
-                    if(speedSqr <= restSpeedThresholdSqr) {
-                        //set to death
-                        state = (int)EntityState.Death;
-                    }
+                //check speed limit (NOTE: don't try this at home)
+                var curVel = physicsBody.velocity;
+                var speedX = Mathf.Abs(curVel.x);
+                if(speedX > data.moveSpeedLimit) {
+                    curVel.x = Mathf.Sign(curVel.x) * data.moveSpeedLimit;
+                    physicsBody.velocity = curVel;
                 }
 
-                UpdateExplodablePoint();
+                if(isGrounded) {
+                    //move
+                    physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
+                }
+
+                UpdateExplodable();
                 break;
         }
     }
@@ -248,7 +250,10 @@ public class Player : M8.EntityBase {
 
         float contactSumCount = 0f;
         Vector2 contactSum = Vector2.zero;
-                
+
+        int nearestSideContactPointInd = -1;
+        float nearestSideSeparation = float.MaxValue;
+                        
         for(int i = 0; i < mContactPointsCount; i++) {
             var contactPt = mContactPoints[i];
 
@@ -271,13 +276,33 @@ public class Player : M8.EntityBase {
 
             //check normal
             float dot = Vector2.Dot(Vector2.up, contactPt.normal);
+            float separation = contactPt.separation;
 
             if(dot >= mGroundSlopeLimitCos) {
+                //ground
                 mGroundCollContacts.Add(contactPt.collider);
+            }
+            else if(dot <= mAboveLimitCos) {
+                //ceilling
+            }
+            else {
+                //side
+                if(nearestSideContactPointInd == -1 || separation < nearestSideSeparation) {
+                    nearestSideContactPointInd = i;
+                    nearestSideSeparation = separation;
+                }
             }
 
             contactSum += contactPt.point;
             contactSumCount += 1f;
+        }
+
+        //update ground move
+        if(nearestSideContactPointInd != -1) {
+            mGroundMoveDir.x = Mathf.Sign(mContactPoints[nearestSideContactPointInd].normal.x);
+
+            if(!isGrounded) //impulse
+                physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
         }
     }
 
@@ -318,6 +343,7 @@ public class Player : M8.EntityBase {
 
     private void ApplyPhysicsSettings() {
         mGroundSlopeLimitCos = Mathf.Cos(data.groundSlopeAngleLimit * Mathf.Deg2Rad);
+        mAboveLimitCos = Mathf.Cos(data.aboveAngleLimit * Mathf.Deg2Rad);
 
         physicsBody.useAutoMass = true;
         physicsBody.drag = data.drag;
@@ -350,42 +376,6 @@ public class Player : M8.EntityBase {
         }
     }
 
-    private void UpdateExplodablePoint() {
-        //check delay from move
-        if(Time.time - mLastExplodeTime < data.explodeCooldown) {
-            canExplode = false;
-            return;
-        }
-
-        //cast in 4-direction and check nearest distance
-        Vector2 checkPos = physicsBody.position;
-        float dist = data.explodeCastDistance + physicsCircleCollider.radius;
-
-        for(int i = 0; i < mExplodeCheckDirs.Length; i++) {
-            mExplodeCheckHits[i] = Physics2D.Raycast(checkPos, mExplodeCheckDirs[i], dist, data.explodeCastLayerMask);
-        }
-
-        //grab nearest
-        float nearestDist = float.MaxValue;
-        int nearestInd = -1;
-
-        for(int i = 0; i < mExplodeCheckHits.Length; i++) {
-            if(mExplodeCheckHits[i].collider != null) {
-                if(mExplodeCheckHits[i].distance < nearestDist) {
-                    nearestDist = mExplodeCheckHits[i].distance;
-                    nearestInd = i;
-                }
-            }
-        }
-
-        if(nearestInd != -1) {
-            mExplodableHit = mExplodeCheckHits[nearestInd];
-            canExplode = true;
-        }
-        else
-            canExplode = false;
-    }
-
     private void CameraFollowUpdate() {
         Vector2 playerPos = physicsBody.position;
 
@@ -402,6 +392,18 @@ public class Player : M8.EntityBase {
         mGroundCollContacts.Clear();
 
         canExplode = false;
+    }
+
+    private void UpdateExplodable() {
+        if(Time.time - mLastExplodeTime > data.explodeCooldown) {
+            Vector2 dir = Vector2.down;
+
+            mExplodeCheckHit = Physics2D.CircleCast(physicsBody.position, physicsCircleCollider.radius, dir, data.explodeCastDistance, data.explodeCastLayerMask);
+
+            canExplode = mExplodeCheckHit.collider != null;
+        }
+        else
+            canExplode = false;
     }
 
     private void ClearRoutine() {

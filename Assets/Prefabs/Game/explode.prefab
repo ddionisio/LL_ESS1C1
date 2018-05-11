@@ -138,13 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820f73d281c00d546b858d4f011e8255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2.5
-  power: 100
-  mode: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2560
-  delay: 0.01
+  data: {fileID: 11400000, guid: bd2ae254e68a91642a1254aad841c6b8, type: 2}
   animator: {fileID: 114687742822849986}
   takeExplode: explode
 --- !u!114 &114135867587307212
@@ -194,7 +188,7 @@ MonoBehaviour:
   val: 0
   valString: 
   valObj: {fileID: 0}
-  vect4: {x: 2.06, y: 2.07, z: 1, w: 0}
+  vect4: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &114687742822849986
 MonoBehaviour:
   m_ObjectHideFlags: 1

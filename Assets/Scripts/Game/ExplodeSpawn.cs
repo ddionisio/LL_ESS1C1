@@ -5,14 +5,8 @@ using M8;
 
 public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
     public const string parmSpawnPt = "spt";
-        
-    public float radius = 1.0f;
-    public float power = 50f;
-    public ForceMode2D mode = ForceMode2D.Impulse;
 
-    public LayerMask layerMask;
-
-    public float delay = 0.1f;
+    public ExplodeData data;
 
     public M8.Animator.AnimatorData animator;
     public string takeExplode = "explode";
@@ -27,7 +21,9 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+
+        if(data)
+            Gizmos.DrawWireSphere(transform.position, data.radius);
     }
 
     void Awake() {
@@ -59,17 +55,18 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
     }
         
     IEnumerator DoExplode(Vector2 pos) {
-        yield return new WaitForSeconds(delay);
+        if(data.delay > 0f)
+            yield return new WaitForSeconds(data.delay);
 
         //explode
-        mCollidersCount = Physics2D.OverlapCircleNonAlloc(pos, radius, mColliders, layerMask);
+        mCollidersCount = Physics2D.OverlapCircleNonAlloc(pos, data.radius, mColliders, data.layerMask);
 
         for(int i = 0; i < mCollidersCount; i++) {
             var coll = mColliders[i];
 
             var body = coll.GetComponent<Rigidbody2D>();
             if(body)
-                body.AddExplosionForceAtPosition(pos, power, pos, radius, mode);
+                body.AddExplosionForceAtPosition(pos, data.power, pos, data.radius, data.uplift, data.mode);
         }
 
         //animation stuff

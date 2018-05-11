@@ -9,14 +9,18 @@ public class PlayerData : ScriptableObject {
     public float explodeCastDistance = 0.5f;
     public float explodeCooldown = 0.5f;
 
+    public float moveForce = 20f;
+    public float moveSpeedLimit = 10f;
+    public float wallImpulse = 10f;
+
     [Header("Physics")]
     public float density = 0.5f;
 
     public float drag = 0.5f;
     public float dragAngular = 0.1f;
-
-    public float restSpeedThreshold = 0.1f;
+    
     public float groundSlopeAngleLimit = 50f;
+    public float aboveAngleLimit = 145.0f; //determines collideflag above, should be > 90, around 140'ish
 
     [Header("Camera")]
     public float cameraTime = 0.15f;

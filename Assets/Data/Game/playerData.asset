@@ -14,13 +14,16 @@ MonoBehaviour:
   explodeCastLayerMask:
     serializedVersion: 2
     m_Bits: 2049
-  explodeCastDistance: 0.5
-  explodeCooldown: 0.5
+  explodeCastDistance: 0.1
+  explodeCooldown: 0.1
+  moveForce: 50
+  moveSpeedLimit: 5
+  wallImpulse: 30
   density: 5
   drag: 0.3
   dragAngular: 0.025
-  restSpeedThreshold: 1
-  groundSlopeAngleLimit: 80
+  groundSlopeAngleLimit: 75
+  aboveAngleLimit: 145
   cameraTime: 0.15
   stateSignalInvokes:
   - state: 0
