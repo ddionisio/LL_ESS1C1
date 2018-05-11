@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c695b4a5975b140ad3bb589ca05ae8, type: 3}
   m_Name: gameCameraData
   m_EditorClassIdentifier: 
-  boundsTag: GameCameraBounds
+  boundsChangeDelay: 2
   moveToCurve:
     serializedVersion: 2
     m_Curve:
@@ -36,4 +36,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  moveToSpeed: 10
+  moveToSpeed: 5

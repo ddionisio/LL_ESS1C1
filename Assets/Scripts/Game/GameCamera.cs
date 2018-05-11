@@ -1,22 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using M8;
 
 public class GameCamera : MonoBehaviour {
     public GameCameraData data;
 
     [SerializeField]
-    public GameBounds2D bounds;
-
-    [SerializeField]
     bool _boundLocked = true;
         
-    public M8.Camera2D camera2D { get; private set; }
+    public Camera2D camera2D { get; private set; }
 
     public Vector2 position { get { return transform.position; } }
 
     public bool boundLocked {
-        get { return _boundLocked && bounds; }
+        get { return _boundLocked; }
         set { _boundLocked = value; }
     }
 
@@ -30,12 +28,38 @@ public class GameCamera : MonoBehaviour {
         
     private Coroutine mMoveToRout;
 
+    //interpolate
+    private Rect mBoundsRectNext;
+    private Coroutine mBoundsChangeRout;
+
+    private Rect mBoundsRect;
+
+    public void SetBounds(Rect newBounds, bool interpolate) {
+        //don't interpolate if current bounds is invalid
+        if(mBoundsRect.size.x == 0f || mBoundsRect.size.y == 0f)
+            interpolate = false;
+        
+        if(interpolate) {
+            mBoundsRectNext = newBounds;
+
+            if(mBoundsChangeRout != null)
+                StopCoroutine(mBoundsChangeRout);
+
+            mBoundsChangeRout = StartCoroutine(DoBoundsChange());
+        }
+        else {
+            mBoundsRect = newBounds;
+
+            SetPosition(transform.position); //refresh clamp
+        }
+    }
+
     public void MoveTo(Vector2 dest) {
         StopMoveTo();
                 
         //clamp
         if(boundLocked)
-            dest = bounds.Clamp(dest, cameraViewExtents);
+            dest = mBoundsRect.Clamp(dest, cameraViewExtents);
 
         //ignore if we are exactly on dest
         if(position == dest)
@@ -54,7 +78,7 @@ public class GameCamera : MonoBehaviour {
     public void SetPosition(Vector2 pos) {
         //clamp
         if(boundLocked)
-            pos = bounds.Clamp(pos, cameraViewExtents);
+            pos = mBoundsRect.Clamp(pos, cameraViewExtents);
 
         transform.position = pos;
     }
@@ -67,10 +91,17 @@ public class GameCamera : MonoBehaviour {
         
     void OnDisable() {
         StopMoveTo();
+
+        if(mBoundsChangeRout != null) {
+            StopCoroutine(mBoundsChangeRout);
+            mBoundsChangeRout = null;
+
+            mBoundsRect = mBoundsRectNext;
+        }
     }
 
     void Awake() {
-        camera2D = GetComponentInChildren<M8.Camera2D>();
+        camera2D = GetComponentInChildren<Camera2D>();
 
         var unityCam = camera2D.unityCamera;
 
@@ -109,5 +140,31 @@ public class GameCamera : MonoBehaviour {
         SetPosition(dest);
 
         mMoveToRout = null;
+    }
+
+    IEnumerator DoBoundsChange() {
+        //ease out
+        var easeFunc = DG.Tweening.Core.Easing.EaseManager.ToEaseFunction(DG.Tweening.Ease.OutCirc);
+
+        float curTime = 0f;
+        float delay = data.boundsChangeDelay;
+
+        Rect prevBoundsRect = mBoundsRect;
+
+        while(curTime < delay) {
+            yield return null;
+
+            curTime += Time.deltaTime;
+
+            float t = easeFunc(curTime, delay, 0f, 0f);
+
+            mBoundsRect.center = Vector2.Lerp(prevBoundsRect.center, mBoundsRectNext.center, t);
+            mBoundsRect.size = Vector2.Lerp(prevBoundsRect.size, mBoundsRectNext.size, t);
+
+            if(boundLocked)
+                SetPosition(transform.position); //update clamp
+        }
+
+        mBoundsChangeRout = null;
     }
 }

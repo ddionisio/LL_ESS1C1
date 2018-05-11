@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: TriggerBackground
+    uniqueID: 56679055
+    locked: 0
   - name: MapObjects
     uniqueID: 3974168479
     locked: 0

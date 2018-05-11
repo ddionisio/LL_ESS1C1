@@ -101,6 +101,10 @@ public class Player : M8.EntityBase {
         }
     }
 
+    public void FlipGroundMoveDir() {
+        mGroundMoveDir.x *= -1f;
+    }
+
     public void Victory(Vector2 goalPos) {
         mVictoryPos = goalPos;
 
@@ -220,18 +224,19 @@ public class Player : M8.EntityBase {
             case EntityState.PlayerMove:
                 //camera follow
                 CameraFollowUpdate();
-
-                //check speed limit (NOTE: don't try this at home)
-                var curVel = physicsBody.velocity;
-                var speedX = Mathf.Abs(curVel.x);
-                if(speedX > data.moveSpeedLimit) {
-                    curVel.x = Mathf.Sign(curVel.x) * data.moveSpeedLimit;
-                    physicsBody.velocity = curVel;
-                }
-
+                                
                 if(isGrounded) {
-                    //move
-                    physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
+                    //check speed limit (NOTE: don't try this at home)
+                    var curVel = physicsBody.velocity;
+                    var speedX = Mathf.Abs(curVel.x);
+                    if(speedX > data.moveSpeedLimit) {
+                        curVel.x = Mathf.Sign(curVel.x) * data.moveSpeedLimit;
+                        physicsBody.velocity = curVel;
+                    }
+                    else {
+                        //move
+                        physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
+                    }
                 }
 
                 UpdateExplodable();
@@ -391,6 +396,9 @@ public class Player : M8.EntityBase {
         mContactPointsCount = 0;
         mGroundCollContacts.Clear();
 
+        physicsBody.velocity = Vector2.zero;
+        physicsBody.angularVelocity = 0f;
+
         canExplode = false;
     }
 
@@ -414,9 +422,12 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoSpawn() {
+        //reset orientation
+        transform.rotation = Quaternion.identity;
+
         //show display
         if(displayRoot) displayRoot.SetActive(true);
-
+        
         //do fancy stuff
         yield return new WaitForSeconds(1f);
 

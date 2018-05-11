@@ -7,7 +7,12 @@ public class PlayerCheckpoint : MonoBehaviour {
 
     public float dirRotate; //starting from the top
 
+    public GameBounds2D cameraBounds;
+
+    public int index { get { return mIndex; } set { mIndex = value; } } //set by game map controller to determine checkpoint order
+
     private Vector2 mDir;
+    private int mIndex = -1;
     
     public void SpawnPlayer(Player player) {
         //set player move dir

@@ -17,7 +17,7 @@ MonoBehaviour:
   explodeCastDistance: 0.1
   explodeCooldown: 0.1
   moveForce: 50
-  moveSpeedLimit: 5
+  moveSpeedLimit: 4
   wallImpulse: 30
   density: 5
   drag: 0.3

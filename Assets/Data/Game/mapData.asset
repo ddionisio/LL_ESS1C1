@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec262a117ddf4384e995936f3f8b2b96, type: 3}
+  m_Name: mapData
+  m_EditorClassIdentifier: 
+  signalGoal: {fileID: 11400000, guid: dcbf2c6d01fd8ac4e9a944e50e2a1063, type: 2}
+  signalDeath: {fileID: 11400000, guid: 642ac37c33964d04b8bf0bbb0c37d116, type: 2}
+  signalPlayerCheckpoint: {fileID: 11400000, guid: 147a378d8210c8c49a606388b44c2893,
+    type: 2}
