@@ -11,7 +11,6 @@ public class PlayerData : ScriptableObject {
 
     public float moveForce = 20f;
     public float moveSpeedLimit = 10f;
-    public float wallImpulse = 10f;
 
     [Header("Physics")]
     public float density = 0.5f;

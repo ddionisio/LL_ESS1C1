@@ -95,7 +95,7 @@ public class Player : M8.EntityBase {
     public void Explode() {
         if(canExplode) {
             //spawn explosion at explode hit
-            GameMapPool.instance.ExplodeAt(explodablePosition);
+            GameMapPool.instance.ExplodeAt(GameMapPool.ExplodeTypes.explode, explodablePosition);
 
             mLastExplodeTime = Time.time;
             canExplode = false;
@@ -310,8 +310,11 @@ public class Player : M8.EntityBase {
         if(nearestSideContactPointInd != -1) {
             mGroundMoveDir.x = Mathf.Sign(mContactPoints[nearestSideContactPointInd].normal.x);
 
-            if(!isGrounded) //impulse
-                physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
+            //wall explode
+            if(!isGrounded) {
+                GameMapPool.instance.ExplodeAt(GameMapPool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point);
+                //physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
+            }
         }
     }
 

@@ -66,7 +66,7 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
 
             var body = coll.GetComponent<Rigidbody2D>();
             if(body)
-                body.AddExplosionForceAtPosition(pos, data.power, pos, data.radius, data.uplift, data.mode);
+                body.AddExplosionForceAtPosition(pos, data.power, pos, data.radius, data.uplift, false, data.mode);
         }
 
         //animation stuff

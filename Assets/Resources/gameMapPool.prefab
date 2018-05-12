@@ -98,7 +98,12 @@ MonoBehaviour:
   factory:
   - name: explode
     template: {fileID: 4316624469966020, guid: 3921cc209a289374193eea774c2439c2, type: 2}
-    startCapacity: 8
+    startCapacity: 16
+    maxCapacity: 0
+    defaultParent: {fileID: 0}
+  - name: explodeWall
+    template: {fileID: 4972666491866100, guid: 69004ccf79b2fce41b74b2419e9244fb, type: 2}
+    startCapacity: 16
     maxCapacity: 0
     defaultParent: {fileID: 0}
   poolHolder: {fileID: 4214115637187322}
@@ -113,4 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc8da91372e0394eb600d79878c8931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeType: explode

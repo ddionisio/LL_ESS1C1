@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[M8.PrefabFromResource("gameMapPool")]
 public class GameMapPool : M8.SingletonBehaviour<GameMapPool> {
-    public string explodeType = "explode";
+    public enum ExplodeTypes {
+        explode,
+        explodeWall
+    }
 
     private M8.PoolController mPool;
 
@@ -13,10 +17,12 @@ public class GameMapPool : M8.SingletonBehaviour<GameMapPool> {
         mPool.ReleaseAll();
     }
 
-    public void ExplodeAt(Vector2 pt) {
+    public void ExplodeAt(ExplodeTypes type, Vector2 pt) {
         mExplodeParms[ExplodeSpawn.parmSpawnPt] = pt;
 
-        mPool.Spawn(explodeType, explodeType, null, mExplodeParms);
+        string explodeTypeStr = type.ToString();
+
+        mPool.Spawn(explodeTypeStr, explodeTypeStr, null, mExplodeParms);
     }
 
     protected override void OnInstanceInit() {
