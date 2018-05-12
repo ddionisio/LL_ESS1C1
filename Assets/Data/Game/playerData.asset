@@ -36,6 +36,7 @@ MonoBehaviour:
   - state: 3
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}
+    - {fileID: 11400000, guid: 94f7ba385f40ffa438bc8e8f7f185ffc, type: 2}
   - state: 4
     signals:
     - {fileID: 11400000, guid: f396491b8ec8b3043a7cb64cc3788baa, type: 2}

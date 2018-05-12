@@ -26,6 +26,7 @@ public class Player : M8.EntityBase {
     public Rigidbody2D physicsBody { get; private set; }
 
     public bool isGrounded { get { return mGroundCollContacts.Count > 0; } }
+    public Vector2 groundMoveDir { get { return mGroundMoveDir; } }
 
     //if true, we can explode at explodablePosition
     public bool canExplode {
@@ -138,13 +139,16 @@ public class Player : M8.EntityBase {
         switch(curEntityState) {
             case EntityState.Spawn:
                 physicsMode = PhysicsMode.Disabled;
-
+                                
                 mRout = StartCoroutine(DoSpawn());
                 break;
 
             case EntityState.PlayerIdle:
                 physicsMode = PhysicsMode.Disabled;
-                
+
+                //preemptive ground move dir for those that need it during idle
+                mGroundMoveDir.x = Mathf.Sign(moveDir.x);
+
                 //focus camera to player
                 Vector2 playerPos = physicsBody.position;
 
