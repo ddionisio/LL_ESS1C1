@@ -8,7 +8,7 @@ public class PlayerActionWidget : MonoBehaviour {
     [Header("Signals")]
     public SignalBool signalGameActiveUpdate;
     public M8.Signal signalPlayerLaunchReady;
-    public SignalBool signalPlayerCanExplodeUpdate;
+    public SignalBool signalPlayerCanJumpUpdate;
 
     private Selectable mSelectable;
 
@@ -26,14 +26,14 @@ public class PlayerActionWidget : MonoBehaviour {
         }
         else {
             //explode
-            player.Explode();
+            player.Jump();
         }
     }
 
     void OnDestroy() {
         if(signalGameActiveUpdate) signalGameActiveUpdate.callback -= OnSignalGameActiveUpdate;
         if(signalPlayerLaunchReady) signalPlayerLaunchReady.callback -= OnSignalPlayerIdle;
-        if(signalPlayerCanExplodeUpdate) signalPlayerCanExplodeUpdate.callback -= OnSignalPlayerCanExplodeUpdate;
+        if(signalPlayerCanJumpUpdate) signalPlayerCanJumpUpdate.callback -= OnSignalPlayerCanJumpUpdate;
     }
 
     void Awake() {
@@ -42,7 +42,7 @@ public class PlayerActionWidget : MonoBehaviour {
 
         if(signalGameActiveUpdate) signalGameActiveUpdate.callback += OnSignalGameActiveUpdate;
         if(signalPlayerLaunchReady) signalPlayerLaunchReady.callback += OnSignalPlayerIdle;
-        if(signalPlayerCanExplodeUpdate) signalPlayerCanExplodeUpdate.callback += OnSignalPlayerCanExplodeUpdate;
+        if(signalPlayerCanJumpUpdate) signalPlayerCanJumpUpdate.callback += OnSignalPlayerCanJumpUpdate;
     }
 
     void OnSignalGameActiveUpdate(bool active) {
@@ -59,7 +59,7 @@ public class PlayerActionWidget : MonoBehaviour {
         mSelectable.interactable = true;
     }
 
-    void OnSignalPlayerCanExplodeUpdate(bool canExplode) {
+    void OnSignalPlayerCanJumpUpdate(bool canExplode) {
         bool isInteractible = mIsLaunch || canExplode;
 
         mSelectable.interactable = isInteractible;

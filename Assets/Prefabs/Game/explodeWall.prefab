@@ -251,7 +251,7 @@ MonoBehaviour:
   val: 0
   valString: 
   valObj: {fileID: 0}
-  vect4: {x: 0.5, y: 0.5, z: 1, w: 0}
+  vect4: {x: 1.5, y: 1.5, z: 1, w: 0}
 --- !u!212 &212115155597956694
 SpriteRenderer:
   m_ObjectHideFlags: 1

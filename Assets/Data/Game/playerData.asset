@@ -11,14 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937e40a500f1e4a4cbeed6e72b39331d, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  explodeCastLayerMask:
+  jumpUplift: 10
+  jumpPower: 50
+  jumpCooldown: 0.1
+  jumpCastLayerMask:
     serializedVersion: 2
     m_Bits: 2049
-  explodeCastDistance: 0.1
-  explodeCooldown: 0.1
+  jumpCastDistance: 0.1
   moveForce: 50
   moveSpeedLimit: 4
-  wallImpulse: 30
   density: 5
   drag: 0.3
   dragAngular: 0.025

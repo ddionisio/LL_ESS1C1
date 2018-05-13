@@ -14,8 +14,8 @@ public class Player : M8.EntityBase {
     public GameObject displayRoot;
 
     [Header("Signals")]
-    public SignalBool signalCanExplodeUpdate; //update on when we can explode
-    public M8.Signal signalExplode;
+    public SignalBool signalCanJumpUpdate; //update on when we can explode
+    public M8.Signal signalJump;
     public M8.Signal signalGoal; //triggered goal
     public M8.Signal signalDeath;
 
@@ -29,19 +29,19 @@ public class Player : M8.EntityBase {
     public Vector2 groundMoveDir { get { return mGroundMoveDir; } }
 
     //if true, we can explode at explodablePosition
-    public bool canExplode {
-        get { return mCanExplode; }
+    public bool canJump {
+        get { return mCanJump; }
         private set {
-            if(mCanExplode != value) {
-                mCanExplode = value;
+            if(mCanJump != value) {
+                mCanJump = value;
 
-                if(signalCanExplodeUpdate) signalCanExplodeUpdate.Invoke(mCanExplode);
+                if(signalCanJumpUpdate) signalCanJumpUpdate.Invoke(mCanJump);
             }
         }
     }
 
 
-    public Vector2 explodablePosition { get { return mExplodeCheckHit.point; } }
+    public Vector2 jumpPosition { get { return mJumpCheckHit.point; } }
 
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
@@ -71,10 +71,10 @@ public class Player : M8.EntityBase {
     
     private Vector2 mVictoryPos;
 
-    private bool mCanExplode;
-    private RaycastHit2D mExplodeCheckHit;
+    private bool mCanJump;
+    private RaycastHit2D mJumpCheckHit;
 
-    private float mLastExplodeTime;
+    private float mLastJumpTime;
         
     private Vector2 mGroundMoveDir = Vector2.zero;
 
@@ -92,13 +92,31 @@ public class Player : M8.EntityBase {
         mGroundMoveDir.x = Mathf.Sign(moveDir.x);
     }
 
-    public void Explode() {
-        if(canExplode) {
+    public void Jump() {
+        if(canJump) {
             //spawn explosion at explode hit
-            GameMapPool.instance.ExplodeAt(GameMapPool.ExplodeTypes.explode, explodablePosition);
+            var delta = (physicsBody.position - jumpPosition);
 
-            mLastExplodeTime = Time.time;
-            canExplode = false;
+            float jumpDist = delta.magnitude;
+
+            float deltaDist;
+            if(data.jumpUplift != 0f) {
+                delta.y += data.jumpUplift;
+
+                deltaDist = delta.magnitude;
+            }
+            else
+                deltaDist = jumpDist;
+
+            if(deltaDist > 0f) {
+                var dir = delta / deltaDist;
+
+                Vector3 baseForce = dir * data.jumpPower;
+                physicsBody.AddForceAtPosition(baseForce, jumpPosition, ForceMode2D.Impulse);
+            }
+
+            mLastJumpTime = Time.time;
+            canJump = false;
         }
     }
 
@@ -165,7 +183,7 @@ public class Player : M8.EntityBase {
 
                 mGameCamCurVel = Vector2.zero;
 
-                mLastExplodeTime = Time.time;
+                mLastJumpTime = Time.time;
                 break;
 
             case EntityState.Death:
@@ -243,7 +261,7 @@ public class Player : M8.EntityBase {
                     }
                 }
 
-                UpdateExplodable();
+                UpdateJump();
                 break;
         }
     }
@@ -406,19 +424,19 @@ public class Player : M8.EntityBase {
         physicsBody.velocity = Vector2.zero;
         physicsBody.angularVelocity = 0f;
 
-        canExplode = false;
+        canJump = false;
     }
 
-    private void UpdateExplodable() {
-        if(Time.time - mLastExplodeTime > data.explodeCooldown) {
+    private void UpdateJump() {
+        if(Time.time - mLastJumpTime > data.jumpCooldown) {
             Vector2 dir = Vector2.down;
 
-            mExplodeCheckHit = Physics2D.CircleCast(physicsBody.position, physicsCircleCollider.radius, dir, data.explodeCastDistance, data.explodeCastLayerMask);
+            mJumpCheckHit = Physics2D.CircleCast(physicsBody.position, physicsCircleCollider.radius, dir, data.jumpCastDistance, data.jumpCastLayerMask);
 
-            canExplode = mExplodeCheckHit.collider != null;
+            canJump = mJumpCheckHit.collider != null;
         }
         else
-            canExplode = false;
+            canJump = false;
     }
 
     private void ClearRoutine() {

@@ -1595,7 +1595,7 @@ MonoBehaviour:
     type: 2}
   signalPlayerLaunchReady: {fileID: 11400000, guid: 343c3baecdde16a40958a1ba4d1482b0,
     type: 2}
-  signalPlayerCanExplodeUpdate: {fileID: 11400000, guid: 0b455ee9b225e83488098a7be5be1cba,
+  signalPlayerCanJumpUpdate: {fileID: 11400000, guid: 0b455ee9b225e83488098a7be5be1cba,
     type: 2}
 --- !u!114 &114882138888455174
 MonoBehaviour:

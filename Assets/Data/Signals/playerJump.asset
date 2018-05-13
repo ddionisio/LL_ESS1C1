@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac9f279dda66fb84da42eabbefb16e5b, type: 3}
-  m_Name: playerCanExplodeUpdate
+  m_Script: {fileID: 11500000, guid: 29b938ce86a815c4e91ac563472a4851, type: 3}
+  m_Name: playerJump
   m_EditorClassIdentifier: 

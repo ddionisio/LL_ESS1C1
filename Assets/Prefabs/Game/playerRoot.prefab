@@ -196,9 +196,9 @@ MonoBehaviour:
   activator: {fileID: 0}
   data: {fileID: 11400000, guid: 5e7a46fb404b3f248a2be2aff13a2dcd, type: 2}
   displayRoot: {fileID: 0}
-  signalCanExplodeUpdate: {fileID: 11400000, guid: 0b455ee9b225e83488098a7be5be1cba,
+  signalCanJumpUpdate: {fileID: 11400000, guid: 0b455ee9b225e83488098a7be5be1cba,
     type: 2}
-  signalExplode: {fileID: 11400000, guid: 36b8bc140d42ceb44be32413f6a16357, type: 2}
+  signalJump: {fileID: 11400000, guid: 36b8bc140d42ceb44be32413f6a16357, type: 2}
   signalGoal: {fileID: 11400000, guid: dcbf2c6d01fd8ac4e9a944e50e2a1063, type: 2}
   signalDeath: {fileID: 11400000, guid: 642ac37c33964d04b8bf0bbb0c37d116, type: 2}
 --- !u!212 &212047677597430704

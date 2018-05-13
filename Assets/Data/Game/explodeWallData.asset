@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96030b11aebebc45b460e699923bf65, type: 3}
   m_Name: explodeWallData
   m_EditorClassIdentifier: 
-  radius: 0.5
-  power: 25
-  uplift: 0
+  radius: 1.5
+  power: 45
+  uplift: 1.5
   mode: 1
   layerMask:
     serializedVersion: 2

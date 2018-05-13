@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "playerData", menuName = "Game/Player Data")]
 public class PlayerData : ScriptableObject {
     [Header("Attributes")]
-    public LayerMask explodeCastLayerMask;
-    public float explodeCastDistance = 0.5f;
-    public float explodeCooldown = 0.5f;
+    public float jumpUplift = 10f;
+    public float jumpPower = 50f;
+    public float jumpCooldown = 0.1f;
+    public LayerMask jumpCastLayerMask;
+    public float jumpCastDistance = 0.1f;
 
     public float moveForce = 20f;
     public float moveSpeedLimit = 10f;
