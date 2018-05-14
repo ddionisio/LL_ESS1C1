@@ -163,7 +163,7 @@ public class GameCamera : MonoBehaviour {
             mBoundsRect.min = Vector2.Lerp(prevBoundsRect.min, mBoundsRectNext.min, t);
             mBoundsRect.max = Vector2.Lerp(prevBoundsRect.max, mBoundsRectNext.max, t);
 
-            if(boundLocked)
+            if(!isMoving)
                 SetPosition(transform.position); //update clamp
         }
 

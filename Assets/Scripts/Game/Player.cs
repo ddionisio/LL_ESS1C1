@@ -251,7 +251,15 @@ public class Player : M8.EntityBase {
             case EntityState.PlayerMove:
                 //camera follow
                 CameraFollowUpdate();
+                UpdateJump();
+                break;
+        }
+    }
 
+    void FixedUpdate() {
+        EntityState entState = (EntityState)state;
+        switch(entState) {
+            case EntityState.PlayerMove:
                 if(isGrounded) {
                     //check speed limit (NOTE: don't try this at home)
                     var curVel = physicsBody.velocity;
@@ -267,8 +275,6 @@ public class Player : M8.EntityBase {
                         physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
                     }
                 }
-
-                UpdateJump();
                 break;
         }
     }
