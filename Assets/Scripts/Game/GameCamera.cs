@@ -126,10 +126,12 @@ public class GameCamera : MonoBehaviour {
         float dist = (dest - start).magnitude;
         float delay = dist / data.moveToSpeed;
 
-        while(curTime < delay) {
-            float t = Mathf.Clamp01(curTime / delay);
+        var easeFunc = DG.Tweening.Core.Easing.EaseManager.ToEaseFunction(data.moveEase);
 
-            var newPos = Vector2.Lerp(start, dest, data.moveToCurve.Evaluate(t));
+        while(curTime < delay) {
+            float t = easeFunc(curTime, delay, 0f, 0f);
+
+            var newPos = Vector2.Lerp(start, dest, t);
             SetPosition(newPos); 
 
             yield return null;
@@ -158,8 +160,8 @@ public class GameCamera : MonoBehaviour {
 
             float t = easeFunc(curTime, delay, 0f, 0f);
 
-            mBoundsRect.center = Vector2.Lerp(prevBoundsRect.center, mBoundsRectNext.center, t);
-            mBoundsRect.size = Vector2.Lerp(prevBoundsRect.size, mBoundsRectNext.size, t);
+            mBoundsRect.min = Vector2.Lerp(prevBoundsRect.min, mBoundsRectNext.min, t);
+            mBoundsRect.max = Vector2.Lerp(prevBoundsRect.max, mBoundsRectNext.max, t);
 
             if(boundLocked)
                 SetPosition(transform.position); //update clamp

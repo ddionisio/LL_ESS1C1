@@ -81,8 +81,8 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         if(data.signalPlayerCheckpoint) data.signalPlayerCheckpoint.callback -= OnSignalPlayerCheckpoint;
 
         //clear out game spawns
-        if(GameMapPool.isInstantiated)
-            GameMapPool.instance.ReleaseAll();
+        if(GamePool.isInstantiated)
+            GamePool.instance.ReleaseAll();
     }
 
     IEnumerator Start() {

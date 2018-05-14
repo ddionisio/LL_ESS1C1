@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114599773337391424}
   - component: {fileID: 114176424938194884}
   m_Layer: 0
-  m_Name: gameMapPool
+  m_Name: gamePool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

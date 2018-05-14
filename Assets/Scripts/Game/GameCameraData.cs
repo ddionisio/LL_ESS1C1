@@ -8,6 +8,6 @@ public class GameCameraData : ScriptableObject {
     public float boundsChangeDelay = 0.3f;
 
     [Header("Move Settings")]
-    public AnimationCurve moveToCurve;
+    public DG.Tweening.Ease moveEase;
     public float moveToSpeed = 10f;
 }

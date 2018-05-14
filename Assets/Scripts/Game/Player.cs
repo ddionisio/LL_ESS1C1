@@ -12,7 +12,7 @@ public class Player : M8.EntityBase {
     public PlayerData data;
 
     public GameObject displayRoot;
-
+        
     [Header("Signals")]
     public SignalBool signalCanJumpUpdate; //update on when we can explode
     public M8.Signal signalJump;
@@ -39,9 +39,11 @@ public class Player : M8.EntityBase {
             }
         }
     }
-
-
+    
     public Vector2 jumpPosition { get { return mJumpCheckHit.point; } }
+
+    public bool isMoveSpeedLimit { get { return mIsMoveSpeedLimit; } set { mIsMoveSpeedLimit = value; } }
+    public bool isMoveActive { get { return mIsMoveActive; } set { mIsMoveActive = value; } }
 
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
@@ -77,6 +79,9 @@ public class Player : M8.EntityBase {
     private float mLastJumpTime;
         
     private Vector2 mGroundMoveDir = Vector2.zero;
+
+    private bool mIsMoveSpeedLimit = true;
+    private bool mIsMoveActive = true;
 
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
@@ -246,16 +251,18 @@ public class Player : M8.EntityBase {
             case EntityState.PlayerMove:
                 //camera follow
                 CameraFollowUpdate();
-                                
+
                 if(isGrounded) {
                     //check speed limit (NOTE: don't try this at home)
                     var curVel = physicsBody.velocity;
                     var speedX = Mathf.Abs(curVel.x);
                     if(speedX > data.moveSpeedLimit) {
-                        curVel.x = Mathf.Sign(curVel.x) * data.moveSpeedLimit;
-                        physicsBody.velocity = curVel;
+                        if(isMoveSpeedLimit) {
+                            curVel.x = Mathf.Sign(curVel.x) * data.moveSpeedLimit;
+                            physicsBody.velocity = curVel;
+                        }
                     }
-                    else {
+                    else if(isMoveActive) {
                         //move
                         physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
                     }
@@ -330,7 +337,7 @@ public class Player : M8.EntityBase {
 
             //wall explode
             if(!isGrounded) {
-                GameMapPool.instance.ExplodeAt(GameMapPool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point);
+                GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point);
                 //physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
             }
         }

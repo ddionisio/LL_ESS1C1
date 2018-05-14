@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[M8.PrefabFromResource("gameMapPool")]
-public class GameMapPool : M8.SingletonBehaviour<GameMapPool> {
+[M8.PrefabFromResource("gamePool")]
+public class GamePool : M8.SingletonBehaviour<GamePool> {
     public enum ExplodeTypes {
         explode,
         explodeWall

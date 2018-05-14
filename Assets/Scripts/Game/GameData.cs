@@ -25,9 +25,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
 
     public bool isGameStarted { get; private set; } //true: we got through start normally, false: debug
     public int curLevelIndex { get; private set; }
-
-    private bool mIsDebugCurLevelApplied;
-
+    
     /// <summary>
     /// Called in start scene
     /// </summary>
@@ -95,29 +93,16 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
             if(curScene.name == introScene.name) {
                 //play first level intro
                 curLevelIndex = 0;
-                mIsDebugCurLevelApplied = true;
                                 
                 levelIntroScene.Load();
             }
             else if(curScene.name == levelIntroScene.name) {
-                //grab level index via debug control
-                if(!mIsDebugCurLevelApplied) {
-                    curLevelIndex = DebugControl.instance.levelIndex;
-                    mIsDebugCurLevelApplied = true;
-                }
-
                 //play level
                 levels[curLevelIndex].scene.Load();
             }
             else if(curScene.name == levelEndScene.name) {
-                //grab level index via debug control
-                if(!mIsDebugCurLevelApplied) {
-                    curLevelIndex = DebugControl.instance.levelIndex;
-                    mIsDebugCurLevelApplied = true;
-                }
-
                 //go to next level intro
-                if(curLevelIndex < levels.Length) {
+                if(curLevelIndex < levels.Length - 1) {
                     curLevelIndex++;
                     levelIntroScene.Load();
                 }
@@ -150,6 +135,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         if(LoLManager.isInstantiated) {            
             LoLManager.instance.progressMax = levels.Length * progressPerLevel;
         }
+        else
+            curLevelIndex = DebugControl.instance.levelIndex;
     }
 
     private void UpdateLevelIndexFromProgress(int progress) {
