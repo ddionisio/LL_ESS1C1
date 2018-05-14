@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundsChangeDelay: 1.5
   moveEase: 4
-  moveToSpeed: 20
+  moveToSpeed: 25
