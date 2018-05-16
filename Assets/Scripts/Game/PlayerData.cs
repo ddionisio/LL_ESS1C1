@@ -11,6 +11,11 @@ public class PlayerData : ScriptableObject {
     public LayerMask jumpCastLayerMask;
     public float jumpCastDistance = 0.1f;
 
+    [M8.TagSelector]
+    public string moveTriggerTag; //tag on trigger that enables jump and move while not on ground.
+
+    public float moveTriggerCooldown = 0.5f; //cooldown of jump when inside move trigger
+
     public float moveForce = 20f;
     public float moveSpeedLimit = 10f;
 

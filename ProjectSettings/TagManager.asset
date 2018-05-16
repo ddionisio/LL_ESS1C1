@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameCamera
   - GameCheckpoint
+  - MoveableArea
   layers:
   - Default
   - TransparentFX

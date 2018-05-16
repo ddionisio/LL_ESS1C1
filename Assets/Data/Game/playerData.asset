@@ -18,6 +18,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2049
   jumpCastDistance: 0.1
+  moveTriggerTag: MoveableArea
+  moveTriggerCooldown: 0.333
   moveForce: 50
   moveSpeedLimit: 4
   density: 5

@@ -82,6 +82,7 @@ public class Player : M8.EntityBase {
 
     private bool mIsMoveSpeedLimit = true;
     private bool mIsMoveActive = true;
+    private bool mIsMoveTrigger = false;
 
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
@@ -260,7 +261,7 @@ public class Player : M8.EntityBase {
         EntityState entState = (EntityState)state;
         switch(entState) {
             case EntityState.PlayerMove:
-                if(isGrounded) {
+                if(isGrounded || mIsMoveTrigger) {
                     //check speed limit (NOTE: don't try this at home)
                     var curVel = physicsBody.velocity;
                     var speedX = Mathf.Abs(curVel.x);
@@ -384,6 +385,19 @@ public class Player : M8.EntityBase {
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(!string.IsNullOrEmpty(data.moveTriggerTag) && collision.gameObject.CompareTag(data.moveTriggerTag)) {
+            mIsMoveTrigger = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if(mIsMoveTrigger && collision.gameObject.CompareTag(data.moveTriggerTag)) {
+            mIsMoveTrigger = false;
+            Debug.Log("done");
+        }
+    }
+
     private void ApplyPhysicsSettings() {
         mGroundSlopeLimitCos = Mathf.Cos(data.groundSlopeAngleLimit * Mathf.Deg2Rad);
         mAboveLimitCos = Mathf.Cos(data.aboveAngleLimit * Mathf.Deg2Rad);
@@ -415,6 +429,8 @@ public class Player : M8.EntityBase {
                 physicsCircleCollider.enabled = true;
                 physicsBody.simulated = true;
                 physicsBody.bodyType = RigidbodyType2D.Dynamic;
+
+                //TODO: check for jumpable trigger?
                 break;
         }
     }
@@ -438,18 +454,27 @@ public class Player : M8.EntityBase {
         physicsBody.angularVelocity = 0f;
 
         canJump = false;
+
+        mIsMoveTrigger = false;
     }
 
     private void UpdateJump() {
-        if(Time.time - mLastJumpTime > data.jumpCooldown) {
-            Vector2 dir = Vector2.down;
+        if(mIsMoveTrigger) {
+            canJump = Time.time - mLastJumpTime > data.moveTriggerCooldown;
 
-            mJumpCheckHit = Physics2D.CircleCast(physicsBody.position, physicsCircleCollider.radius, dir, data.jumpCastDistance, data.jumpCastLayerMask);
-
-            canJump = mJumpCheckHit.collider != null;
+            mJumpCheckHit.point = physicsBody.position - Vector2.down * physicsCircleCollider.radius;
         }
-        else
-            canJump = false;
+        else {
+            if(Time.time - mLastJumpTime > data.jumpCooldown) {
+                Vector2 dir = Vector2.down;
+
+                mJumpCheckHit = Physics2D.CircleCast(physicsBody.position, physicsCircleCollider.radius, dir, data.jumpCastDistance, data.jumpCastLayerMask);
+
+                canJump = mJumpCheckHit.collider != null;
+            }
+            else
+                canJump = false;
+        }
     }
 
     private void ClearRoutine() {
