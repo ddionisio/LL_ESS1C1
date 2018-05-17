@@ -96,11 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: 
   factory:
-  - name: explode
-    template: {fileID: 4316624469966020, guid: 3921cc209a289374193eea774c2439c2, type: 2}
-    startCapacity: 8
-    maxCapacity: 0
-    defaultParent: {fileID: 0}
   - name: explodeWall
     template: {fileID: 4972666491866100, guid: 69004ccf79b2fce41b74b2419e9244fb, type: 2}
     startCapacity: 8
