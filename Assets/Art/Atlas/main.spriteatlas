@@ -31,9 +31,11 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 2ca1423806c6656418d41c93bbdf1e4f, type: 3}
     - {fileID: 102900000, guid: 32dc2488d78a9f84ca1ca86f02897487, type: 3}
     - {fileID: 102900000, guid: 151a45703bacfe3499393aa5166d5e01, type: 3}
+    - {fileID: 102900000, guid: 5c4d9e699ba319d4eb78dad308280192, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 53cf1db0bede7024391acc3d04d4f485, type: 3}
   - {fileID: 21300000, guid: b34ea9a87a544194f8649e50cc4a2aef, type: 3}
   - {fileID: 21300000, guid: 58de614642cff8b48b3f18f9428bf4d9, type: 3}
   - {fileID: 21300000, guid: 09f88925a17121b4b8e49e0d123081ea, type: 3}
@@ -44,6 +46,7 @@ SpriteAtlas:
   - {fileID: 21300002, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300004, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   m_PackedSpriteNamesToIndex:
+  - notebookBase
   - ballBase
   - ballBase2
   - spike
