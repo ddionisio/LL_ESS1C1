@@ -13,8 +13,14 @@ public class TabWidget : MonoBehaviour {
     public Image baseImage;
     public Selectable baseInteract;
 
-    public Color activeColor = Color.white;
-    public Color inactiveColor = Color.gray;
+    public Transform inactiveRoot;
+    public Transform activeRoot;
+
+    public Color baseActiveColor = Color.white;
+    public Color baseInactiveColor = Color.gray;
+
+    public Color iconActiveColor = Color.white;
+    public Color iconInactiveColor = Color.gray;
 
     public State state {
         get { return mState; }
@@ -35,14 +41,18 @@ public class TabWidget : MonoBehaviour {
     private void ApplyState() {
         switch(mState) {
             case State.Active:
-                if(icon) icon.color = activeColor;
-                if(baseImage) baseImage.color = activeColor;
+                if(icon) icon.color = iconActiveColor;
+                if(baseImage) baseImage.color = baseActiveColor;
                 if(baseInteract) baseInteract.interactable = false;
+
+                if(activeRoot) transform.SetParent(activeRoot, true);
                 break;
             case State.Inactive:
-                if(icon) icon.color = inactiveColor;
-                if(baseImage) baseImage.color = inactiveColor;
+                if(icon) icon.color = iconInactiveColor;
+                if(baseImage) baseImage.color = baseInactiveColor;
                 if(baseInteract) baseInteract.interactable = true;
+
+                if(inactiveRoot) transform.SetParent(inactiveRoot, true);
                 break;
         }
     }

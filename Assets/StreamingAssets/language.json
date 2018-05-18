@@ -7,6 +7,17 @@
   "en": {
 	"welcome": "Welcome!",
 	
+	"pageTitleStratigraphy": "STRATIGRAPHY",
+	"pageTitleFossils": "FOSSILS",
+	"pageTitleRocks": "ROCKS",
+	"pageTitleOptions": "OPTIONS",
+	
+	"on": "ON",
+	"off": "OFF",
+	
+	"music": "MUSIC",
+	"sound": "SOUND",
+	
 	"test": "TEST"
   }
 }
