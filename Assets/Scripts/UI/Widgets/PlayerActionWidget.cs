@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerActionWidget : MonoBehaviour {
+    public Image icon;
+    public Color iconDisableColor = Color.gray;
 
     [Header("Signals")]
     public SignalBool signalGameActiveUpdate;
@@ -14,11 +16,14 @@ public class PlayerActionWidget : MonoBehaviour {
 
     private bool mIsLaunch;
 
+    private Color mIconDefaultColor;
+
     public void Click() {
         Player player = GameMapController.instance.player;
 
         if(mIsLaunch) {
-            mSelectable.interactable = false;
+            SetInteractable(false);
+
             mIsLaunch = false;
 
             //launch player
@@ -37,8 +42,11 @@ public class PlayerActionWidget : MonoBehaviour {
     }
 
     void Awake() {
+        if(icon) mIconDefaultColor = icon.color;
+
         mSelectable = GetComponent<Selectable>();
-        mSelectable.interactable = false;
+
+        SetInteractable(false);
 
         if(signalGameActiveUpdate) signalGameActiveUpdate.callback += OnSignalGameActiveUpdate;
         if(signalPlayerLaunchReady) signalPlayerLaunchReady.callback += OnSignalPlayerIdle;
@@ -48,7 +56,8 @@ public class PlayerActionWidget : MonoBehaviour {
     void OnSignalGameActiveUpdate(bool active) {
         if(active) {
             //setup initial state
-            mSelectable.interactable = false;
+            SetInteractable(false);
+
             mIsLaunch = false;
         }
     }
@@ -56,12 +65,19 @@ public class PlayerActionWidget : MonoBehaviour {
     void OnSignalPlayerIdle() {
         //launch mode
         mIsLaunch = true;
-        mSelectable.interactable = true;
+
+        SetInteractable(true);
     }
 
     void OnSignalPlayerCanJumpUpdate(bool canExplode) {
         bool isInteractible = mIsLaunch || canExplode;
 
-        mSelectable.interactable = isInteractible;
+        SetInteractable(isInteractible);
+    }
+
+    void SetInteractable(bool yes) {
+        mSelectable.interactable = yes;
+
+        if(icon) icon.color = yes ? mIconDefaultColor : iconDisableColor;
     }
 }

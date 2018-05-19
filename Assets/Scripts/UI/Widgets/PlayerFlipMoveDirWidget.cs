@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerFlipMoveDirWidget : MonoBehaviour {
+    public Image icon;
+    public Color iconDisableColor = Color.gray;
+
     public Transform directionRoot;
 
     [Header("Signals")]
@@ -13,6 +16,8 @@ public class PlayerFlipMoveDirWidget : MonoBehaviour {
 
     private Selectable mSelectable;
     private bool mIsInteractive;
+
+    private Color mIconDefaultColor;
 
     public void Click() {
         var player = GameMapController.instance.player;
@@ -27,6 +32,8 @@ public class PlayerFlipMoveDirWidget : MonoBehaviour {
     }
 
     void Awake() {
+        if(icon) mIconDefaultColor = icon.color;
+
         mSelectable = GetComponent<Selectable>();
 
         SetInteractive(false);
@@ -81,5 +88,7 @@ public class PlayerFlipMoveDirWidget : MonoBehaviour {
     private void SetInteractive(bool interactive) {
         mIsInteractive = interactive;
         mSelectable.interactable = interactive;
+
+        if(icon) icon.color = interactive ? mIconDefaultColor : iconDisableColor;
     }
 }

@@ -20,6 +20,11 @@
 	"music": "MUSIC",
 	"sound": "SOUND",
 	
+	"restart": "RESTART",
+	"restartDesc": "Press CONFIRM to restart at the beginning of the level.",
+	"confirm": "CONFIRM",
+	"cancel": "CANCEL",
+	
 	"test": "TEST"
   }
 }
