@@ -25,6 +25,9 @@
 	"confirm": "CONFIRM",
 	"cancel": "CANCEL",
 	
+	"introDialog1": "",
+	"introDialog2": "",
+	
 	"test": "TEST"
   }
 }

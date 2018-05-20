@@ -5,18 +5,22 @@ using UnityEngine;
 public class LoLSpeakTextFromLocalizer : MonoBehaviour {
 
     M8.UI.Texts.Localizer localizer;
-    
-    public bool autoPlay;
-    public string autoPlayGroup = "default";
-    public int autoPlayIndex = -1;
 
+    public string playGroup = "default";
+    public int playIndex = -1;
+
+    public bool autoPlay;
+    
     public void Play() {
-        LoLManager.instance.SpeakText(localizer.key);
+        if(string.IsNullOrEmpty(playGroup))
+            LoLManager.instance.SpeakText(localizer.key);
+        else
+            LoLManager.instance.SpeakTextQueue(localizer.key, playGroup, playIndex);
     }
 
     void OnEnable() {
         if(autoPlay)
-            LoLManager.instance.SpeakTextQueue(localizer.key, autoPlayGroup, autoPlayIndex);
+            LoLManager.instance.SpeakTextQueue(localizer.key, playGroup, playIndex);
     }
 
     void Awake() {

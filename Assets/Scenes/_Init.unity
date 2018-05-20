@@ -720,7 +720,7 @@ MonoBehaviour:
   readyGO: {fileID: 1484369301}
   titleGO: {fileID: 2078024424}
   titleText: {fileID: 2078024426}
-  titleStringRef: test
+  titleStringRef: title
 --- !u!4 &1851534597
 Transform:
   m_ObjectHideFlags: 0

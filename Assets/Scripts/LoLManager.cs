@@ -225,14 +225,21 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
 
             mSpeakQueueGroup = group;
 
+            //don't add to queue if it already exists
             //add to queue based on index
             int nodeIndex = 0;
-            var nodeToAddAfter = index >= 0 ? mSpeakQueues.First : null;
-            while(nodeToAddAfter != null) {
-                if(nodeIndex == index)
-                    break;
+            LinkedListNode<string> nodeToAddAfter = null;
 
-                nodeToAddAfter = nodeToAddAfter.Next;
+            for(var node = mSpeakQueues.First; node != null; node = node.Next) {
+                if(nodeIndex == index) {
+                    nodeToAddAfter = node;
+                }
+
+                if(node.Value == key) {
+                    //already exists
+                    return;
+                }
+
                 nodeIndex++;
             }
 

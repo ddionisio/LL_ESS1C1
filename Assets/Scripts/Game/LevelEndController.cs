@@ -6,6 +6,6 @@ public class LevelEndController : MonoBehaviour {
 
     void Awake() {
         //initialize hud
-        HUD.instance.isGameActive = true;
+        HUD.instance.isGameActive = false;
     }
 }
