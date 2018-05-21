@@ -12,6 +12,9 @@ public class LoLSpeakTextFromLocalizer : MonoBehaviour {
     public bool autoPlay;
     
     public void Play() {
+        if(string.IsNullOrEmpty(localizer.key))
+            return;
+
         if(string.IsNullOrEmpty(playGroup))
             LoLManager.instance.SpeakText(localizer.key);
         else
