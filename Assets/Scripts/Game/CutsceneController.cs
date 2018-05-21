@@ -94,7 +94,7 @@ public class CutsceneController : MonoBehaviour {
             if(page.root)
                 page.root.SetActive(true);
 
-            if(page.animator) {
+            if(page.animator && !string.IsNullOrEmpty(page.takeEnter)) {
                 page.animator.Play(page.takeEnter);
                 while(page.animator.isPlaying)
                     yield return null;
@@ -112,7 +112,7 @@ public class CutsceneController : MonoBehaviour {
         if(mCurPageInd < pages.Length) {
             var page = pages[mCurPageInd];
 
-            if(page.animator) {
+            if(page.animator && !string.IsNullOrEmpty(page.takeExit)) {
                 page.animator.Play(page.takeExit);
                 while(page.animator.isPlaying)
                     yield return null;

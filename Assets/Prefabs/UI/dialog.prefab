@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  isKeyExclusive: 1
 --- !u!114 &114810224275395816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1, y: 43}
+  m_AnchoredPosition: {x: 0, y: -223}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0.50000006, y: 0}
 --- !u!224 &224531014051200178

@@ -25,8 +25,35 @@
 	"confirm": "CONFIRM",
 	"cancel": "CANCEL",
 	
-	"introDialog1": "",
-	"introDialog2": "",
+	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers found in the deep underbelly of Earth.",
+	"introDialog2": "But before we have a crack at it, let's first review the study of rock layers.",
+	
+	"introStratigraphy": "STRATIGRAPHY",
+	"introStratigraphyDetail1": "A study in geology that deals with the order and position of rock layers (strata).",
+	"introStratigraphyDetail2": "Each layer of strata can give us information about the earth's past.  These are categorized in geological time scale.",
+	
+	"NicolasSteno": "Nicolas Steno",
+	
+	"introLawStratigraphy": "LAWS OF STRATIGRAPHY",
+	
+	"introLawStratigraphySuperposition": "Superposition",
+	"introLawStratigraphySuperpositionDesc": "Younger layers of rock sit atop older rocks.",
+	
+	"introLawStratigraphyOriginalHorizontality": "Original Horizontality",
+	"introLawStratigraphyOriginalHorizontalityDesc": "Sedimentary rocks were originally deposited horizontally by weathering and erosions.  Layers that are tilted have since been altered by external force.",
+	
+	"introLawStratigraphyCrossCutting": "Cross-cutting Relationships",
+	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.  An example of this is an intrusion of magma.",
+	
+	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
+	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked by a larger solid body or broken up by external force.",
+	
+	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
+	
+	"stage_title_1": "Neoproterozoic",
+	"stage_title_2": "Paleozoic",
+	"stage_title_3": "Mesozoic",
+	"stage_title_4": "Cenozoic",
 	
 	"test": "TEST"
   }
