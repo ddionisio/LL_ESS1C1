@@ -98,7 +98,7 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         
     void OnSignalGoal() {
         //show victory modal
-        GameData.instance.Progress();
+        M8.UIModal.Manager.instance.ModalOpen(Modals.victory);
     }
 
     void OnSignalDeath() {
