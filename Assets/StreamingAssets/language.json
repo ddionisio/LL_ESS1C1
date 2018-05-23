@@ -43,10 +43,10 @@
 	"introLawStratigraphyOriginalHorizontalityDesc": "Sedimentary rocks were originally deposited horizontally by weathering and erosions.  Layers that are tilted have since been altered by external force.",
 	
 	"introLawStratigraphyCrossCutting": "Cross-cutting Relationships",
-	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.  An example of this is an intrusion of magma.",
+	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.  An example of this is igneous intrusions, formed when magma cools and solidifies into rocks.",
 	
 	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
-	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked by a larger solid body or broken up by external force.",
+	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked or broken up by external force.",
 	
 	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
 	
