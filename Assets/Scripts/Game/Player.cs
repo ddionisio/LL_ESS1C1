@@ -11,7 +11,18 @@ public class Player : M8.EntityBase {
 
     public PlayerData data;
 
-    public GameObject displayRoot;
+    public GameObject displayGO;
+    public GameObject inputIndicatorGO;
+
+    [Header("Animation")]
+    public M8.Animator.AnimatorData animator;
+    public string takeSpawn;
+    public string takeLaunch;
+    public string takeLaunchEnd;
+
+    [Header("Spawn")]
+    public GameObject spawnGO;
+    public Transform spawnCannonRoot;
         
     [Header("Signals")]
     public SignalBool signalCanJumpUpdate; //update on when we can explode
@@ -28,12 +39,24 @@ public class Player : M8.EntityBase {
     public bool isGrounded { get { return mGroundCollContacts.Count > 0; } }
     public Vector2 groundMoveDir { get { return mGroundMoveDir; } }
 
+    public float cannonToMoveDirT {
+        get { return mCannonToMoveDirT; }
+        set {
+            mCannonToMoveDirT = value;
+
+            if(spawnCannonRoot)
+                spawnCannonRoot.up = Vector2.Lerp(Vector2.up, moveDir, mCannonToMoveDirT);
+        }
+    }
+
     //if true, we can explode at explodablePosition
     public bool canJump {
         get { return mCanJump; }
         private set {
             if(mCanJump != value) {
                 mCanJump = value;
+
+                if(inputIndicatorGO) inputIndicatorGO.SetActive(mCanJump);
 
                 if(signalCanJumpUpdate) signalCanJumpUpdate.Invoke(mCanJump);
             }
@@ -84,18 +107,13 @@ public class Player : M8.EntityBase {
     private bool mIsMoveActive = true;
     private bool mIsMoveTrigger = false;
 
+    private float mCannonToMoveDirT;
+
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
     /// </summary>
-    public void Move() {
-        state = (int)EntityState.PlayerMove;
-        
-        //initial impulse
-        Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
-
-        physicsBody.AddForceAtPosition(moveDir * movePower, initialImpulsePos, ForceMode2D.Impulse);
-
-        mGroundMoveDir.x = Mathf.Sign(moveDir.x);
+    public void Launch() {
+        state = (int)EntityState.PlayerLaunch;
     }
 
     public void Jump() {
@@ -143,7 +161,10 @@ public class Player : M8.EntityBase {
         physicsMode = PhysicsMode.Disabled;
 
         //hide display
-        if(displayRoot) displayRoot.SetActive(false);
+        if(displayGO) displayGO.SetActive(false);
+
+        //hide spawn
+        if(spawnGO) spawnGO.SetActive(false);
     }
 
     protected override void OnSpawned(M8.GenericParams parms) {
@@ -163,21 +184,29 @@ public class Player : M8.EntityBase {
         switch(curEntityState) {
             case EntityState.Spawn:
                 physicsMode = PhysicsMode.Disabled;
-                                
-                mRout = StartCoroutine(DoSpawn());
-                break;
 
-            case EntityState.PlayerIdle:
-                physicsMode = PhysicsMode.Disabled;
+                //hide display
+                if(displayGO) displayGO.SetActive(false);
 
-                //preemptive ground move dir for those that need it during idle
+                //set spawn position to player
+                if(spawnGO) spawnGO.transform.position = transform.position;
+
+                if(spawnGO) spawnGO.SetActive(true);
+
+                //preemptive ground move dir for those that need it during launch
                 mGroundMoveDir.x = Mathf.Sign(moveDir.x);
 
-                //focus camera to player
-                Vector2 playerPos = physicsBody.position;
+                mRout = StartCoroutine(DoSpawn());
+                break;
+                
+            case EntityState.PlayerLaunchReady:
+                physicsMode = PhysicsMode.Disabled;
+                break;
 
-                var gameCam = GameMapController.instance.gameCamera;
-                gameCam.MoveTo(playerPos);
+            case EntityState.PlayerLaunch:
+                physicsMode = PhysicsMode.Disabled;
+
+                mRout = StartCoroutine(DoLaunch());
                 break;
 
             case EntityState.PlayerLock:
@@ -186,6 +215,9 @@ public class Player : M8.EntityBase {
 
             case EntityState.PlayerMove:
                 physicsMode = PhysicsMode.Dynamic;
+
+                //show display
+                if(displayGO) displayGO.SetActive(true);
 
                 mGameCamCurVel = Vector2.zero;
 
@@ -220,7 +252,9 @@ public class Player : M8.EntityBase {
         base.Awake();
 
         //hide display
-        if(displayRoot) displayRoot.SetActive(false);
+        if(displayGO) displayGO.SetActive(false);
+        if(inputIndicatorGO) inputIndicatorGO.SetActive(false);
+        if(spawnGO) spawnGO.SetActive(false);
 
         //initialize data/variables
 
@@ -485,19 +519,54 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoSpawn() {
-        //reset orientation
-        transform.rotation = Quaternion.identity;
+        //focus camera to player
+        Vector2 playerPos = physicsBody.position;
 
-        //show display
-        if(displayRoot) displayRoot.SetActive(true);
-        
+        var gameCam = GameMapController.instance.gameCamera;
+        gameCam.MoveTo(playerPos);
+
+        //wait for camera to move to player
+        while(gameCam.isMoving)
+            yield return null;
+
         //do fancy stuff
-        yield return new WaitForSeconds(1f);
+        if(animator && !string.IsNullOrEmpty(takeSpawn)) {
+            animator.Play(takeSpawn);
+            while(animator.isPlaying)
+                yield return null;
+        }
 
         mRout = null;
 
         //ready for play
-        state = (int)EntityState.PlayerIdle;
+        state = (int)EntityState.PlayerLaunchReady;
+    }
+
+    IEnumerator DoLaunch() {
+        //play launch animation and hit it
+        if(animator && !string.IsNullOrEmpty(takeLaunch)) {
+            animator.Play(takeLaunch);
+            while(animator.isPlaying)
+                yield return null;
+        }
+
+        mRout = null;
+                
+        //set rotation to move dir
+        transform.up = moveDir;
+
+        state = (int)EntityState.PlayerMove;
+                
+        //initial impulse
+        Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
+
+        physicsBody.AddForceAtPosition(moveDir * movePower, initialImpulsePos, ForceMode2D.Impulse);
+
+        mGroundMoveDir.x = Mathf.Sign(moveDir.x);
+
+        //play end part
+        if(animator && !string.IsNullOrEmpty(takeLaunchEnd))
+            animator.Play(takeLaunchEnd);
     }
 
     IEnumerator DoDeath() {
@@ -507,7 +576,7 @@ public class Player : M8.EntityBase {
         mRout = null;
 
         //hide display
-        if(displayRoot) displayRoot.SetActive(false);
+        if(displayGO) displayGO.SetActive(false);
 
         if(signalDeath) signalDeath.Invoke();
     }

@@ -27,7 +27,7 @@ public class PlayerActionWidget : MonoBehaviour {
             mIsLaunch = false;
 
             //launch player
-            player.Move();
+            player.Launch();
         }
         else {
             //explode

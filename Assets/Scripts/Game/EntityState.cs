@@ -8,9 +8,11 @@ public enum EntityState {
     Spawn,
     Death, //died somehow
 
-    PlayerIdle, //ready for new move
+    PlayerLaunchReady, //ready for new move
     PlayerMove, //moving, wait to stop
     PlayerLock, //locked down to do other things
         
-    Victory
+    Victory,
+
+    PlayerLaunch
 }
