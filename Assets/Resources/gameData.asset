@@ -23,16 +23,22 @@ MonoBehaviour:
   levelEndScene:
     name: levelEnd
     path: Assets/Scenes/levelEnd.unity
+  quizTotalPoints: 3000
+  quizWrongPointDeduct: 1000
   levels:
   - scene:
       name: level1
       path: Assets/Scenes/level1.unity
+    modalLevelEnd: level1Result
   - scene:
       name: level2
       path: Assets/Scenes/level2.unity
+    modalLevelEnd: level1Result
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity
+    modalLevelEnd: level1Result
   - scene:
       name: level4
       path: Assets/Scenes/level4.unity
+    modalLevelEnd: level1Result

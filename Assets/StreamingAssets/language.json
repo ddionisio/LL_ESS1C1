@@ -55,8 +55,14 @@
 	"stage_title_3": "Mesozoic",
 	"stage_title_4": "Cenozoic",
 	
+	"strataAnalysis": "STRATA ANALYSIS",
+	
+	
+	
 	"victory": "VICTORY",
 	
-	"test": "TEST"
+	"test": "TEST",
+	"questionPlaceholder": "This is the question?",
+	"answerPlaceholder": "answer"
   }
 }

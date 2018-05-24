@@ -12,6 +12,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     [System.Serializable]
     public class LevelData {
         public M8.SceneAssetPath scene;
+        public string modalLevelEnd; //which modal to use post-level
     }
 
     [Header("Scenes")]
@@ -19,6 +20,10 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     public M8.SceneAssetPath endScene;
     public M8.SceneAssetPath levelIntroScene;
     public M8.SceneAssetPath levelEndScene;
+
+    [Header("Data")]
+    public int quizTotalPoints = 3000; //total points awarded during quiz
+    public int quizWrongPointDeduct = 1000; //deduction to quizTotalPoints per wrong answer
 
     [Header("Levels")]
     public LevelData[] levels;
