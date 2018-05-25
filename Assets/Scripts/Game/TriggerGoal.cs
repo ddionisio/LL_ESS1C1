@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerGoal : MonoBehaviour {
-
+    public GameObject displayGO;
 
     void OnTriggerEnter2D(Collider2D collision) {
         switch(collision.tag) {

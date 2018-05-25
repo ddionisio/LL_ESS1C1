@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameMapController : M8.SingletonBehaviour<GameMapController> {
     public GameMapData data;
 
+    public OffscreenIndicatorPosition checkpointIndicator;
+    public TriggerGoal goal;
+
     [Header("Debug")]
     public int startCheckpointIndex = 0; //for debug purpose
         
@@ -67,6 +70,17 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
 
             //initialize camera position
             gameCamera.SetPosition(firstCheckpoint.transform.position);
+        }
+
+        //indicator
+        if(checkpointIndicator) {
+            checkpointIndicator.gameObject.SetActive(false);
+            checkpointIndicator.targetCamera = gameCamera.camera2D.unityCamera;
+        }
+
+        //goal
+        if(goal) {
+            if(goal.displayGO) goal.displayGO.SetActive(false);
         }
 
         //hook up signals
@@ -137,8 +151,26 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
 
         int nextCheckpointInd = mCurCheckpointInd + 1;
         if(nextCheckpointInd < mCheckpoints.Length) {
-            if(mCheckpoints[nextCheckpointInd].displayGO)
-                mCheckpoints[nextCheckpointInd].displayGO.SetActive(true);
+            var nextCheckpoint = mCheckpoints[nextCheckpointInd];
+
+            if(nextCheckpoint.displayGO)
+                nextCheckpoint.displayGO.SetActive(true);
+
+            //setup indicator
+            if(checkpointIndicator) {
+                checkpointIndicator.gameObject.SetActive(true);
+                checkpointIndicator.targetPosition = nextCheckpoint.displayGO ? nextCheckpoint.displayGO.transform.position : nextCheckpoint.transform.position;
+            }
+        }
+        else if(goal) {
+            //show goal
+            if(goal.displayGO) goal.displayGO.SetActive(true);
+
+            //setup indicator
+            if(checkpointIndicator) {
+                checkpointIndicator.gameObject.SetActive(true);
+                checkpointIndicator.targetPosition = goal.displayGO ? goal.displayGO.transform.position : goal.transform.position;
+            }
         }
     }
 }
