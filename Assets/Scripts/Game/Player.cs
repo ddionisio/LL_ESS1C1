@@ -21,10 +21,17 @@ public class Player : M8.EntityBase {
     public string takeLaunch;
     public string takeLaunchEnd;
     public string takeDeath;
+    public string takeVictory;
 
     [Header("Spawn")]
     public GameObject spawnGO;
+    public Transform spawnExplodeDisplayPoint;
     public Transform spawnCannonRoot;
+
+    [Header("Victory")]
+    public float victoryMoveDelay = 0.5f;
+    public float victoryMoveOutDelay = 0.5f;
+    public float victoryMoveOutYOfs = 1.5f;
         
     [Header("Signals")]
     public SignalBool signalCanJumpUpdate; //update on when we can explode
@@ -403,7 +410,7 @@ public class Player : M8.EntityBase {
 
             //wall explode
             if(!isGrounded) {
-                GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point);
+                GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point, false);
                 //physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
             }
         }
@@ -576,7 +583,11 @@ public class Player : M8.EntityBase {
         }
 
         mRout = null;
-                
+
+        //show explosion display
+        if(spawnExplodeDisplayPoint)
+            GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, spawnExplodeDisplayPoint.position, true);
+
         //set rotation to move dir
         transform.up = moveDir;
 
@@ -613,16 +624,53 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoVictory() {
-        yield return null;
+        //move camera towards end pos
+        var gameCam = GameMapController.instance.gameCamera;
+        gameCam.MoveTo(mVictoryPos);
 
-        //move towards victory
-        transform.position = mVictoryPos;
+        //move player towards victory
+        var moveEaseFunc = DG.Tweening.Core.Easing.EaseManager.ToEaseFunction(DG.Tweening.Ease.OutSine);
 
-        //CameraFollowUpdate()
+        Vector3 startPos = transform.position;
+        Vector3 endPos = mVictoryPos;
 
-        //play victory animation
+        Vector3 startUp = transform.up;
+
+        float curTime = 0f;                
+        while(curTime < victoryMoveDelay) {
+            yield return null;
+            curTime += Time.deltaTime;
+
+            float t = moveEaseFunc(curTime, victoryMoveDelay, 0f, 0f);
+
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            transform.up = Vector3.Lerp(startUp, Vector3.up, t).normalized;
+        }
+
+        //play victory
+        if(animator && !string.IsNullOrEmpty(takeVictory)) {
+            animator.Play(takeVictory);
+            while(animator.isPlaying)
+                yield return null;
+        }
 
         //move upwards
+        moveEaseFunc = DG.Tweening.Core.Easing.EaseManager.ToEaseFunction(DG.Tweening.Ease.InSine);
+
+        float y = gameCam.position.y + gameCam.cameraViewExtents.y + victoryMoveOutYOfs;
+
+        startPos = endPos;
+        endPos = new Vector3(startPos.x, y, startPos.z);
+
+        curTime = 0f;
+        while(curTime < victoryMoveOutDelay) {
+            yield return null;
+            curTime += Time.deltaTime;
+
+            float t = moveEaseFunc(curTime, victoryMoveOutDelay, 0f, 0f);
+
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+        }
 
         //signal victory
         if(signalGoal)

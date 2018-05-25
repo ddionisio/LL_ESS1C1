@@ -19,8 +19,9 @@ public class GamePool : M8.SingletonBehaviour<GamePool> {
         mPool.ReleaseAll();
     }
 
-    public void ExplodeAt(ExplodeTypes type, Vector2 pt) {
+    public void ExplodeAt(ExplodeTypes type, Vector2 pt, bool noPhysics) {
         mExplodeParms[ExplodeSpawn.parmSpawnPt] = pt;
+        mExplodeParms[ExplodeSpawn.parmNoPhysics] = noPhysics;
 
         string explodeTypeStr = type.ToString();
 

@@ -16,8 +16,12 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
 
     public string curSceneName { get; private set; }
 
+    public int score { get; private set; }
+
     private PlayerCheckpoint[] mCheckpoints;
     private int mCurCheckpointInd;
+
+    private bool mDiedCheckpoint;
         
     protected override void OnInstanceInit() {
         curSceneName = M8.SceneManager.instance.curScene.name;
@@ -79,9 +83,8 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         }
 
         //goal
-        if(goal) {
-            if(goal.displayGO) goal.displayGO.SetActive(false);
-        }
+        if(goal)
+            goal.SetDisplayActive(false);
 
         //hook up signals
         if(data.signalGoal) data.signalGoal.callback += OnSignalGoal;
@@ -101,7 +104,12 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
 
     IEnumerator Start() {
         //wait for transition
-        yield return null;
+        while(M8.SceneManager.instance.isLoading)
+            yield return null;
+
+        //states
+        score = 0;
+        mDiedCheckpoint = false;
 
         //setup initial game state
         ShowNextCheckpoint();
@@ -112,11 +120,22 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
     }
         
     void OnSignalGoal() {
+        //add score
+        if(mDiedCheckpoint)
+            score += GameData.instance.checkpointPoints;
+        else
+            score += GameData.instance.checkpointNoDeathPoints;
+
+        mDiedCheckpoint = false;
+        //
+
         //show victory modal
         M8.UIModal.Manager.instance.ModalOpen(Modals.victory);
     }
 
     void OnSignalDeath() {
+        mDiedCheckpoint = true;
+
         //respawn to last checkpoint
         var curCheckpoint = GetCurrentCheckpoint();
 
@@ -128,6 +147,15 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
     void OnSignalPlayerCheckpoint(PlayerCheckpoint checkpoint) {
         //change current checkpoint index
         if(checkpoint.index != -1) {
+            //add score
+            if(mDiedCheckpoint)
+                score += GameData.instance.checkpointPoints;
+            else
+                score += GameData.instance.checkpointNoDeathPoints;
+
+            mDiedCheckpoint = false;
+            //
+
             mCurCheckpointInd = checkpoint.index;
 
             ShowNextCheckpoint();
@@ -164,12 +192,12 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         }
         else if(goal) {
             //show goal
-            if(goal.displayGO) goal.displayGO.SetActive(true);
+            goal.SetDisplayActive(true);
 
             //setup indicator
             if(checkpointIndicator) {
                 checkpointIndicator.gameObject.SetActive(true);
-                checkpointIndicator.targetPosition = goal.displayGO ? goal.displayGO.transform.position : goal.transform.position;
+                checkpointIndicator.targetPosition = goal.transform.position;
             }
         }
     }

@@ -5,6 +5,7 @@ using M8;
 
 public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
     public const string parmSpawnPt = "spt";
+    public const string parmNoPhysics = "np";
 
     public ExplodeData data;
 
@@ -44,17 +45,25 @@ public class ExplodeSpawn : MonoBehaviour, IPoolSpawn, IPoolDespawn {
             animator.ResetTake(mTakeExplodeInd);
 
         Vector2 explodePos;
+        bool noPhysics;
 
-        if(parms != null && parms.TryGetValue<Vector2>(parmSpawnPt, out explodePos)) {
-            transform.position = explodePos;
+        if(parms != null) {
+            if(parms.TryGetValue<Vector2>(parmSpawnPt, out explodePos))
+                transform.position = explodePos;
+            else
+                explodePos = transform.position;
+
+            parms.TryGetValue<bool>(parmNoPhysics, out noPhysics);
         }
-        else
+        else {
             explodePos = transform.position;
-
-        StartCoroutine(DoExplode(explodePos));
+            noPhysics = false;
+        }
+                
+        StartCoroutine(DoExplode(explodePos, noPhysics));
     }
         
-    IEnumerator DoExplode(Vector2 pos) {
+    IEnumerator DoExplode(Vector2 pos, bool noPhysics) {
         if(data.delay > 0f)
             yield return new WaitForSeconds(data.delay);
 
