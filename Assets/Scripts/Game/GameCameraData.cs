@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameCameraData : ScriptableObject {
     [Header("Bounds Settings")]
     public float boundsChangeDelay = 0.3f;
+    public M8.Signal signalBoundsChangeFinish;
 
     [Header("Move Settings")]
     public DG.Tweening.Ease moveEase;

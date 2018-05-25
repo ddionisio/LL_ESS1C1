@@ -9,6 +9,8 @@ public class GamePool : M8.SingletonBehaviour<GamePool> {
         explodeWall
     }
 
+    public string jumpFXPoolRef = "jumpFX";
+
     private M8.PoolController mPool;
 
     private M8.GenericParams mExplodeParms = new M8.GenericParams();
@@ -23,6 +25,12 @@ public class GamePool : M8.SingletonBehaviour<GamePool> {
         string explodeTypeStr = type.ToString();
 
         mPool.Spawn(explodeTypeStr, explodeTypeStr, null, mExplodeParms);
+    }
+
+    public void JumpFX(Vector3 pos, Vector3 up) {
+        var spawn = mPool.Spawn(jumpFXPoolRef, jumpFXPoolRef, null, pos, null);
+
+        spawn.transform.up = up;
     }
 
     protected override void OnInstanceInit() {

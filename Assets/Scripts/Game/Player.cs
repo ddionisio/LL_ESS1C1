@@ -13,12 +13,14 @@ public class Player : M8.EntityBase {
 
     public GameObject displayGO;
     public GameObject inputIndicatorGO;
+    public Transform moveIndicatorRoot;
 
     [Header("Animation")]
     public M8.Animator.AnimatorData animator;
     public string takeSpawn;
     public string takeLaunch;
     public string takeLaunchEnd;
+    public string takeDeath;
 
     [Header("Spawn")]
     public GameObject spawnGO;
@@ -137,6 +139,8 @@ public class Player : M8.EntityBase {
 
                 Vector3 baseForce = dir * data.jumpPower;
                 physicsBody.AddForceAtPosition(baseForce, jumpPosition, ForceMode2D.Impulse);
+
+                GamePool.instance.JumpFX(jumpPosition, dir);
             }
 
             mLastJumpTime = Time.time;
@@ -165,6 +169,8 @@ public class Player : M8.EntityBase {
 
         //hide spawn
         if(spawnGO) spawnGO.SetActive(false);
+
+        if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(false);
     }
 
     protected override void OnSpawned(M8.GenericParams parms) {
@@ -187,6 +193,8 @@ public class Player : M8.EntityBase {
 
                 //hide display
                 if(displayGO) displayGO.SetActive(false);
+
+                if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(false);
 
                 //set spawn position to player
                 if(spawnGO) spawnGO.transform.position = transform.position;
@@ -219,6 +227,8 @@ public class Player : M8.EntityBase {
                 //show display
                 if(displayGO) displayGO.SetActive(true);
 
+                if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(true);
+
                 mGameCamCurVel = Vector2.zero;
 
                 mLastJumpTime = Time.time;
@@ -227,11 +237,15 @@ public class Player : M8.EntityBase {
             case EntityState.Death:
                 physicsMode = PhysicsMode.Disabled;
 
+                if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(false);
+
                 mRout = StartCoroutine(DoDeath());
                 break;
 
             case EntityState.Victory:
                 physicsMode = PhysicsMode.Disabled;
+
+                if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(false);
 
                 mGameCamCurVel = Vector2.zero;
 
@@ -255,6 +269,7 @@ public class Player : M8.EntityBase {
         if(displayGO) displayGO.SetActive(false);
         if(inputIndicatorGO) inputIndicatorGO.SetActive(false);
         if(spawnGO) spawnGO.SetActive(false);
+        if(moveIndicatorRoot) moveIndicatorRoot.gameObject.SetActive(false);
 
         //initialize data/variables
 
@@ -287,6 +302,16 @@ public class Player : M8.EntityBase {
                 //camera follow
                 CameraFollowUpdate();
                 UpdateJump();
+
+                //update move indicator
+                if(moveIndicatorRoot) {
+                    moveIndicatorRoot.position = transform.position;
+
+                    Vector3 s = moveIndicatorRoot.localScale;
+                    s.x = Mathf.Sign(mGroundMoveDir.x);
+
+                    moveIndicatorRoot.localScale = s;
+                }
                 break;
         }
     }
@@ -570,13 +595,19 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoDeath() {
-        //do fancy stuff
-        yield return new WaitForSeconds(1f);
+        //play death animation
+        if(animator && !string.IsNullOrEmpty(takeDeath)) {
+            animator.Play(takeDeath);
+            while(animator.isPlaying)
+                yield return null;
+        }
 
         mRout = null;
 
         //hide display
         if(displayGO) displayGO.SetActive(false);
+
+        animator.ResetTake(takeDeath);
 
         if(signalDeath) signalDeath.Invoke();
     }

@@ -90,6 +90,7 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         yield return null;
 
         //setup initial game state
+        ShowNextCheckpoint();
 
         var curCheckpoint = GetCurrentCheckpoint();
                 
@@ -115,6 +116,8 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         if(checkpoint.index != -1) {
             mCurCheckpointInd = checkpoint.index;
 
+            ShowNextCheckpoint();
+
             //apply camera bounds
             if(checkpoint.cameraBounds)
                 gameCamera.SetBounds(checkpoint.cameraBounds.rect, true);
@@ -125,5 +128,17 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
 
     private PlayerCheckpoint GetCurrentCheckpoint() {
         return mCheckpoints[mCurCheckpointInd];
+    }
+
+    private void ShowNextCheckpoint() {
+        //hide current
+        if(mCheckpoints[mCurCheckpointInd].displayGO)
+            mCheckpoints[mCurCheckpointInd].displayGO.SetActive(false);
+
+        int nextCheckpointInd = mCurCheckpointInd + 1;
+        if(nextCheckpointInd < mCheckpoints.Length) {
+            if(mCheckpoints[nextCheckpointInd].displayGO)
+                mCheckpoints[nextCheckpointInd].displayGO.SetActive(true);
+        }
     }
 }

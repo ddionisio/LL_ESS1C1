@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 1936bac986127cb4bad904bfad92c266
+guid: bf8c0222be72dfd48a68e5cf2a7ed5c1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: shade
-    21300002: shade_bottom
+    21300000: shadeWhite
+    21300002: shadeWhite_bottomLeft
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shade
+      name: shadeWhite
       rect:
         serializedVersion: 2
         x: 0
@@ -131,27 +131,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2244ce590d15d04e8e25e38908c698d
+      spriteID: 5389afcce036a9c40b110dfa1862301c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shade_bottom
+      name: shadeWhite_bottomLeft
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1
         height: 55
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430c60ba3140fdc449baf537ca2096c4
+      spriteID: 6339b8ed01274bb43af3ba8df244c675
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6f9f0e473c017b3438eb69dbca24c748
+    spriteID: c4a04270e56f32b4bb9d5d11c822b9db
     vertices: []
     indices: 
     edges: []

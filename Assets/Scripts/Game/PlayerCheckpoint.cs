@@ -9,6 +9,8 @@ public class PlayerCheckpoint : MonoBehaviour {
 
     public GameBounds2D cameraBounds;
 
+    public GameObject displayGO;
+
     public int index { get { return mIndex; } set { mIndex = value; } } //set by game map controller to determine checkpoint order
 
     private Vector2 mDir;
@@ -27,6 +29,8 @@ public class PlayerCheckpoint : MonoBehaviour {
 
     void Awake() {
         mDir = M8.MathUtil.Rotate(Vector2.up, dirRotate * Mathf.Deg2Rad);
+
+        if(displayGO) displayGO.SetActive(false);
     }
 
     void OnDrawGizmos() {

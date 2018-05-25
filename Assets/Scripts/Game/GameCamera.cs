@@ -168,5 +168,8 @@ public class GameCamera : MonoBehaviour {
         }
 
         mBoundsChangeRout = null;
+
+        if(data.signalBoundsChangeFinish != null)
+            data.signalBoundsChangeFinish.Invoke();
     }
 }

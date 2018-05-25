@@ -101,6 +101,11 @@ MonoBehaviour:
     startCapacity: 8
     maxCapacity: 0
     defaultParent: {fileID: 0}
+  - name: jumpFX
+    template: {fileID: 4919163717636680, guid: 50ddfe6ec41a30a44af1ddc440cec576, type: 2}
+    startCapacity: 8
+    maxCapacity: 0
+    defaultParent: {fileID: 0}
   poolHolder: {fileID: 4214115637187322}
 --- !u!114 &114858174799684310
 MonoBehaviour:
