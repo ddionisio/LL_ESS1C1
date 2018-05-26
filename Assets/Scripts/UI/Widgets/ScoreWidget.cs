@@ -24,13 +24,33 @@ public class ScoreWidget : MonoBehaviour {
     }
 
     public void PlayResult() {
-        if(!resultScoreLabel)
-            return;
-
-        StartCoroutine(DoPlayResult());
+        if(resultScoreLabel)
+            StartCoroutine(DoPlayResult());
+        else if(mBonusScore != 0)
+            StartCoroutine(DoPlayResultAddToCurrent());
     }
 
     IEnumerator DoPlayResult() {
+        if(resultStartDelay > 0f)
+            yield return new WaitForSeconds(resultStartDelay);
+
+        float startScore = 0f;
+        float endScore = mCurScore + mBonusScore;
+
+        float curTime = 0f;
+        while(curTime < resultIncDelay) {
+            yield return null;
+            curTime += Time.deltaTime;
+
+            float t = Mathf.Clamp01(curTime / resultIncDelay);
+
+            int score = Mathf.RoundToInt(Mathf.Lerp(startScore, endScore, t));
+
+            resultScoreLabel.text = score.ToString();
+        }
+    }
+
+    IEnumerator DoPlayResultAddToCurrent() {
         if(resultStartDelay > 0f)
             yield return new WaitForSeconds(resultStartDelay);
 
@@ -45,8 +65,10 @@ public class ScoreWidget : MonoBehaviour {
             float t = Mathf.Clamp01(curTime / resultIncDelay);
 
             int score = Mathf.RoundToInt(Mathf.Lerp(startScore, endScore, t));
+            int bonusScore = Mathf.RoundToInt(Mathf.Lerp(mBonusScore, 0f, t));
 
-            resultScoreLabel.text = score.ToString();
-        }        
+            currentScoreLabel.text = score.ToString();
+            bonusScoreLabel.text = "+" + bonusScore.ToString();
+        }
     }
 }

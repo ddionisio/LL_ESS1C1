@@ -43,15 +43,18 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2d2ef8354e1f70749bb500e05a62f1f7, type: 3}
   - {fileID: 21300000, guid: 8a2b27c7d7e1bb041aaa0bd367a2bc85, type: 3}
   - {fileID: 21300000, guid: 31d73ae76a973cb4c9529f189dde2f75, type: 3}
+  - {fileID: 21300000, guid: 82552aeb43e5e3b4b92cd528bc79f1ba, type: 3}
   - {fileID: 21300000, guid: dc2133f6b0c63f04ebc89e34e2681b71, type: 3}
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
+  - {fileID: 21300000, guid: eaf5749cab7fa9b42865888fc1f6fa09, type: 3}
   - {fileID: 21300000, guid: 37cb2529e17560c4aba9fe7c5b457f0c, type: 3}
   - {fileID: 21300000, guid: b073d72a84e15ea469b2bd854d28dadb, type: 3}
   - {fileID: 21300000, guid: d182a5ba30a77ba42a2a00ead0446be8, type: 3}
   - {fileID: 21300000, guid: d5652bf40e85b084a9483d5488eb9a86, type: 3}
+  - {fileID: 21300000, guid: 2856147daea854441834af17d7db2f8e, type: 3}
   - {fileID: 21300000, guid: 2243d9b32e7cf6b4f96480e8e64436d2, type: 3}
   - {fileID: 21300000, guid: f1478339c1960a34bbb8e3a6bcc97373, type: 3}
   - {fileID: 21300000, guid: ef3370f1ed343d94aa0aa9f703aec7e8, type: 3}
@@ -69,6 +72,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f430c5c3eb0f57445bfaeaecde3eb64f, type: 3}
   - {fileID: 21300000, guid: 9266d2b7f220c4e4d9a757495f287763, type: 3}
   - {fileID: 21300000, guid: d1cd2fb02ce66c34ab1ca87abd041e61, type: 3}
+  - {fileID: 21300000, guid: cc83cb9bf80426640afe2b7943fd6d0d, type: 3}
   - {fileID: 21300000, guid: 5dba8f1b98366824abb3c740f1def12f, type: 3}
   - {fileID: 21300000, guid: c83f3feef6a884e46840e19438debc18, type: 3}
   - {fileID: 21300000, guid: 2758efb878bb8f247b4b5995b7940cce, type: 3}
@@ -120,15 +124,18 @@ SpriteAtlas:
   - notebookTab3
   - panelFrame
   - buttonActionBase
+  - signBlank
   - explodeFX
   - notebookClose
   - gnomeGlow
   - cannonBase
   - buttonNotebook
+  - spikeyBoulder
   - buttonRestart
   - tutorialHandPoint
   - gnome1
   - buttonActionIconFlip
+  - mole
   - notebookTabIconOptions
   - tutorialHandPointDown
   - buttonActionIconJump
@@ -146,6 +153,7 @@ SpriteAtlas:
   - notebookTabIconFossils
   - tutorialArrow2
   - notebookTabIconStratigraphy
+  - burrowHole
   - confirmIcon
   - cannonStand
   - cancelIcon
