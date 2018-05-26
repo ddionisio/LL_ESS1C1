@@ -43,7 +43,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2d2ef8354e1f70749bb500e05a62f1f7, type: 3}
   - {fileID: 21300000, guid: 8a2b27c7d7e1bb041aaa0bd367a2bc85, type: 3}
   - {fileID: 21300000, guid: 31d73ae76a973cb4c9529f189dde2f75, type: 3}
-  - {fileID: 21300000, guid: b34ea9a87a544194f8649e50cc4a2aef, type: 3}
   - {fileID: 21300000, guid: dc2133f6b0c63f04ebc89e34e2681b71, type: 3}
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
@@ -51,7 +50,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
   - {fileID: 21300000, guid: 37cb2529e17560c4aba9fe7c5b457f0c, type: 3}
   - {fileID: 21300000, guid: b073d72a84e15ea469b2bd854d28dadb, type: 3}
-  - {fileID: 21300000, guid: 58de614642cff8b48b3f18f9428bf4d9, type: 3}
   - {fileID: 21300000, guid: d182a5ba30a77ba42a2a00ead0446be8, type: 3}
   - {fileID: 21300000, guid: d5652bf40e85b084a9483d5488eb9a86, type: 3}
   - {fileID: 21300000, guid: 2243d9b32e7cf6b4f96480e8e64436d2, type: 3}
@@ -78,16 +76,24 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c5a54a7e88b59e547a8905c1ad93d892, type: 3}
   - {fileID: 21300000, guid: 0af9c0ab257200b40be6cd1a2b79cad5, type: 3}
   - {fileID: 21300000, guid: bf01b0b7199ec26448b016fd2de647e5, type: 3}
+  - {fileID: 21300000, guid: 8fb886e4a612cc24aa6c8ac8fcfd6712, type: 3}
+  - {fileID: 21300000, guid: 7d6afd82da09f3249a5d83ea422c9cd1, type: 3}
+  - {fileID: 21300000, guid: b4506ae01634ced4e94aacddd3f1ca65, type: 3}
   - {fileID: 21300000, guid: 2938dc73ec7aa2142bc3340954b11ac1, type: 3}
+  - {fileID: 21300000, guid: 261a488ee561b7a43847a2e514fd6d7b, type: 3}
   - {fileID: 21300000, guid: 833257f6cb1a9d241b3fc454fef9d45a, type: 3}
   - {fileID: 21300000, guid: 578e765403b6dcf4aa34fbf17e539b05, type: 3}
   - {fileID: 21300000, guid: 48e9c49df56386f47befe3b838defdfd, type: 3}
   - {fileID: 21300000, guid: f868b8b40c3a81a4890cc9648a2eb34a, type: 3}
+  - {fileID: 21300000, guid: 017915a8188f5424b9c2bb8be78f0b07, type: 3}
+  - {fileID: 21300000, guid: 45e1f9c4fb66943478de246964cdefee, type: 3}
   - {fileID: 21300000, guid: 0986f06104813ec44ad429bc3676ff94, type: 3}
   - {fileID: 21300000, guid: 1fa0f8ce1d9877c4a90c71da5c7f16fa, type: 3}
   - {fileID: 21300000, guid: d974da4274e1be6488a1a5b076ceddda, type: 3}
   - {fileID: 21300000, guid: cc2697ba00f5e3746a131f23aa0596a1, type: 3}
   - {fileID: 21300000, guid: efaede5b4515341469de79b79ed2c3f7, type: 3}
+  - {fileID: 21300000, guid: 20d1aa506a10819408b20a80fdd53416, type: 3}
+  - {fileID: 21300000, guid: aa9d2d6235786dd44861a746417bf987, type: 3}
   - {fileID: 21300000, guid: 608102d540b962341823a388b23cb505, type: 3}
   - {fileID: 21300000, guid: 20daf32948c39184aab3cb7e633841bf, type: 3}
   - {fileID: 21300000, guid: 7168da6aea1c4154bbc52d54856e6639, type: 3}
@@ -96,6 +102,7 @@ SpriteAtlas:
   - {fileID: 21300002, guid: bf8c0222be72dfd48a68e5cf2a7ed5c1, type: 3}
   - {fileID: 21300000, guid: bf8c0222be72dfd48a68e5cf2a7ed5c1, type: 3}
   - {fileID: 21300000, guid: 3ca06b76df0b33841a3ae56ac898d984, type: 3}
+  - {fileID: 21300000, guid: 47610ed72ff830e418fc2a8acbbc4f47, type: 3}
   - {fileID: 21300006, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300000, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300008, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
@@ -103,6 +110,7 @@ SpriteAtlas:
   - {fileID: 21300004, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300000, guid: b569982da0ae17748900ed70c987b717, type: 3}
   - {fileID: 21300000, guid: 5de463786f60c9443ac9f98309a23d2a, type: 3}
+  - {fileID: 21300000, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   m_PackedSpriteNamesToIndex:
   - notebookBase
   - nextArrow
@@ -112,7 +120,6 @@ SpriteAtlas:
   - notebookTab3
   - panelFrame
   - buttonActionBase
-  - ballBase
   - explodeFX
   - notebookClose
   - gnomeGlow
@@ -120,7 +127,6 @@ SpriteAtlas:
   - buttonNotebook
   - buttonRestart
   - tutorialHandPoint
-  - ballBase2
   - gnome1
   - buttonActionIconFlip
   - notebookTabIconOptions
@@ -147,16 +153,24 @@ SpriteAtlas:
   - edge_shade
   - frame
   - explodePixel1
+  - spots3
+  - spots5
+  - blockSimple
   - notebookSeparator
+  - spots2
   - circle16x16
   - gnomeArrow
   - panelFrameSimpleInvert
   - panelFrameSimple
+  - spots1
+  - spots4
   - gnomeLiftFX3
   - gnomeLiftFX5
   - gnomeLiftFX4
   - gnomeLiftFX6
   - gnomeLiftFX7
+  - mouthNeutral
+  - eye
   - gnomeLiftFX8
   - gnomeLiftFX2
   - gradient8x8
@@ -165,6 +179,7 @@ SpriteAtlas:
   - shadeWhite_bottomLeft
   - shadeWhite
   - gnomeLiftFX9
+  - mouthBottom
   - blank4x4_bottomLeft
   - blank4x4_bottom
   - blank4x4_border
@@ -172,5 +187,6 @@ SpriteAtlas:
   - blank4x4_topLeft
   - gnomeLiftFX1
   - gnomeLiftFX10
+  - floorCommon
   m_Tag: main
   m_IsVariant: 0
