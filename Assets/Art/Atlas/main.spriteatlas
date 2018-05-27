@@ -115,6 +115,7 @@ SpriteAtlas:
   - {fileID: 21300004, guid: 02cb7109eec577d45a27167e2308de23, type: 3}
   - {fileID: 21300000, guid: b569982da0ae17748900ed70c987b717, type: 3}
   - {fileID: 21300000, guid: 5de463786f60c9443ac9f98309a23d2a, type: 3}
+  - {fileID: 21300002, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   - {fileID: 21300000, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   m_PackedSpriteNamesToIndex:
   - rollyRock
@@ -197,6 +198,7 @@ SpriteAtlas:
   - blank4x4_topLeft
   - gnomeLiftFX1
   - gnomeLiftFX10
+  - floorCommon_top
   - floorCommon
   m_Tag: main
   m_IsVariant: 0
