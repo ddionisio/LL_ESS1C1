@@ -82,14 +82,22 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0af9c0ab257200b40be6cd1a2b79cad5, type: 3}
   - {fileID: 21300000, guid: bf01b0b7199ec26448b016fd2de647e5, type: 3}
   - {fileID: 21300000, guid: 8fb886e4a612cc24aa6c8ac8fcfd6712, type: 3}
+  - {fileID: 21300000, guid: c54886935300e164cba071d227a3ea2c, type: 3}
+  - {fileID: 21300000, guid: 357358d319c211d4e95e7b68b7d8945e, type: 3}
+  - {fileID: 21300000, guid: 006b6a11a8a62c74a843e1d3e78e75cd, type: 3}
+  - {fileID: 21300000, guid: c61cfbd2625378c4cadd9dc5f123830f, type: 3}
   - {fileID: 21300000, guid: 7d6afd82da09f3249a5d83ea422c9cd1, type: 3}
+  - {fileID: 21300000, guid: 08ab923f93cf2bd48888c886858af1d7, type: 3}
   - {fileID: 21300000, guid: b4506ae01634ced4e94aacddd3f1ca65, type: 3}
   - {fileID: 21300000, guid: 2938dc73ec7aa2142bc3340954b11ac1, type: 3}
   - {fileID: 21300000, guid: 261a488ee561b7a43847a2e514fd6d7b, type: 3}
+  - {fileID: 21300000, guid: 02c5bce2f56ce7d43b4f50f1aab84f1f, type: 3}
   - {fileID: 21300000, guid: 833257f6cb1a9d241b3fc454fef9d45a, type: 3}
   - {fileID: 21300000, guid: 578e765403b6dcf4aa34fbf17e539b05, type: 3}
+  - {fileID: 21300000, guid: 2334fa912dbc4c6468738fd0b047de44, type: 3}
   - {fileID: 21300000, guid: 48e9c49df56386f47befe3b838defdfd, type: 3}
   - {fileID: 21300000, guid: f868b8b40c3a81a4890cc9648a2eb34a, type: 3}
+  - {fileID: 21300000, guid: 41e18fa75e97e9345945588cc3bffe71, type: 3}
   - {fileID: 21300000, guid: 017915a8188f5424b9c2bb8be78f0b07, type: 3}
   - {fileID: 21300000, guid: 45e1f9c4fb66943478de246964cdefee, type: 3}
   - {fileID: 21300000, guid: 0986f06104813ec44ad429bc3676ff94, type: 3}
@@ -165,14 +173,22 @@ SpriteAtlas:
   - frame
   - explodePixel1
   - spots3
+  - garbble04
+  - garbble03
+  - garbble01
+  - garbble06
   - spots5
+  - garbble05
   - blockSimple
   - notebookSeparator
   - spots2
+  - garbble02
   - circle16x16
   - gnomeArrow
+  - moustache
   - panelFrameSimpleInvert
   - panelFrameSimple
+  - mouthHappy
   - spots1
   - spots4
   - gnomeLiftFX3

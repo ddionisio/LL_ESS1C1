@@ -13,6 +13,10 @@ public class OffscreenIndicatorPosition : MonoBehaviour {
     public Camera _displayCamera;
     public Camera displayCamera { get { return _displayCamera; } set { _displayCamera = value; } }
 
+    void Awake() {
+        displayRoot.gameObject.SetActive(false);
+    }
+
     void Update() {
         if(!targetCamera) return;
         
