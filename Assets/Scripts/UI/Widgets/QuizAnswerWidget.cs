@@ -91,8 +91,8 @@ public class QuizAnswerWidget : MonoBehaviour, IPointerClickHandler {
                 if(wrongGO) wrongGO.SetActive(true);
                 break;
             case State.Correct:
-                if(iconImage) iconImage.color = iconDisableColor;
-                if(textLabel) textLabel.color = textDisableColor;
+                if(iconImage) iconImage.color = mIconDefaultColor;
+                if(textLabel) textLabel.color = mTextDefaultColor;
 
                 if(graphicRaycastTarget) graphicRaycastTarget.raycastTarget = false;
 

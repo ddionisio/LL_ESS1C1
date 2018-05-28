@@ -31,6 +31,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     public string takeResultEndEnter;
     public string takeResultEndExit;
 
+    public ScoreWidget scoreWidget;
+
     [Header("Signals")]
     public M8.Signal signalExit;
 
@@ -205,7 +207,10 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
             //compute score
             mResultScore = Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * mWrongCount), 0, int.MaxValue);
 
-            LoLManager.instance.curScore += mResultScore;
+            if(scoreWidget)
+                scoreWidget.Init(LoLManager.instance.curScore, mResultScore);
+            else
+                LoLManager.instance.curScore += mResultScore;
                         
             //show next
             if(nextGO) nextGO.SetActive(true);

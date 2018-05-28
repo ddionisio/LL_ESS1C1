@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1496c640f0d872442b168b51b5346a2f, type: 3}
+  m_Name: rockQuartzite
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 7e7b706c9ccb31543a461ad8ec956430, type: 3}
+  _nameTextRef: rock_metamorphic_quartzite
+  descImage: {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
+  _descTextRef: rock_metamorphic_quartzite_desc

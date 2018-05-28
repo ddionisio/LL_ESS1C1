@@ -32,11 +32,18 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 32dc2488d78a9f84ca1ca86f02897487, type: 3}
     - {fileID: 102900000, guid: 151a45703bacfe3499393aa5166d5e01, type: 3}
     - {fileID: 102900000, guid: 5c4d9e699ba319d4eb78dad308280192, type: 3}
+    - {fileID: 102900000, guid: 6df03bc98dae542408045d1603e43c34, type: 3}
+    - {fileID: 102900000, guid: 05beefcf0fa336a4bada090152a1600e, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: 362d4f86662ea7a4a899985100be1dc8, type: 3}
+  - {fileID: 21300000, guid: 1f9fa4e22b9cd56408f941263cee9450, type: 3}
+  - {fileID: 21300000, guid: 2e9dfb1545117414b83d6a4dfe7e8a72, type: 3}
+  - {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
   - {fileID: 21300000, guid: 53cf1db0bede7024391acc3d04d4f485, type: 3}
+  - {fileID: 21300000, guid: 3d72d0dbb8cd5ff4996863429daabbe1, type: 3}
   - {fileID: 21300000, guid: c1f5fc9afb034f74aac8e0be2bdbc03e, type: 3}
   - {fileID: 21300000, guid: 6fd9f40ba306bb44584adfb75d681b92, type: 3}
   - {fileID: 21300000, guid: 4c2dd860ac2f3044b811a95549278a06, type: 3}
@@ -45,10 +52,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8a2b27c7d7e1bb041aaa0bd367a2bc85, type: 3}
   - {fileID: 21300000, guid: 31d73ae76a973cb4c9529f189dde2f75, type: 3}
   - {fileID: 21300000, guid: 82552aeb43e5e3b4b92cd528bc79f1ba, type: 3}
+  - {fileID: 21300008, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: dc2133f6b0c63f04ebc89e34e2681b71, type: 3}
+  - {fileID: 21300000, guid: db9d3b392c9a26f4e8a800682e6dfb9f, type: 3}
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
+  - {fileID: 21300006, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
+  - {fileID: 21300000, guid: b6f71b114225dbc41a88c680ff46814c, type: 3}
+  - {fileID: 21300000, guid: 18aed5171f3c9fd43a6c5813f89e2302, type: 3}
+  - {fileID: 21300000, guid: 7e7b706c9ccb31543a461ad8ec956430, type: 3}
+  - {fileID: 21300000, guid: 6caf7cce8036f184da0312f96f48d846, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
   - {fileID: 21300000, guid: eaf5749cab7fa9b42865888fc1f6fa09, type: 3}
   - {fileID: 21300000, guid: 37cb2529e17560c4aba9fe7c5b457f0c, type: 3}
@@ -56,10 +70,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d182a5ba30a77ba42a2a00ead0446be8, type: 3}
   - {fileID: 21300000, guid: d5652bf40e85b084a9483d5488eb9a86, type: 3}
   - {fileID: 21300000, guid: 2856147daea854441834af17d7db2f8e, type: 3}
+  - {fileID: 21300004, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: 2243d9b32e7cf6b4f96480e8e64436d2, type: 3}
   - {fileID: 21300000, guid: f1478339c1960a34bbb8e3a6bcc97373, type: 3}
   - {fileID: 21300000, guid: ef3370f1ed343d94aa0aa9f703aec7e8, type: 3}
   - {fileID: 21300000, guid: e5dc777390553e4499a405c82af83aef, type: 3}
+  - {fileID: 21300002, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: 44a2e43498084d140b46c5499e074241, type: 3}
   - {fileID: 21300000, guid: d47fb89f80a7c9e47b32a0f8f5fcda21, type: 3}
   - {fileID: 21300000, guid: 46c29ef98a6dd73498bc2a4a17b25147, type: 3}
@@ -126,8 +142,13 @@ SpriteAtlas:
   - {fileID: 21300002, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   - {fileID: 21300000, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   m_PackedSpriteNamesToIndex:
+  - result1RockLayers
   - rollyRock
+  - rockGraniteIllustration
+  - rockGneissIllustration
+  - rockQuartziteIllustration
   - notebookBase
+  - rockGabbroIllustration
   - nextArrow
   - goalAura
   - notebookTab2
@@ -136,10 +157,17 @@ SpriteAtlas:
   - panelFrame
   - buttonActionBase
   - signBlank
+  - result1RockLayers_gabbro
   - explodeFX
+  - collectionIconFrame
   - notebookClose
   - gnomeGlow
   - cannonBase
+  - result1RockLayers_quartzine
+  - rockGabbroIcon
+  - rockGneissIcon
+  - rockQuartziteIcon
+  - rockGraniteIcon
   - buttonNotebook
   - spikeyBoulder
   - buttonRestart
@@ -147,10 +175,12 @@ SpriteAtlas:
   - gnome1
   - buttonActionIconFlip
   - mole
+  - result1RockLayers_gneiss
   - notebookTabIconOptions
   - tutorialHandPointDown
   - buttonActionIconJump
   - explodePixel4
+  - result1RockLayers_granite
   - explodePixel3
   - checkpointStar
   - notebookTabIconRocks

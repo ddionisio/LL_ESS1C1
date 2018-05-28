@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Int_values: 00000000020000000200000001000000ffffffff0000000000000000
   m_Float_values:
   - 0
-  - 120
+  - 258
   m_String_values:
   - Assets/Data/Material Palette.asset
   m_Color_values: []

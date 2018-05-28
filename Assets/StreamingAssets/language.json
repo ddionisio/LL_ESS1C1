@@ -56,7 +56,7 @@
 	"introLawStratigraphyOriginalHorizontalityDesc": "Sedimentary rocks were originally deposited horizontally by weathering and erosions.  Layers that are tilted have since been altered by external force.",
 	
 	"introLawStratigraphyCrossCutting": "Cross-cutting Relationships",
-	"introLawStratigraphyCrossCuttingDesc": "A layer of rocks that cuts across other layers is considered to be younger.",
+	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.",
 	
 	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
 	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked or broken up by external force.",
@@ -67,6 +67,24 @@
 	"stage_title_2": "Paleozoic",
 	"stage_title_3": "Mesozoic",
 	"stage_title_4": "Cenozoic",
+	
+	"intrusiveRock": "Intrusive Rock",
+	
+	"magma": "Magma",
+	
+	"rock_igneous_gabbro": "Gabbro",
+	"rock_igneous_gabbro_desc": "Gabbro is an intrusive igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
+	"rock_metamorphic_gneiss": "Gneiss",
+	"rock_metamorphic_gneiss_desc": "Gneiss is a foliated metamorphic rock. Its foliations are characterized by alternating dark and light bands. Gneiss is typically formed from shale that undergoes high pressure and heat.",
+	"rock_ingeous_granite": "Granite",
+	"rock_ingeous_granite_desc": "Granite is a light-colored igneous rock with large visible grains. It's mostly composed of quartz and feldspar.",
+	"rock_metamorphic_quartzite": "Quartzite",
+	"rock_metamorphic_quartzite_desc": "Quartzite is a non-foliated metamorphic rock. It's mostly composed of quartz from sandstone after it undergoes high pressure and heat.",
+
+	"summary": "SUMMARY",
+	
+	"result_1_question": "Which layer of rock is the youngest:",
+	"result_1_end": "By observing the layers, and where the magma is located; we can determine which one is the intrusive layer. By following the Cross-cutting Relationships in Laws of Stratigraphy, the intrusive layer is the youngest of the layer.",
 	
 	"strataAnalysis": "STRATA ANALYSIS",
 	

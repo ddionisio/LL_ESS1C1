@@ -5,11 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "collectionData", menuName = "Game/Collection Data")]
 public class CollectionData : ScriptableObject {
     public Sprite icon;
+    [SerializeField]
     [M8.Localize]
     string _nameTextRef;
 
     [Header("Description")]
     public Sprite descImage;
+    [SerializeField]
     [M8.Localize]
     string _descTextRef;
 

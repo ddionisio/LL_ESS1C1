@@ -10,6 +10,8 @@ public class CollectionWidget : MonoBehaviour {
     public Image iconImage;
     public Text nameLabel;
 
+    public bool autoInit;
+
     public void OpenDesc() {
         M8.UIModal.Manager.instance.ModalOpen(Modals.collectionInfo, new M8.GenericParamArg(ModalCollectionDesc.parmCollectionData, data));
     }
@@ -23,5 +25,10 @@ public class CollectionWidget : MonoBehaviour {
         if(nameLabel) {
             nameLabel.text = data.nameText;
         }
+    }
+
+    void Awake() {
+        if(autoInit)
+            Init();
     }
 }
