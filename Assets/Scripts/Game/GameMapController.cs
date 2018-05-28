@@ -130,6 +130,7 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         //
 
         //show victory modal
+        M8.UIModal.Manager.instance.ModalCloseAll();
         M8.UIModal.Manager.instance.ModalOpen(Modals.victory);
     }
 
