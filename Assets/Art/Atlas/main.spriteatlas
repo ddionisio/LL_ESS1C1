@@ -38,12 +38,17 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
+  - {fileID: 21300000, guid: 8f0257a6dc5867c4da1b07600b7dea78, type: 3}
+  - {fileID: 21300000, guid: b8e8369bd35fe6c4ba1918dc560f8ad6, type: 3}
   - {fileID: 21300000, guid: 362d4f86662ea7a4a899985100be1dc8, type: 3}
+  - {fileID: 21300000, guid: c2b5b6b1fd3f65e4ba6d3f064af7a97e, type: 3}
+  - {fileID: 21300000, guid: cb09664881c7429479652c1c997bf07b, type: 3}
   - {fileID: 21300000, guid: 1f9fa4e22b9cd56408f941263cee9450, type: 3}
   - {fileID: 21300000, guid: 2e9dfb1545117414b83d6a4dfe7e8a72, type: 3}
   - {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
   - {fileID: 21300000, guid: 53cf1db0bede7024391acc3d04d4f485, type: 3}
   - {fileID: 21300000, guid: 3d72d0dbb8cd5ff4996863429daabbe1, type: 3}
+  - {fileID: 21300000, guid: a3b5a9abaea696a42a73855389f46869, type: 3}
   - {fileID: 21300000, guid: c1f5fc9afb034f74aac8e0be2bdbc03e, type: 3}
   - {fileID: 21300000, guid: 6fd9f40ba306bb44584adfb75d681b92, type: 3}
   - {fileID: 21300000, guid: 4c2dd860ac2f3044b811a95549278a06, type: 3}
@@ -58,11 +63,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
+  - {fileID: 21300000, guid: dc980b5d20c3ff94982f5d56c44c4fd2, type: 3}
+  - {fileID: 21300000, guid: 41251edb67dcfd0459f59f383b74cd28, type: 3}
+  - {fileID: 21300000, guid: c07f3fd20f4560149b65a1f4baa8243d, type: 3}
   - {fileID: 21300006, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: b6f71b114225dbc41a88c680ff46814c, type: 3}
   - {fileID: 21300000, guid: 18aed5171f3c9fd43a6c5813f89e2302, type: 3}
   - {fileID: 21300000, guid: 7e7b706c9ccb31543a461ad8ec956430, type: 3}
   - {fileID: 21300000, guid: 6caf7cce8036f184da0312f96f48d846, type: 3}
+  - {fileID: 21300000, guid: 3de7d782eae397b4bba0857f10b9e72b, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
   - {fileID: 21300000, guid: eaf5749cab7fa9b42865888fc1f6fa09, type: 3}
   - {fileID: 21300000, guid: 37cb2529e17560c4aba9fe7c5b457f0c, type: 3}
@@ -94,6 +103,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c83f3feef6a884e46840e19438debc18, type: 3}
   - {fileID: 21300000, guid: 2758efb878bb8f247b4b5995b7940cce, type: 3}
   - {fileID: 21300000, guid: c67df8e929502fe4fa0aff8a98e74df8, type: 3}
+  - {fileID: 21300000, guid: 12a77da95649dff458ce1158a20ab5fc, type: 3}
+  - {fileID: 21300000, guid: 7046fe5e687cd9546be34a003bc3c635, type: 3}
+  - {fileID: 21300000, guid: 1906c193ce5fafa4085202a6924324f2, type: 3}
+  - {fileID: 21300000, guid: 8a6648ce70ececc449f69699f8fb643d, type: 3}
   - {fileID: 21300000, guid: c5a54a7e88b59e547a8905c1ad93d892, type: 3}
   - {fileID: 21300000, guid: 0af9c0ab257200b40be6cd1a2b79cad5, type: 3}
   - {fileID: 21300000, guid: bf01b0b7199ec26448b016fd2de647e5, type: 3}
@@ -143,12 +156,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   m_PackedSpriteNamesToIndex:
   - result1RockLayers
+  - fossilDimetrodonIllustration
+  - fossilGlossopterisIllustration
   - rollyRock
+  - fossilOpabiniaIllustration
+  - fossilColumn
   - rockGraniteIllustration
   - rockGneissIllustration
   - rockQuartziteIllustration
   - notebookBase
   - rockGabbroIllustration
+  - fossilPerisphinctesIllustration
   - nextArrow
   - goalAura
   - notebookTab2
@@ -163,11 +181,15 @@ SpriteAtlas:
   - notebookClose
   - gnomeGlow
   - cannonBase
+  - fossilDimetrodonIcon
+  - fossilOpabiniaIcon
+  - fossilPerisphinctesIcon
   - result1RockLayers_quartzine
   - rockGabbroIcon
   - rockGneissIcon
   - rockQuartziteIcon
   - rockGraniteIcon
+  - fossilGlossopterisIcon
   - buttonNotebook
   - spikeyBoulder
   - buttonRestart
@@ -199,6 +221,10 @@ SpriteAtlas:
   - cannonStand
   - cancelIcon
   - buttonHighlight
+  - fossilColumn_perisphinctes
+  - fossilColumn_glossopteris
+  - fossilColumn_opabinia
+  - fossilColumn_dimetrodon
   - edge_shade
   - frame
   - explodePixel1

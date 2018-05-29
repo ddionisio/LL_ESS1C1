@@ -85,17 +85,21 @@
 	"fossil_perisphinctes_desc": "",
 	"fossil_dimetrodon": "Dimetrodon",
 	"fossil_dimetrodon_desc": "",
+	"fossil_opabinia": "Opabinia",
+	"fossil_opabinia_desc": "",
+	"fossil_glossopteris": "Glossopteris",
+	"fossil_glossopteris_desc": "",
 	
 	"summary": "SUMMARY",
 	
 	"result_1_question": "Which layer of rock is the youngest:",
 	"result_1_end": "By observing the layers, and where the magma is located; we can determine which one is the intrusive layer. By following the Cross-cutting Relationships in Laws of Stratigraphy, the intrusive layer is the youngest of the layer.",
 	
-	"fossilIndex": "Fossil Index",
+	"indexFossil": "Index Fossil",
 	"coreSamples": "Core Samples",
 	
-	"result_2_question": "Which one of these is considered a Fossil Index?",
-	"result_2_end": "",
+	"result_2_question": "Which one of these is an Index Fossil?",
+	"result_2_end": "Index Fossils are fossils that have only lived a tiny lifespan over a huge area.\n\nThese are the criteria:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
 		
 	"strataAnalysis": "STRATA ANALYSIS",
 	

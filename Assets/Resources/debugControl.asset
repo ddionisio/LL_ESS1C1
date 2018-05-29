@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44012adb5c080e247a36fc6863edfe13, type: 3}
   m_Name: debugControl
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  levelIndex: 1

@@ -6,6 +6,9 @@ public class LevelEndController : MonoBehaviour {
     [Header("Signals")]
     public M8.Signal signalProceed;
 
+    [Header("Debug")]
+    public int debugLevelIndex;
+
     void OnDestroy() {
         if(signalProceed) signalProceed.callback -= OnSignalProceed;
     }
@@ -23,7 +26,13 @@ public class LevelEndController : MonoBehaviour {
             yield return null;
 
         //open up the proper modal for the current level index
-        int ind = GameData.instance.curLevelIndex;
+        int ind;
+
+        if(GameData.instance.isGameStarted)
+            ind = GameData.instance.curLevelIndex;
+        else
+            ind = debugLevelIndex;
+
         if(ind >= 0 && ind < GameData.instance.levels.Length) {
             string modalRef = GameData.instance.levels[ind].modalLevelEnd;
             if(!string.IsNullOrEmpty(modalRef)) {
