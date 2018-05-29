@@ -25,6 +25,8 @@ MonoBehaviour:
     path: Assets/Scenes/levelEnd.unity
   quizTotalPoints: 3000
   quizWrongPointDeduct: 1000
+  checkpointPoints: 250
+  checkpointNoDeathPoints: 500
   levels:
   - scene:
       name: level1
@@ -33,7 +35,7 @@ MonoBehaviour:
   - scene:
       name: level2
       path: Assets/Scenes/level2.unity
-    modalLevelEnd: level1Result
+    modalLevelEnd: level2Result
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity

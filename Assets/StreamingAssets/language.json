@@ -81,11 +81,22 @@
 	"rock_metamorphic_quartzite": "Quartzite",
 	"rock_metamorphic_quartzite_desc": "Quartzite is a non-foliated metamorphic rock. It's mostly composed of quartz from sandstone after it undergoes high pressure and heat.",
 
+	"fossil_perisphinctes": "Perisphinctes",
+	"fossil_perisphinctes_desc": "",
+	"fossil_dimetrodon": "Dimetrodon",
+	"fossil_dimetrodon_desc": "",
+	
 	"summary": "SUMMARY",
 	
 	"result_1_question": "Which layer of rock is the youngest:",
 	"result_1_end": "By observing the layers, and where the magma is located; we can determine which one is the intrusive layer. By following the Cross-cutting Relationships in Laws of Stratigraphy, the intrusive layer is the youngest of the layer.",
 	
+	"fossilIndex": "Fossil Index",
+	"coreSamples": "Core Samples",
+	
+	"result_2_question": "Which one of these is considered a Fossil Index?",
+	"result_2_end": "",
+		
 	"strataAnalysis": "STRATA ANALYSIS",
 	
 	"scienceScore": "SCIENCE:",
