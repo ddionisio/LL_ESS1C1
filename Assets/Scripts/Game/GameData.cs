@@ -22,8 +22,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     public M8.SceneAssetPath levelEndScene;
 
     [Header("Data")]
-    public int quizTotalPoints = 3000; //total points awarded during quiz
-    public int quizWrongPointDeduct = 1000; //deduction to quizTotalPoints per wrong answer
+    public int quizBonusPoints = 1000; //points per answer
     public int checkpointPoints = 250;
     public int checkpointNoDeathPoints = 500;
 

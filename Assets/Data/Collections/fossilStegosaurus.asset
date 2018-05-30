@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1496c640f0d872442b168b51b5346a2f, type: 3}
+  m_Name: fossilStegosaurus
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: c840d6ce3bfac3f488dfa664c6cadb8c, type: 3}
+  _nameTextRef: fossil_stegosaurus
+  descImage: {fileID: 21300000, guid: 1bdfaf81b1cff904482ec9d73e259ab9, type: 3}
+  _descTextRef: fossil_stegosaurus_desc

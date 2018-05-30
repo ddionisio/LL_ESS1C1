@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1496c640f0d872442b168b51b5346a2f, type: 3}
+  m_Name: fossilParadoxides
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: a6bd58ce7e86f914ea37ec9920224d81, type: 3}
+  _nameTextRef: fossil_paradoxides
+  descImage: {fileID: 21300000, guid: e8328d92241da234da593c60462ae830, type: 3}
+  _descTextRef: fossil_paradoxides_desc

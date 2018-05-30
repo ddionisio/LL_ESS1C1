@@ -15,8 +15,9 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     [System.Serializable]
     public class QuestionData {
         public GameObject questionGO;
-        public QuizAnswerWidget[] answers;
+        public QuizAnswerWidget[] answers;        
         public int answerCorrectIndex;
+        public bool answerDisableShuffle;
 
         public int score { get; private set; }
         public int wrongCount { get; private set; }
@@ -39,7 +40,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         public void Start() {
             //shuffle points
             //shuffle answer points
-            M8.ArrayUtil.Shuffle(mAnswerLocalPoints);
+            if(!answerDisableShuffle)
+                M8.ArrayUtil.Shuffle(mAnswerLocalPoints);
 
             //initialize answers
             for(int i = 0; i < answers.Length; i++) {
@@ -65,7 +67,9 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 }
 
                 //compute score
-                score = Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * wrongCount), 0, int.MaxValue);
+                int totalPoints = GameData.instance.quizBonusPoints * (answers.Length - 1);
+
+                score = Mathf.Clamp(totalPoints - (GameData.instance.quizBonusPoints * wrongCount), 0, int.MaxValue);
             }
             else { //wrong
                 answers[answerInd].state = QuizAnswerWidget.State.Wrong;
@@ -278,7 +282,7 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         var question = questions[mCurQuestionInd];
 
         if(isCorrect) {
-            mCurScore += Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * question.wrongCount), 0, int.MaxValue);
+            mCurScore += question.score;
 
             //show next
             if(nextGO) nextGO.SetActive(true);

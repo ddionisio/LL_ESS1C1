@@ -39,8 +39,8 @@ MonoBehaviour:
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity
-    modalLevelEnd: level3Result
+    modalLevelEnd: level2bResult
   - scene:
       name: level4
       path: Assets/Scenes/level4.unity
-    modalLevelEnd: level1Result
+    modalLevelEnd: level3Result

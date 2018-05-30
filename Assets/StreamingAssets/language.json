@@ -68,6 +68,7 @@
 	"stage_title_3": "Mesozoic",
 	"stage_title_4": "Cenozoic",
 	
+	"rockLayers": "Rock Layers",
 	"intrusiveRock": "Intrusive Rock",
 	
 	"magma": "Magma",
@@ -82,27 +83,33 @@
 	"rock_metamorphic_quartzite_desc": "Quartzite is a non-foliated metamorphic rock. It's mostly composed of quartz from sandstone after it undergoes high pressure and heat.",
 
 	"fossil_perisphinctes": "Perisphinctes",
-	"fossil_perisphinctes_desc": "Perisphinctes is an extinct genus of ammonite cephalopod that lived during the Jurassic Period. They are considered to live in warm-temperate shallow waters worldwide.",
+	"fossil_perisphinctes_desc": "Perisphinctes is a genus of ammonite cephalopod that lived during the Jurassic Period. They are considered to live in warm-temperate shallow waters worldwide.",
 	"fossil_dimetrodon": "Dimetrodon",
-	"fossil_dimetrodon_desc": "Dimetrodon is an extinct genus of synapsids that lived during the Permian Period. They have a large neural spine sail on their back formed by elongated spines extending from the vertebrae.",
+	"fossil_dimetrodon_desc": "Dimetrodon is a genus of synapsids that lived during the Permian Period. They have a large neural spine sail on their back formed by elongated spines extending from the vertebrae.",
 	"fossil_opabinia": "Opabinia",
-	"fossil_opabinia_desc": "Opabinia is an extinct, stemp group arthropod that lived during the Cambrian Period. Their body is soft and have lobes along the sides, along with a fan-shaped tail. It is thought that they lived on the seafloor.",
+	"fossil_opabinia_desc": "Opabinia is a stem group arthropod that lived during the Cambrian Period. Their body is soft and have lobes along the sides, along with a fan-shaped tail. It is thought that they lived on the seafloor.",
 	"fossil_glossopteris": "Glossopteris",
-	"fossil_glossopteris_desc": "The Glossopteris arose during the beginning of the Permian Period. They are an extinct genus of seed ferns known as Glossopteridales. The name is inspired by their tongue-shaped leaves.",
+	"fossil_glossopteris_desc": "The Glossopteris arose during the beginning of the Permian Period. They are a genus of seed ferns known as Glossopteridales. The name is inspired by their tongue-shaped leaves.",
 	
 	"fossil_triceratops": "Triceratops",
-	"fossil_triceratops_desc": "Triceratops is an extinct genus of herbivorous ceratopsid dinosaur that lived during the Certaceous Period. Their unique features are the three horns on their face, and the large bony frill. The Triceratops were herbivorous. Based on their size and teeth structure, they must have eaten fibrous and woody plants.",	
+	"fossil_triceratops_desc": "Triceratops is a genus of herbivorous ceratopsid dinosaur that lived during the Cretaceous Period. Their unique features are the three horns on their face, and the large bony frill. The Triceratops were herbivorous. Based on their size and teeth structure, they must have eaten fibrous and woody plants.",	
 	"fossil_ankylosaurus": "Ankylosaurus",
-	"fossil_ankylosaurus_desc": "Ankylosaurus is an extinct genus of armored dinosaur that lived during the Certaceous Period. Their body is covered in armor plates, and their tail is shaped like a club. The Ankylosaurus is an herbivore. Based on the position of their head, they most likely stuck to eating ferns and shrubs (lots of it).",
+	"fossil_ankylosaurus_desc": "Ankylosaurus is a genus of armored dinosaur that lived during the Cretaceous Period. Their body is covered in armor plates, and their tail is shaped like a club. The Ankylosaurus is an herbivore. Based on the position of their head, they most likely stuck to eating ferns and shrubs (lots of it).",
 	"fossil_mastodon": "Mastodon",
-	"fossil_mastodon_desc": "Mastodons are a species of extinct proboscideans in the genus Mammut, distantly related to elephants. They lived during the Neogene Period. The Mastodons were predominantly forest dwelling animals that fed on various diet obtained from trees and such, much like elephants.",
+	"fossil_mastodon_desc": "Mastodons are a species of proboscideans in the genus Mammut, distantly related to elephants. They lived during the Neogene Period. The Mastodons were predominantly forest dwelling animals that fed on various diet obtained from trees and such, much like elephants.",
 	"fossil_smilodon": "Smilodon",
-	"fossil_smilodon_desc": "Smilodon, also known as the sabre-tooth cat, is an extinct genus of machairodont felid. They lived during the Neogene Period. The Smilodons were an apex predator, hunting down large mammals such as bisons. Based on fossil findings, they most likely lived in a closed habitat such as forest.",
+	"fossil_smilodon_desc": "Smilodon, also known as the sabre-tooth cat, is a genus of machairodont felid. They lived during the Neogene Period. The Smilodons were an apex predator, hunting down large mammals such as bisons. Based on fossil findings, they most likely lived in a closed habitat such as forest.",
+	
+	"fossil_paradoxides": "Paradoxides",
+	"fossil_paradoxides_desc": "Paradoxides is a genus of large trilobites (marine arachnomorph arthropods) that lived throughout the world during the Cambrian Period.",
+	"fossil_stegosaurus": "Stegosaurus",
+	"fossil_stegosaurus_desc": "Stegosaurus is a genus of thyreophoran dinosaur that lived during the Jurassic Period. They were a large, heavy quadrupeds with plates growing out of their rounded back. Their tail also had spikes growing out of it, most likely used for defense against predators.",
 	
 	"summary": "SUMMARY",
 	
-	"result_1_question": "Which layer of rock is the youngest:",
-	"result_1_end": "By observing the layers, and where the magma is located; we can determine which one is the intrusive layer. By following the Cross-cutting Relationships in Laws of Stratigraphy, the intrusive layer is the youngest of the layer.",
+	"result_1_question": "Which rock layer is the oldest:",
+	"result_1_question_2": "Which rock layer is the youngest:",
+	"result_1_end": "By observing the layers, we can determine the oldest and youngest by using the Laws of Stratigraphy. The Quartzite layer is the oldest based on Superposition. While the Gabbro layer is the youngest based on Cross-cutting Relationships.",
 	
 	"indexFossil": "Index Fossil",
 	"coreSamples": "Core Samples",
@@ -110,8 +117,19 @@
 	"result_2_question": "Which one of these is an Index Fossil?",
 	"result_2_end": "Index Fossils are fossils that have only lived a tiny lifespan over a huge area.\n\nThese are the criteria:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
 	
+	"result_2b_question": "Which layer does this correlate to in Column B?",
+	"result_2b_end": "Index Fossils help us correlate rock layers across the world, even if they are composed of different materials. These fossils also help us determine the age of the layers.",
+	
 	"ktBoundary": "K-Pg Boundary",
 	"boundary": "boundary",
+	"correlationIndexFossil": "Correlation by Index Fossils",
+	
+	"columnB": "Column B",
+	
+	"neoproterozoic": "Neoproterozoic",
+	"paleozoic": "Paleozoic",
+	"mesozoic": "Mesozoic",
+	"cenozoic": "Cenozoic",
 	
 	"climate_temperate": "Temperate",
 	"climate_semiTropical": "Semi Tropical",
