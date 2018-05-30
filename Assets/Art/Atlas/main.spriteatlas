@@ -40,9 +40,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: 8f0257a6dc5867c4da1b07600b7dea78, type: 3}
   - {fileID: 21300000, guid: b8e8369bd35fe6c4ba1918dc560f8ad6, type: 3}
+  - {fileID: 21300000, guid: 862fbb014d4e5164ebb12892a16d5e6a, type: 3}
+  - {fileID: 21300000, guid: 53bb0cb16745d1e458e2d88c1ca7197f, type: 3}
+  - {fileID: 21300000, guid: 0b4e2d0dd92d42e458fc37f0b70a4d46, type: 3}
+  - {fileID: 21300000, guid: a94c2791836869944b09cc7b19ec5474, type: 3}
   - {fileID: 21300000, guid: 362d4f86662ea7a4a899985100be1dc8, type: 3}
   - {fileID: 21300000, guid: c2b5b6b1fd3f65e4ba6d3f064af7a97e, type: 3}
   - {fileID: 21300000, guid: cb09664881c7429479652c1c997bf07b, type: 3}
+  - {fileID: 21300000, guid: 52283705b414be94d8033a0010dd3fdf, type: 3}
   - {fileID: 21300000, guid: 1f9fa4e22b9cd56408f941263cee9450, type: 3}
   - {fileID: 21300000, guid: 2e9dfb1545117414b83d6a4dfe7e8a72, type: 3}
   - {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
@@ -57,17 +62,26 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8a2b27c7d7e1bb041aaa0bd367a2bc85, type: 3}
   - {fileID: 21300000, guid: 31d73ae76a973cb4c9529f189dde2f75, type: 3}
   - {fileID: 21300000, guid: 82552aeb43e5e3b4b92cd528bc79f1ba, type: 3}
+  - {fileID: 21300000, guid: d1bd9fe987f9c1c439ccc74a5fd3a287, type: 3}
   - {fileID: 21300008, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
+  - {fileID: 21300000, guid: d9cbc8b8fecb4854c9bcf7b8bfe7c15b, type: 3}
+  - {fileID: 21300000, guid: 0b446b2a89339784b9bc37768f9b8583, type: 3}
+  - {fileID: 21300000, guid: 966d114d04e7ebf4da5e508ad4b0216f, type: 3}
   - {fileID: 21300000, guid: dc2133f6b0c63f04ebc89e34e2681b71, type: 3}
   - {fileID: 21300000, guid: db9d3b392c9a26f4e8a800682e6dfb9f, type: 3}
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
+  - {fileID: 21300000, guid: 746da52fc76531649b4885936c250c39, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
   - {fileID: 21300000, guid: dc980b5d20c3ff94982f5d56c44c4fd2, type: 3}
   - {fileID: 21300000, guid: 41251edb67dcfd0459f59f383b74cd28, type: 3}
   - {fileID: 21300000, guid: c07f3fd20f4560149b65a1f4baa8243d, type: 3}
+  - {fileID: 21300000, guid: ac9bfec20d220564098c82a51417b221, type: 3}
+  - {fileID: 21300000, guid: 893d115dc3a097e44971dec9a1d15e48, type: 3}
+  - {fileID: 21300000, guid: 3fd13e8507cf7364da6c4100e03aebed, type: 3}
   - {fileID: 21300006, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: b6f71b114225dbc41a88c680ff46814c, type: 3}
+  - {fileID: 21300000, guid: f00c9210524923f40849627bd726baae, type: 3}
   - {fileID: 21300000, guid: 18aed5171f3c9fd43a6c5813f89e2302, type: 3}
   - {fileID: 21300000, guid: 7e7b706c9ccb31543a461ad8ec956430, type: 3}
   - {fileID: 21300000, guid: 6caf7cce8036f184da0312f96f48d846, type: 3}
@@ -104,7 +118,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2758efb878bb8f247b4b5995b7940cce, type: 3}
   - {fileID: 21300000, guid: c67df8e929502fe4fa0aff8a98e74df8, type: 3}
   - {fileID: 21300000, guid: 12a77da95649dff458ce1158a20ab5fc, type: 3}
+  - {fileID: 21300000, guid: e8aece3e7263aa149b0b4a70b9f2f900, type: 3}
   - {fileID: 21300000, guid: 7046fe5e687cd9546be34a003bc3c635, type: 3}
+  - {fileID: 21300000, guid: 8c3fbe236c7721b45b5e903b5027bb88, type: 3}
+  - {fileID: 21300000, guid: e4729b1b0406f2146ae64692512d2cb4, type: 3}
+  - {fileID: 21300000, guid: 33306d04434fe2240ae2688852232df1, type: 3}
   - {fileID: 21300000, guid: 1906c193ce5fafa4085202a6924324f2, type: 3}
   - {fileID: 21300000, guid: 8a6648ce70ececc449f69699f8fb643d, type: 3}
   - {fileID: 21300000, guid: c5a54a7e88b59e547a8905c1ad93d892, type: 3}
@@ -158,9 +176,14 @@ SpriteAtlas:
   - result1RockLayers
   - fossilDimetrodonIllustration
   - fossilGlossopterisIllustration
+  - fossilAnkylosaurusIllustration
+  - fossilTriceratopsIllustration
+  - fossilSmilodonIllustration
+  - fossilMammothIllustration
   - rollyRock
   - fossilOpabiniaIllustration
   - fossilColumn
+  - fossilColumn2
   - rockGraniteIllustration
   - rockGneissIllustration
   - rockQuartziteIllustration
@@ -175,17 +198,26 @@ SpriteAtlas:
   - panelFrame
   - buttonActionBase
   - signBlank
+  - climateArid
   - result1RockLayers_gabbro
+  - climateTemperate
+  - climateSemiTropical
+  - climatePolarChill
   - explodeFX
   - collectionIconFrame
   - notebookClose
+  - ktBoundary
   - gnomeGlow
   - cannonBase
   - fossilDimetrodonIcon
   - fossilOpabiniaIcon
   - fossilPerisphinctesIcon
+  - fossilSmilodonIcon
+  - fossilAnkylosaurusIcon
+  - fossilTriceratopsIcon
   - result1RockLayers_quartzine
   - rockGabbroIcon
+  - fossilMammothIcon
   - rockGneissIcon
   - rockQuartziteIcon
   - rockGraniteIcon
@@ -222,7 +254,11 @@ SpriteAtlas:
   - cancelIcon
   - buttonHighlight
   - fossilColumn_perisphinctes
+  - fossilColumn_ankylosaurus
   - fossilColumn_glossopteris
+  - fossilColumn_triceratops
+  - fossilColumn_mammoth
+  - fossilColumn_smilodon
   - fossilColumn_opabinia
   - fossilColumn_dimetrodon
   - edge_shade

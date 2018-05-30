@@ -12,6 +12,73 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         ResultEndExit
     }
 
+    [System.Serializable]
+    public class QuestionData {
+        public GameObject questionGO;
+        public QuizAnswerWidget[] answers;
+        public int answerCorrectIndex;
+
+        public int score { get; private set; }
+        public int wrongCount { get; private set; }
+
+        public event System.Action<int, bool> answerCallback;
+
+        private Vector2[] mAnswerLocalPoints;
+
+        public void Init() {
+            //grab anchor points, assumes all answers are on the same parent and of uniform dimension
+            mAnswerLocalPoints = new Vector2[answers.Length];
+            for(int i = 0; i < answers.Length; i++) {
+                mAnswerLocalPoints[i] = answers[i].transform.localPosition;
+
+                //setup answer callback
+                answers[i].clickCallback += OnAnswerSubmit;
+            }
+        }
+
+        public void Start() {
+            //shuffle points
+            //shuffle answer points
+            M8.ArrayUtil.Shuffle(mAnswerLocalPoints);
+
+            //initialize answers
+            for(int i = 0; i < answers.Length; i++) {
+                answers[i].transform.localPosition = mAnswerLocalPoints[i];
+
+                answers[i].Init(i);
+            }
+
+            score = 0;
+            wrongCount = 0;
+        }
+
+        void OnAnswerSubmit(int answerInd) {
+            bool isCorrect = answerCorrectIndex == answerInd;
+            if(isCorrect) { //correct
+                //set answer index to correct
+                //lock other answers
+                for(int i = 0; i < answers.Length; i++) {
+                    if(i == answerInd)
+                        answers[i].state = QuizAnswerWidget.State.Correct;
+                    else if(answers[i].state == QuizAnswerWidget.State.Normal)
+                        answers[i].state = QuizAnswerWidget.State.Locked;
+                }
+
+                //compute score
+                score = Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * wrongCount), 0, int.MaxValue);
+            }
+            else { //wrong
+                answers[answerInd].state = QuizAnswerWidget.State.Wrong;
+                wrongCount++;
+
+                //show points deduction?
+            }
+
+            if(answerCallback != null)
+                answerCallback(answerInd, isCorrect);
+        }
+    }
+
     [Header("GameObject Roots")]
     public GameObject resultGO;
     public GameObject questionGO;
@@ -19,8 +86,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     public GameObject nextGO;
 
     [Header("Data")]
-    public QuizAnswerWidget[] answers;
-    public int answerCorrectIndex;
+    public QuestionData[] questions;
+    public float questionStartDelay = 0.4f;
 
     public Text resultScoreLabel;
     
@@ -52,18 +119,33 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         }
     }
 
-    private Vector2[] mAnswerLocalPoints;
+    private int mCurQuestionInd;
+    private int mCurScore;
 
     private State mState = State.Invalid;
     private Coroutine mRout;
 
-    private int mWrongCount;
-    private int mResultScore;
-        
     public void Next() {
         switch(state) {
             case State.Result:
-                state = State.ResultExit;
+                questions[mCurQuestionInd].questionGO.SetActive(false);
+
+                //go to the next question?
+                if(mCurQuestionInd < questions.Length-1) {
+                    if(nextGO) nextGO.SetActive(false);
+
+                    mCurQuestionInd++;
+                    mRout = StartCoroutine(DoQuestionShow());
+                }
+                else {
+                    //add up score
+                    if(scoreWidget)
+                        scoreWidget.Init(LoLManager.instance.curScore, mCurScore);
+                    else
+                        LoLManager.instance.curScore += mCurScore;
+
+                    state = State.ResultExit;
+                }
                 break;
 
             case State.ResultEnd:
@@ -74,15 +156,11 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     }
 
     void Awake() {
-        //grab anchor points, assumes all answers are on the same parent and of uniform dimension
-        mAnswerLocalPoints = new Vector2[answers.Length];
-        for(int i = 0; i < answers.Length; i++) {
-            mAnswerLocalPoints[i] = answers[i].transform.localPosition;
-
-            //setup answer callback
-            answers[i].clickCallback += OnAnswerSubmit;
+        for(int i = 0; i < questions.Length; i++) {
+            questions[i].Init();
+            questions[i].answerCallback += OnAnswerSubmit;
         }
-
+        
         mState = State.Invalid;
         ApplyState();
     }
@@ -110,8 +188,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 if(nextGO) nextGO.SetActive(true);
 
                 //apply score to text
-                if(resultScoreLabel)
-                    resultScoreLabel.text = mResultScore.ToString(); //leading zeros?
+                //if(resultScoreLabel)
+                    //resultScoreLabel.text = mResultScore.ToString(); //leading zeros?
 
                 mRout = StartCoroutine(DoResultEndEnter());
                 break;
@@ -125,18 +203,13 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     }
 
     void M8.UIModal.Interface.IPush.Push(M8.GenericParams parms) {
-        
-        //shuffle answer points
-        M8.ArrayUtil.Shuffle(mAnswerLocalPoints);
-
-        //initialize answers
-        for(int i = 0; i < answers.Length; i++) {
-            answers[i].transform.localPosition = mAnswerLocalPoints[i];
-
-            answers[i].Init(i);
+        for(int i = 0; i < questions.Length; i++) {
+            questions[i].Start();
+            questions[i].questionGO.SetActive(false);
         }
 
-        mWrongCount = 0;
+        mCurQuestionInd = 0;
+        mCurScore = 0;
 
         state = State.Result;
     }
@@ -152,7 +225,7 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 yield return null;
         }
         
-        mRout = null;
+        mRout = StartCoroutine(DoQuestionShow());
     }
 
     IEnumerator DoResultExit() {
@@ -193,33 +266,22 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
             signalExit.Invoke();
     }
 
-    void OnAnswerSubmit(int answerInd) {
-        if(answerCorrectIndex == answerInd) { //correct
-            //set answer index to correct
-            //lock other answers
-            for(int i = 0; i < answers.Length; i++) {
-                if(i == answerInd)
-                    answers[i].state = QuizAnswerWidget.State.Correct;
-                else if(answers[i].state == QuizAnswerWidget.State.Normal)
-                    answers[i].state = QuizAnswerWidget.State.Locked;
-            }
+    IEnumerator DoQuestionShow() {
+        yield return new WaitForSeconds(questionStartDelay);
 
-            //compute score
-            mResultScore = Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * mWrongCount), 0, int.MaxValue);
+        questions[mCurQuestionInd].questionGO.SetActive(true);
 
-            if(scoreWidget)
-                scoreWidget.Init(LoLManager.instance.curScore, mResultScore);
-            else
-                LoLManager.instance.curScore += mResultScore;
-                        
+        mRout = null;
+    }
+
+    void OnAnswerSubmit(int answerInd, bool isCorrect) {
+        var question = questions[mCurQuestionInd];
+
+        if(isCorrect) {
+            mCurScore += Mathf.Clamp(GameData.instance.quizTotalPoints - (GameData.instance.quizWrongPointDeduct * question.wrongCount), 0, int.MaxValue);
+
             //show next
             if(nextGO) nextGO.SetActive(true);
-        }
-        else { //wrong
-            answers[answerInd].state = QuizAnswerWidget.State.Wrong;
-            mWrongCount++;
-
-            //show points deduction?
         }
     }
 }
