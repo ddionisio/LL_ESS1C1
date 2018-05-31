@@ -143,8 +143,12 @@
 	"strataAnalysis": "STRATA ANALYSIS",
 	
 	"scienceScore": "SCIENCE:",
+	"scienceTotalScore": "TOTAL SCIENCE:",
 	
 	"victory": "STRATA ANALYSIS COMPLETE",
+	
+	"complete": "COMPLETE",
+	"completeDesc": "Congratulations, you won!\nThank you for playing!",
 	
 	"test": "TEST",
 	"questionPlaceholder": "This is the question?",
