@@ -7,6 +7,8 @@ public class PlayerActionWidget : MonoBehaviour {
     public Image icon;
     public Color iconDisableColor = Color.gray;
 
+    public GameObject highlightGO;
+
     [Header("Signals")]
     public SignalBool signalGameActiveUpdate;
     public M8.Signal signalPlayerLaunchReady;
@@ -25,6 +27,8 @@ public class PlayerActionWidget : MonoBehaviour {
             SetInteractable(false);
 
             mIsLaunch = false;
+
+            if(highlightGO) highlightGO.SetActive(false);
 
             //launch player
             player.Launch();
@@ -48,6 +52,8 @@ public class PlayerActionWidget : MonoBehaviour {
 
         SetInteractable(false);
 
+        if(highlightGO) highlightGO.SetActive(false);
+
         if(signalGameActiveUpdate) signalGameActiveUpdate.callback += OnSignalGameActiveUpdate;
         if(signalPlayerLaunchReady) signalPlayerLaunchReady.callback += OnSignalPlayerIdle;
         if(signalPlayerCanJumpUpdate) signalPlayerCanJumpUpdate.callback += OnSignalPlayerCanJumpUpdate;
@@ -58,13 +64,17 @@ public class PlayerActionWidget : MonoBehaviour {
             //setup initial state
             SetInteractable(false);
 
+            if(highlightGO) highlightGO.SetActive(false);
+
             mIsLaunch = false;
         }
     }
 
-    void OnSignalPlayerIdle() {
+    void OnSignalPlayerIdle() {        
         //launch mode
         mIsLaunch = true;
+
+        if(highlightGO) highlightGO.SetActive(true);
 
         SetInteractable(true);
     }
