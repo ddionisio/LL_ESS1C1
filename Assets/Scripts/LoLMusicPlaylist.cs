@@ -29,6 +29,23 @@ public class LoLMusicPlaylist : M8.SingletonBehaviour<LoLMusicPlaylist> {
             Debug.Log("intro music is not set.");
     }
 
+    public void PlayTrack(int itemIndex) {
+        if(items[itemIndex].disabled)
+            return;
+
+        string path = items[itemIndex].path;
+
+        if(string.IsNullOrEmpty(path))
+            return;
+
+        if(mRout != null) {
+            StopCoroutine(mRout);
+            mRout = null;
+        }
+
+        LoLManager.instance.PlaySound(path, true, true);
+    }
+
     public void Play() {
         if(mRout != null)
             return; //already playing

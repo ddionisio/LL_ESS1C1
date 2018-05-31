@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelEndController : MonoBehaviour {
+    public int musicTrackIndex = 1;
+
     [Header("Signals")]
     public M8.Signal signalProceed;
 
@@ -24,6 +26,9 @@ public class LevelEndController : MonoBehaviour {
         //wait for scene transition
         while(M8.SceneManager.instance.isLoading)
             yield return null;
+
+        if(LoLMusicPlaylist.isInstantiated)
+            LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
 
         //open up the proper modal for the current level index
         int ind;

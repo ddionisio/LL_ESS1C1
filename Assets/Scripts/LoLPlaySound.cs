@@ -8,6 +8,7 @@ public class LoLPlaySound : MonoBehaviour {
     public bool isLoop;
 
     public void Play() {
-        LoLManager.instance.PlaySound(soundPath, isBackground, isLoop);
+        if(LoLManager.isInstantiated)
+            LoLManager.instance.PlaySound(soundPath, isBackground, isLoop);
     }
 }

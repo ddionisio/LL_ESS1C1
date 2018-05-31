@@ -19,6 +19,8 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
 
     public bool toggleRefreshMusic; //turn off music and save path, replay on turn on
 
+    public Button restartButton;
+
     private bool mIsPaused;
 
     private float mLastMusicVolume;
@@ -124,6 +126,10 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
         Pause(true);
 
         M8.InputManager.instance.AddButtonCall(0, InputAction.Escape, OnInputEscape);
+
+        if(restartButton) {
+            restartButton.interactable = GameMapController.isInstantiated;
+        }
     }
 
     void M8.UIModal.Interface.IPop.Pop() {

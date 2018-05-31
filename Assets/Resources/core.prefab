@@ -167,8 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bba549c63247e4c8497436df4fe3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMusicPath: 
-  items: []
+  startMusicPath: Audio/Itty_Bitty_8_Bit.mp3
+  items:
+  - path: Audio/Hall_of_the_Mountain_King.mp3
+    duration: 400
+    disabled: 0
+  - path: Audio/Fluffing_a_Duck.mp3
+    duration: 400
+    disabled: 0
+  - path: Audio/Gaslamp_Funworks.mp3
+    duration: 400
+    disabled: 0
 --- !u!114 &114468768111179502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +211,7 @@ MonoBehaviour:
   _mode: 0
   levelString: level
   stackEnable: 0
+  isTimeScaleOverride: 0
 --- !u!114 &114634992760407854
 MonoBehaviour:
   m_ObjectHideFlags: 1

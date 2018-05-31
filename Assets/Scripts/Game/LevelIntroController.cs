@@ -20,12 +20,17 @@ public class LevelIntroController : MonoBehaviour {
     public Text formatLabel;
     public Transform highlightRoot;
 
+    public int musicTrackIndex = 0;
+
     void Awake() {
         //initialize hud
         HUD.instance.isGameActive = false;
     }
 
     void Start() {
+        if(LoLMusicPlaylist.isInstantiated)
+            LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
+
         int ind = Mathf.Clamp(GameData.instance.curLevelIndex, 0, levels.Length);
 
         //setup texts

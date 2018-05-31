@@ -9,6 +9,8 @@ public class EndingController : MonoBehaviour {
 
     public Text scoreLabel;
 
+    public int musicTrackIndex = 2;
+
     void Awake() {
         //initialize hud
         HUD.instance.isGameActive = false;
@@ -18,6 +20,9 @@ public class EndingController : MonoBehaviour {
         //wait for scene transition
         while(M8.SceneManager.instance.isLoading)
             yield return null;
+
+        if(LoLMusicPlaylist.isInstantiated)
+            LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
 
         //setup infos
         if(LoLManager.isInstantiated) {
