@@ -34,6 +34,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 5c4d9e699ba319d4eb78dad308280192, type: 3}
     - {fileID: 102900000, guid: 6df03bc98dae542408045d1603e43c34, type: 3}
     - {fileID: 102900000, guid: 05beefcf0fa336a4bada090152a1600e, type: 3}
+    - {fileID: 102900000, guid: d9ace0b0ca4d2e84bb890afa2f9e38d1, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -55,7 +56,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
   - {fileID: 21300000, guid: 53cf1db0bede7024391acc3d04d4f485, type: 3}
   - {fileID: 21300000, guid: 3d72d0dbb8cd5ff4996863429daabbe1, type: 3}
+  - {fileID: 21300000, guid: c062de09e24227d47903291812741966, type: 3}
   - {fileID: 21300000, guid: a3b5a9abaea696a42a73855389f46869, type: 3}
+  - {fileID: 21300000, guid: 68b79b6c9de051b4d8230cf58fd3889a, type: 3}
+  - {fileID: 21300000, guid: 82d8d6c8a1e303f49ae2085f5422c43b, type: 3}
+  - {fileID: 21300000, guid: 14fc9ca825586584287df9840243a5bd, type: 3}
+  - {fileID: 21300000, guid: fde78cf21a65a2248a76a1c56c4b2bdf, type: 3}
   - {fileID: 21300000, guid: fc0504da82d598a408f2518e2c2df71e, type: 3}
   - {fileID: 21300000, guid: c1f5fc9afb034f74aac8e0be2bdbc03e, type: 3}
   - {fileID: 21300000, guid: 6fd9f40ba306bb44584adfb75d681b92, type: 3}
@@ -208,7 +214,12 @@ SpriteAtlas:
   - rockQuartziteIllustration
   - notebookBase
   - rockGabbroIllustration
+  - level3Thumbnail
   - fossilPerisphinctesIllustration
+  - level4Thumbnail
+  - level1Thumbnail
+  - level2Thumbnail
+  - robotPortrait
   - signLargeBlank
   - nextArrow
   - goalAura
