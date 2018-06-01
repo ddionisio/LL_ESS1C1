@@ -1,19 +1,19 @@
 {
 	"introStratigraphy":{ "voiceDuration":1 },
-	"introStratigraphyDetail1":{ "voiceDuration":3 },
-	"coreSample":{ "voiceDuration":1 },
+	"introStratigraphyDetail1":{ "voiceDuration":5 },
+	"coreSample":{ "voiceDuration":2 },
 	"stratum":{ "voiceDuration":1 },
 	"strata":{ "voiceDuration":1 },
-	"introStratigraphyDetail2":{ "voiceDuration":5 },
-	"mesozoicEra":{ "voiceDuration":1 },
-	"cenozoicEra":{ "voiceDuration":1 },
-	"paleozoicEra":{ "voiceDuration":1 },
+	"introStratigraphyDetail2":{ "voiceDuration":8 },
+	"mesozoicEra":{ "voiceDuration":1.5 },
+	"cenozoicEra":{ "voiceDuration":1.5 },
+	"paleozoicEra":{ "voiceDuration":1.5 },
 	"introLawStratigraphy":{ "voiceDuration":2 },
 	"introLawStratigraphySuperposition":{ "voiceDuration":1.5 },	
 	"introLawStratigraphySuperpositionDesc":{ "voiceDuration":3 },
 	"introLawStratigraphyOriginalHorizontality":{ "voiceDuration":2 },
 	"introLawStratigraphyOriginalHorizontalityDesc":{ "voiceDuration":6 },
-	"introLawStratigraphyCrossCutting":{ "voiceDuration":3 },
+	"introLawStratigraphyCrossCutting":{ "voiceDuration":2.5 },
 	"introLawStratigraphyCrossCuttingDesc":{ "voiceDuration":5 },
 	"introLawStratigraphyLateralContinuity":{ "voiceDuration":2 },
 	"introLawStratigraphyLateralContinuityDesc":{ "voiceDuration":5 },
@@ -65,6 +65,9 @@
 	"fossil_paradoxides_desc":{ "voiceDuration":5 },
 	"fossil_stegosaurus":{ "voiceDuration":1.5 },
 	"fossil_stegosaurus_desc":{ "voiceDuration":5 },
+	
+	"restart":{ "voiceDuration":1 },
+	"restartDesc":{ "voiceDuration":3 },
 	
 	"welcome":{ "voiceDuration":1.5 }
 }

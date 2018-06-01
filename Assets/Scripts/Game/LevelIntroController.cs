@@ -27,20 +27,28 @@ public class LevelIntroController : MonoBehaviour {
         HUD.instance.isGameActive = false;
     }
 
-    void Start() {
+    IEnumerator Start() {
         if(LoLMusicPlaylist.isInstantiated)
             LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
 
+        while(M8.SceneManager.instance.isLoading)
+            yield return null;
+
         int ind = Mathf.Clamp(GameData.instance.curLevelIndex, 0, levels.Length);
 
-        //setup texts
-        if(titleLabel) titleLabel.text = LoLLocalize.Get(levels[ind].nameTextRef);
+        var levelDat = levels[ind];
 
-        if(formatLabel) formatLabel.text = string.Format("{0} - ", levels[ind].formatText);
+        //setup texts
+        if(titleLabel) titleLabel.text = LoLLocalize.Get(levelDat.nameTextRef);
+
+        if(formatLabel) formatLabel.text = string.Format("{0} - ", levelDat.formatText);
 
         //apply highlight position
-        if(highlightRoot && levels[ind].anchor) {
-            highlightRoot.position = levels[ind].anchor.position;
+        if(highlightRoot && levelDat.anchor) {
+            highlightRoot.position = levelDat.anchor.position;
         }
+
+        if(LoLManager.isInstantiated)
+            LoLManager.instance.SpeakText(levelDat.nameTextRef);
     }
 }

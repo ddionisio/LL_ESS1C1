@@ -40,6 +40,11 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
             }
         }
     }
+
+    public struct SpeakQueueData {
+        public int index;
+        public string key;
+    }
         
     public const string userDataSettingsKey = "settings";
 
@@ -174,7 +179,7 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
 
     private Coroutine mSpeakQueueRout;
     private string mSpeakQueueGroup;
-    private LinkedList<string> mSpeakQueues = new LinkedList<string>();
+    private LinkedList<SpeakQueueData> mSpeakQueues = new LinkedList<SpeakQueueData>();
     
     public virtual void PlaySound(string path, bool background, bool loop) {
         if(background && !string.IsNullOrEmpty(mLastSoundBackgroundPath)) {
@@ -202,6 +207,8 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
     }
 
     protected virtual void _SpeakText(string key) {
+        //Debug.Log("Speaking: " + key);
+
         LOLSDK.Instance.SpeakText(key);
     }
 
@@ -227,26 +234,27 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
 
             //don't add to queue if it already exists
             //add to queue based on index
-            int nodeIndex = 0;
-            LinkedListNode<string> nodeToAddAfter = null;
+            LinkedListNode<SpeakQueueData> nodeToAddBefore = null;
 
             for(var node = mSpeakQueues.First; node != null; node = node.Next) {
-                if(nodeIndex == index) {
-                    nodeToAddAfter = node;
-                }
+                var nodeData = node.Value;
 
-                if(node.Value == key) {
+                if(key == nodeData.key) {
                     //already exists
                     return;
                 }
 
-                nodeIndex++;
+                if(nodeToAddBefore == null && index < nodeData.index) {
+                    nodeToAddBefore = node;
+                }
             }
 
-            if(nodeToAddAfter != null)
-                mSpeakQueues.AddAfter(nodeToAddAfter, key);
+            var newQueue = new SpeakQueueData() { key = key, index = index };
+
+            if(nodeToAddBefore != null)
+                mSpeakQueues.AddBefore(nodeToAddBefore, newQueue);
             else
-                mSpeakQueues.AddLast(key);
+                mSpeakQueues.AddLast(newQueue);
 
             //start up routine if not yet started
             if(mSpeakQueueRout == null)
@@ -587,7 +595,7 @@ public class LoLManager : M8.SingletonBehaviour<LoLManager> {
             yield return DoWait(_speakQueueStartDelay);
 
         while(mSpeakQueues.Count > 0) {
-            string key = mSpeakQueues.First.Value;
+            string key = mSpeakQueues.First.Value.key;
             mSpeakQueues.RemoveFirst();
 
             //play

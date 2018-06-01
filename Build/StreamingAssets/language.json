@@ -1,0 +1,162 @@
+{
+  "_meta": {
+    "maxChars": {
+      "welcome": 20
+    }
+  },
+  "en": {
+	"welcome": "Welcome!",
+	
+	"title": "GNOMATIC STRATA ANALYZER",
+	
+	"start": "START",
+	
+	"pageTitleStratigraphy": "STRATIGRAPHY",
+	"pageTitleFossils": "FOSSILS",
+	"pageTitleRocks": "ROCKS",
+	"pageTitleOptions": "OPTIONS",
+	
+	"on": "ON",
+	"off": "OFF",
+	
+	"music": "MUSIC",
+	"sound": "SOUND",
+	
+	"restart": "RESTART",
+	"restartDesc": "Press CONFIRM to restart the level.",
+	"confirm": "CONFIRM",
+	"cancel": "CANCEL",
+	
+	"credits": "CREDITS",
+	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
+	
+	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers.",
+	"introDialog2": "But before we have a crack at it, let's first review the basis of Stratigraphy.",
+	
+	"introStratigraphy": "STRATIGRAPHY",
+	"introStratigraphyDetail1": "A study in geology that deals with the order and position of rock layers (strata).",
+	"introStratigraphyDetail2": "Each layer of strata can give us information about the Earth's past.  These are categorized in geological time scale.",
+	
+	"coreSample": "Core Sample",	
+	"strata": "Strata",
+	"stratum": "Stratum",
+	
+	"paleozoicEra": "Paleozoic Era",
+	"mesozoicEra": "Mesozoic Era",
+	"cenozoicEra": "Cenozoic Era",
+	
+	"relativeAge": "Relative Age",
+	"older": "Older",
+	"younger": "Younger",
+	"youngest": "Youngest",
+	
+	"NicolasSteno": "Nicolas Steno",
+	
+	"introLawStratigraphy": "LAWS OF STRATIGRAPHY",
+	
+	"introLawStratigraphySuperposition": "Superposition",
+	"introLawStratigraphySuperpositionDesc": "Younger layers of rock sit atop older rocks.",
+	
+	"introLawStratigraphyOriginalHorizontality": "Original Horizontality",
+	"introLawStratigraphyOriginalHorizontalityDesc": "Sedimentary rocks were originally deposited horizontally by weathering and erosions.  Layers that are tilted have since been altered by external force.",
+	
+	"introLawStratigraphyCrossCutting": "Cross-cutting Relationships",
+	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.",
+	
+	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
+	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked or broken up by external force.",
+	
+	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
+	
+	"stage_title_1": "Deep Into the Lithosphere",
+	"stage_title_2": "The Dark Crust",
+	"stage_title_3": "Rigid Crevice",
+	"stage_title_4": "Out Into the Troposphere",
+	
+	"rockLayers": "Rock Layers",
+	"intrusiveRock": "Intrusive Rock",
+	
+	"magma": "Magma",
+	
+	"rock_igneous_gabbro": "Gabbro",
+	"rock_igneous_gabbro_desc": "Gabbro is an intrusive igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
+	"rock_metamorphic_gneiss": "Gneiss",
+	"rock_metamorphic_gneiss_desc": "Gneiss is a foliated metamorphic rock. Its foliations are characterized by alternating dark and light bands. Gneiss is typically formed from shale that undergoes high pressure and heat.",
+	"rock_ingeous_granite": "Granite",
+	"rock_ingeous_granite_desc": "Granite is a light-colored igneous rock with large visible grains. It's mostly composed of quartz and feldspar.",
+	"rock_metamorphic_quartzite": "Quartzite",
+	"rock_metamorphic_quartzite_desc": "Quartzite is a non-foliated metamorphic rock. It's mostly composed of quartz from sandstone after it undergoes high pressure and heat.",
+
+	"fossil_perisphinctes": "Perisphinctes",
+	"fossil_perisphinctes_desc": "Perisphinctes is a genus of ammonite cephalopod that lived during the Jurassic Period. They are considered to live in warm-temperate shallow waters worldwide.",
+	"fossil_dimetrodon": "Dimetrodon",
+	"fossil_dimetrodon_desc": "Dimetrodon is a genus of synapsids that lived during the Permian Period. They have a large neural spine sail on their back formed by elongated spines extending from the vertebrae.",
+	"fossil_opabinia": "Opabinia",
+	"fossil_opabinia_desc": "Opabinia is a stem group arthropod that lived during the Cambrian Period. Their body is soft and have lobes along the sides, along with a fan-shaped tail. It is thought that they lived on the seafloor.",
+	"fossil_glossopteris": "Glossopteris",
+	"fossil_glossopteris_desc": "The Glossopteris arose during the beginning of the Permian Period. They are a genus of seed ferns known as Glossopteridales. The name is inspired by their tongue-shaped leaves.",
+	
+	"fossil_triceratops": "Triceratops",
+	"fossil_triceratops_desc": "Triceratops is a genus of herbivorous ceratopsid dinosaur that lived during the Cretaceous Period. Their unique features are the three horns on their face, and the large bony frill. The Triceratops were herbivorous. Based on their size and teeth structure, they must have eaten fibrous and woody plants.",	
+	"fossil_ankylosaurus": "Ankylosaurus",
+	"fossil_ankylosaurus_desc": "Ankylosaurus is a genus of armored dinosaur that lived during the Cretaceous Period. Their body is covered in armor plates, and their tail is shaped like a club. The Ankylosaurus is an herbivore. Based on the position of their head, they most likely stuck to eating ferns and shrubs (lots of it).",
+	"fossil_mastodon": "Mastodon",
+	"fossil_mastodon_desc": "Mastodons are a species of proboscideans in the genus Mammut, distantly related to elephants. They lived during the Neogene Period. The Mastodons were predominantly forest dwelling animals that fed on various diet obtained from trees and such, much like elephants.",
+	"fossil_smilodon": "Smilodon",
+	"fossil_smilodon_desc": "Smilodon, also known as the sabre-tooth cat, is a genus of machairodont felid. They lived during the Neogene Period. The Smilodons were an apex predator, hunting down large mammals such as bisons. Based on fossil findings, they most likely lived in a closed habitat such as forest.",
+	
+	"fossil_paradoxides": "Paradoxides",
+	"fossil_paradoxides_desc": "Paradoxides is a genus of large trilobites (marine arachnomorph arthropods) that lived throughout the world during the Cambrian Period.",
+	"fossil_stegosaurus": "Stegosaurus",
+	"fossil_stegosaurus_desc": "Stegosaurus is a genus of thyreophoran dinosaur that lived during the Jurassic Period. They were a large, heavy quadrupeds with plates growing out of their rounded back. Their tail also had spikes growing out of it, most likely used for defense against predators.",
+	
+	"summary": "SUMMARY",
+	
+	"result_1_question": "Which rock layer is the oldest:",
+	"result_1_question_2": "Which rock layer is the youngest:",
+	"result_1_end": "By using the Laws of Stratigraphy, we have determined that the Quartzite layer is the oldest based on Superposition. While the Gabbro layer is the youngest based on Cross-cutting Relationships.",
+	
+	"indexFossil": "Index Fossil",
+	"coreSamples": "Core Samples",
+	
+	"result_2_question": "Which one of these is an Index Fossil?",
+	"result_2_end": "Index Fossils are useful in identifying the Geological Timescale of a stratum.\n\nThe criteria are:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
+	
+	"result_2b_question": "Which layer does this correlate to in Column B?",
+	"result_2b_end": "Index Fossils allow us to correlate rock layers from one area to another. These layers can be as far apart as distant continents.",
+	
+	"ktBoundary": "K-Pg Boundary",
+	"boundary": "boundary",
+	"correlationIndexFossil": "Correlation by Index Fossils",
+	
+	"columnB": "Column B",
+	
+	"neoproterozoic": "Neoproterozoic",
+	"paleozoic": "Paleozoic",
+	"mesozoic": "Mesozoic",
+	"cenozoic": "Cenozoic",
+	
+	"climate_temperate": "Temperate",
+	"climate_semiTropical": "Semi Tropical",
+	"climate_polarChill": "Polar Chill",
+	"climate_arid": "Arid",
+	
+	"result_3_question_1": "What would be the climate at the bottom of the boundary?",
+	"result_3_question_2": "What would be the climate at the top of the boundary?",
+	"result_3_end": "The K-Pg Boundary (or K-T) is a key bed where its minerals come from a meteor. Based on the evidence of fossils found between the border, it is suggested that a mass extinction has occured due to a rapid change of climate.",
+		
+	"strataAnalysis": "STRATA ANALYSIS",
+	
+	"scienceScore": "SCIENCE:",
+	"scienceTotalScore": "TOTAL SCIENCE:",
+	
+	"victory": "STRATA ANALYSIS COMPLETE",
+	
+	"complete": "COMPLETE",
+	"completeDesc": "Congratulations!\nThank you for playing!",
+	
+	"test": "TEST",
+	"questionPlaceholder": "This is the question?",
+	"answerPlaceholder": "answer"
+  }
+}
