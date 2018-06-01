@@ -30,12 +30,12 @@
 	"credits": "CREDITS",
 	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
 	
-	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers found in the deep underbelly of Earth.",
-	"introDialog2": "But before we have a crack at it, let's first review the study of rock layers.",
+	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers.",
+	"introDialog2": "But before we have a crack at it, let's first review the basis of Stratigraphy.",
 	
 	"introStratigraphy": "STRATIGRAPHY",
 	"introStratigraphyDetail1": "A study in geology that deals with the order and position of rock layers (strata).",
-	"introStratigraphyDetail2": "Each layer of strata can give us information about the earth's past.  These are categorized in geological time scale.",
+	"introStratigraphyDetail2": "Each layer of strata can give us information about the Earth's past.  These are categorized in geological time scale.",
 	
 	"coreSample": "Core Sample",	
 	"strata": "Strata",
@@ -114,16 +114,16 @@
 	
 	"result_1_question": "Which rock layer is the oldest:",
 	"result_1_question_2": "Which rock layer is the youngest:",
-	"result_1_end": "By observing the layers, we can determine the oldest and youngest by using the Laws of Stratigraphy. The Quartzite layer is the oldest based on Superposition. While the Gabbro layer is the youngest based on Cross-cutting Relationships.",
+	"result_1_end": "By using the Laws of Stratigraphy, we have determined that the Quartzite layer is the oldest based on Superposition. While the Gabbro layer is the youngest based on Cross-cutting Relationships.",
 	
 	"indexFossil": "Index Fossil",
 	"coreSamples": "Core Samples",
 	
 	"result_2_question": "Which one of these is an Index Fossil?",
-	"result_2_end": "Index Fossils are fossils that have only lived a tiny lifespan over a huge area.\n\nThese are the criteria:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
+	"result_2_end": "Index Fossils are useful in identifying the Geological Timescale of a stratum.\n\nThe criteria are:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
 	
 	"result_2b_question": "Which layer does this correlate to in Column B?",
-	"result_2b_end": "Index Fossils help us correlate rock layers across the world, even if they are composed of different materials. These fossils also help us determine the age of the layers.",
+	"result_2b_end": "Index Fossils allow us to correlate rock layers from one area to another. These layers can be as far apart as distant continents.",
 	
 	"ktBoundary": "K-Pg Boundary",
 	"boundary": "boundary",
@@ -143,7 +143,7 @@
 	
 	"result_3_question_1": "What would be the climate at the bottom of the boundary?",
 	"result_3_question_2": "What would be the climate at the top of the boundary?",
-	"result_3_end": "The K-Pg Boundary (or K-T) is a unique key bed such that the minerals found in it are common in meteorites. Based on the patterns of fossils found between the border, it suggests that a mass extinction occured due to a massive climate change. It is possible that the impact of the large meteor has enough force to cause the Earth plates to drastically move.",
+	"result_3_end": "The K-Pg Boundary (or K-T) is a key bed where its minerals come from a meteor. Based on the evidence of fossils found between the border, it is suggested that a mass extinction has occured due to a rapid change of climate.",
 		
 	"strataAnalysis": "STRATA ANALYSIS",
 	

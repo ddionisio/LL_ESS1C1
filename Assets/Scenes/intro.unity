@@ -1866,9 +1866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-2
+  playIndex: 3
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &282837439
 MonoBehaviour:
@@ -3653,9 +3653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-1
+  playIndex: 2
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &558523878
 MonoBehaviour:
@@ -6571,7 +6571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1105039656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7352,9 +7352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-1
+  playIndex: 4
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &1201968069
 MonoBehaviour:
@@ -7656,9 +7656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-2
+  playIndex: 1
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &1269524711
 MonoBehaviour:
@@ -8406,16 +8406,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1989118390}
-  - {fileID: 1411965723}
-  - {fileID: 1591741267}
+  - {fileID: 1444059861}
   - {fileID: 1668632662}
   m_Father: {fileID: 1292907058}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 115, y: 0}
+  m_SizeDelta: {x: -230, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1401553041
 MonoBehaviour:
@@ -8436,26 +8435,25 @@ MonoBehaviour:
     loopMode: 0
     loopBackToFrame: 0
     trackValues:
-    - {fileID: 1668632679}
-    - {fileID: 1668632680}
-    - {fileID: 1668632681}
-    - {fileID: 1668632678}
-    - {fileID: 1668632700}
-    - {fileID: 1668632699}
+    - {fileID: 1668632682}
+    - {fileID: 1668632697}
+    - {fileID: 1668632685}
+    - {fileID: 1668632646}
+    - {fileID: 1668632696}
+    - {fileID: 1668632683}
     - {fileID: 1668632698}
     - {fileID: 1668632686}
-    - {fileID: 1668632684}
-    - {fileID: 1668632685}
-    - {fileID: 1668632697}
-    - {fileID: 1668632682}
-    - {fileID: 1668632683}
-    - {fileID: 1668632696}
-    track_count: 15
+    - {fileID: 1668632681}
+    - {fileID: 1668632680}
+    - {fileID: 1668632699}
+    - {fileID: 1668632700}
+    - {fileID: 1668632679}
+    track_count: 16
     group_count: 0
     rootGroup:
       group_name: 
       group_id: 0
-      elements: 02000000030000000400000009000000070000000a0000000800000005000000060000000b0000000c0000000d0000000e0000000f000000
+      elements: 02000000030000000400000010000000070000000800000005000000060000000b0000000c0000000d0000000e0000000f000000
       foldout: 1
     groupValues: []
   - name: ExitLaw1
@@ -8780,12 +8778,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1411965722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1401553040}
-  m_RootOrder: 1
+  m_Father: {fileID: 1444059861}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -9016,9 +9014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-2
+  playIndex: 2
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &1415669665
 MonoBehaviour:
@@ -9167,6 +9165,41 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1 &1444059860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1444059861}
+  m_Layer: 5
+  m_Name: StenoRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1444059861
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1444059860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1411965723}
+  - {fileID: 1591741267}
+  m_Father: {fileID: 1401553040}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1445121731
 Prefab:
   m_ObjectHideFlags: 0
@@ -10548,9 +10581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c8a68ba18af8428b83425ebc8b08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playGroup: 
-  playIndex: -1
-  autoPlay: 0
+  playGroup: intro2-1
+  playIndex: 3
+  autoPlay: 1
   hideOnClick: {fileID: 0}
 --- !u!114 &1537973611
 MonoBehaviour:
@@ -10851,14 +10884,14 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591741266}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 162929380}
   - {fileID: 608737760}
-  m_Father: {fileID: 1401553040}
-  m_RootOrder: 2
+  m_Father: {fileID: 1444059861}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -11923,10 +11956,6 @@ GameObject:
   - component: {fileID: 1668632683}
   - component: {fileID: 1668632649}
   - component: {fileID: 1668632648}
-  - component: {fileID: 1668632678}
-  - component: {fileID: 1668632647}
-  - component: {fileID: 1668632684}
-  - component: {fileID: 1668632646}
   - component: {fileID: 1668632676}
   - component: {fileID: 1668632677}
   - component: {fileID: 1668632645}
@@ -12063,6 +12092,7 @@ GameObject:
   - component: {fileID: 1668632749}
   - component: {fileID: 1668632748}
   - component: {fileID: 1668632747}
+  - component: {fileID: 1668632646}
   m_Layer: 0
   m_Name: _animdata
   m_TagString: Untagged
@@ -12612,38 +12642,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1668632621}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1a8857389d14140b76f9246cb48f48, type: 3}
+  m_Script: {fileID: 11500000, guid: 042e85c951e5ca5499d17dbabf8e5b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  interp: 0
-  frame: 25
-  easeType: 1
-  amplitude: 0
-  period: 0
-  customEase: []
-  setActive: 1
-  endFrame: -1
---- !u!114 &1668632647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1668632621}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1a8857389d14140b76f9246cb48f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  interp: 0
-  frame: 15
-  easeType: 1
-  amplitude: 0
-  period: 0
-  customEase: []
-  setActive: 1
-  endFrame: -1
+  id: 16
+  name: Track15
+  keys: []
+  foldout: 1
+  _targetPath: 
+  obj: {fileID: 1444059860}
+  startActive: 0
 --- !u!114 &1668632648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12971,7 +12979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1401553040}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1668632663
 MonoBehaviour:
@@ -13297,25 +13305,6 @@ MonoBehaviour:
   _targetPath: 
   obj: {fileID: 1105039655}
   startActive: 1
---- !u!114 &1668632678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1668632621}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042e85c951e5ca5499d17dbabf8e5b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 9
-  name: Track8
-  keys:
-  - {fileID: 1668632647}
-  foldout: 1
-  _targetPath: 
-  obj: {fileID: 1411965722}
-  startActive: 0
 --- !u!114 &1668632679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13428,25 +13417,6 @@ MonoBehaviour:
   componentName: CanvasGroup
   fieldName: 
   propertyName: alpha
---- !u!114 &1668632684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1668632621}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042e85c951e5ca5499d17dbabf8e5b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 10
-  name: Track9
-  keys:
-  - {fileID: 1668632646}
-  foldout: 1
-  _targetPath: 
-  obj: {fileID: 1591741266}
-  startActive: 0
 --- !u!114 &1668632685
 MonoBehaviour:
   m_ObjectHideFlags: 0
