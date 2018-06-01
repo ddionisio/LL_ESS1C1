@@ -33,5 +33,38 @@
 	"result_3_question_1":{ "voiceDuration":4 },
 	"result_3_question_2":{ "voiceDuration":4 },
 	"result_3_end":{ "voiceDuration":8 },
+	
+	"rock_igneous_gabbro":{ "voiceDuration":1.5 },
+	"rock_igneous_gabbro_desc":{ "voiceDuration":5 },
+	"rock_metamorphic_gneiss":{ "voiceDuration":1.5 },
+	"rock_metamorphic_gneiss_desc":{ "voiceDuration":5 },
+	"rock_ingeous_granite":{ "voiceDuration":1.5 },
+	"rock_ingeous_granite_desc":{ "voiceDuration":5 },
+	"rock_metamorphic_quartzite":{ "voiceDuration":1.5 },
+	"rock_metamorphic_quartzite_desc":{ "voiceDuration":5 },
+
+	"fossil_perisphinctes":{ "voiceDuration":1.5 },
+	"fossil_perisphinctes_desc":{ "voiceDuration":5 },
+	"fossil_dimetrodon":{ "voiceDuration":1.5 },
+	"fossil_dimetrodon_desc":{ "voiceDuration":5 },
+	"fossil_opabinia":{ "voiceDuration":1.5 },
+	"fossil_opabinia_desc":{ "voiceDuration":5 },
+	"fossil_glossopteris":{ "voiceDuration":1.5 },
+	"fossil_glossopteris_desc":{ "voiceDuration":5 },
+	
+	"fossil_triceratops":{ "voiceDuration":1.5 },
+	"fossil_triceratops_desc":{ "voiceDuration":5 },
+	"fossil_ankylosaurus":{ "voiceDuration":1.5 },
+	"fossil_ankylosaurus_desc":{ "voiceDuration":5 },
+	"fossil_mastodon":{ "voiceDuration":1.5 },
+	"fossil_mastodon_desc":{ "voiceDuration":5 },
+	"fossil_smilodon":{ "voiceDuration":1.5 },
+	"fossil_smilodon_desc":{ "voiceDuration":5 },
+	
+	"fossil_paradoxides":{ "voiceDuration":1.5 },
+	"fossil_paradoxides_desc":{ "voiceDuration":5 },
+	"fossil_stegosaurus":{ "voiceDuration":1.5 },
+	"fossil_stegosaurus_desc":{ "voiceDuration":5 },
+	
 	"welcome":{ "voiceDuration":1.5 }
 }

@@ -79,7 +79,26 @@ public class LoLLocalize : Localize {
 
         //load extras if we haven't yet
         if(mEntryExtras == null && languageExtraInfo) {
-            mEntryExtras = JSON.ToObject<Dictionary<string, LanguageExtraInfo>>(languageExtraInfo.text);
+            Dictionary<string, object> entryExtraDefs = JSON.Parse(languageExtraInfo.text) as Dictionary<string, object>;
+
+            mEntryExtras = new Dictionary<string, LanguageExtraInfo>(entryExtraDefs.Count);
+
+            foreach(var entryExtraDef in entryExtraDefs) {
+                //TODO: fix this crap
+                LanguageExtraInfo newInfo = new LanguageExtraInfo();
+
+                Dictionary<string, object> fields = entryExtraDef.Value as Dictionary<string, object>;
+                foreach(var field in fields) {
+                    if(field.Key == "voiceDuration")
+                        newInfo.voiceDuration = float.Parse(field.Value.ToString());
+                }
+
+                mEntryExtras.Add(entryExtraDef.Key, newInfo);
+            }
+            //LanguageExtraInfo thing = entryExtraDefs["introLawStratigraphySuperposition"] as LanguageExtraInfo;
+            //int ii = 0;
+            //JSON.ToObject()
+            //mEntryExtras = JSON.ToObject<Dictionary<string, LanguageExtraInfo>>(languageExtraInfo.text); //doesn't work on browser
         }        
 
         Refresh();
