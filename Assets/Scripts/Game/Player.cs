@@ -340,7 +340,8 @@ public class Player : M8.EntityBase {
                             physicsBody.velocity = curVel;
                         }
                     }
-                    else if(isMoveActive) {
+
+                    if(isMoveActive) {
                         //move
                         physicsBody.AddForce(mGroundMoveDir * data.moveForce, ForceMode2D.Force);
                     }

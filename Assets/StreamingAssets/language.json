@@ -27,6 +27,9 @@
 	"confirm": "CONFIRM",
 	"cancel": "CANCEL",
 	
+	"credits": "CREDITS",
+	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
+	
 	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers found in the deep underbelly of Earth.",
 	"introDialog2": "But before we have a crack at it, let's first review the study of rock layers.",
 	
