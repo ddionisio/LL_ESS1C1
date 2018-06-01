@@ -39,6 +39,11 @@ public class PlayerData : ScriptableObject {
     public float pullDistanceLimit = 2f;
     public int pullStepCount = 5;
 
+    [Header("SFX")]
+    public string sfxPathLaunch = "Audio/cannonFire.wav";
+    public string sfxPathDeath = "Audio/death.wav";
+    public string[] sfxPathJumps = new string[] { "Audio/jump1.wav", "Audio/jump2.wav", "Audio/jump3.wav", "Audio/jump4.wav" };
+
     public void InvokeStateSignal(EntityState state) {
         for(int i = 0; i < stateSignalInvokes.Length; i++) {
             if(stateSignalInvokes[i].state == state) {

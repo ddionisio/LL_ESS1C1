@@ -129,6 +129,10 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         mDiedCheckpoint = false;
         //
 
+        //play sfx
+        if(LoLManager.isInstantiated && !string.IsNullOrEmpty(data.sfxPathGoal))
+            LoLManager.instance.PlaySound(data.sfxPathGoal, false, false);
+
         //show victory modal
         M8.UIModal.Manager.instance.ModalCloseAll();
         M8.UIModal.Manager.instance.ModalOpen(Modals.victory);
@@ -164,6 +168,10 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
             //apply camera bounds
             if(checkpoint.cameraBounds)
                 gameCamera.SetBounds(checkpoint.cameraBounds.rect, true);
+
+            //play sfx
+            if(LoLManager.isInstantiated && !string.IsNullOrEmpty(data.sfxPathCheckpoint))
+                LoLManager.instance.PlaySound(data.sfxPathCheckpoint, false, false);
         }
         else
             Debug.LogWarning("Unknown Player Checkpoint: " + checkpoint.name);

@@ -17,6 +17,9 @@ public class EndingController : MonoBehaviour {
     }
 
     IEnumerator Start() {
+        if(animator && !string.IsNullOrEmpty(take))
+            animator.ResetTake(take);
+
         //wait for scene transition
         while(M8.SceneManager.instance.isLoading)
             yield return null;

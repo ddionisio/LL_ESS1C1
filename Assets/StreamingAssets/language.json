@@ -150,7 +150,7 @@
 	"victory": "STRATA ANALYSIS COMPLETE",
 	
 	"complete": "COMPLETE",
-	"completeDesc": "Congratulations, you won!\nThank you for playing!",
+	"completeDesc": "Congratulations!\nThank you for playing!",
 	
 	"test": "TEST",
 	"questionPlaceholder": "This is the question?",

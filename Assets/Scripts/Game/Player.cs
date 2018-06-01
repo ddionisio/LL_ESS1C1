@@ -148,6 +148,9 @@ public class Player : M8.EntityBase {
                 physicsBody.AddForceAtPosition(baseForce, jumpPosition, ForceMode2D.Impulse);
 
                 GamePool.instance.JumpFX(jumpPosition, dir);
+
+                //play sfx
+                PlayJumpSFX();
             }
 
             mLastJumpTime = Time.time;
@@ -412,6 +415,9 @@ public class Player : M8.EntityBase {
             if(!isGrounded) {
                 GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, mContactPoints[nearestSideContactPointInd].point, false);
                 //physicsBody.AddForce(mGroundMoveDir * data.wallImpulse, ForceMode2D.Impulse);
+
+                //play sfx
+                PlayJumpSFX();
             }
         }
     }
@@ -543,6 +549,13 @@ public class Player : M8.EntityBase {
         }
     }
 
+    private void PlayJumpSFX() {
+        int jumpSfxInd = Random.Range(0, data.sfxPathJumps.Length);
+        string jumpSfxPath = data.sfxPathJumps[jumpSfxInd];
+        if(LoLManager.isInstantiated && !string.IsNullOrEmpty(jumpSfxPath))
+            LoLManager.instance.PlaySound(jumpSfxPath, false, false);
+    }
+
     private void ClearRoutine() {
         if(mRout != null) {
             StopCoroutine(mRout);
@@ -584,6 +597,10 @@ public class Player : M8.EntityBase {
 
         mRout = null;
 
+        //play sfx
+        if(LoLManager.isInstantiated && !string.IsNullOrEmpty(data.sfxPathLaunch))
+            LoLManager.instance.PlaySound(data.sfxPathLaunch, false, false);
+
         //show explosion display
         if(spawnExplodeDisplayPoint)
             GamePool.instance.ExplodeAt(GamePool.ExplodeTypes.explodeWall, spawnExplodeDisplayPoint.position, true);
@@ -606,6 +623,10 @@ public class Player : M8.EntityBase {
     }
 
     IEnumerator DoDeath() {
+        //play sfx
+        if(LoLManager.isInstantiated && !string.IsNullOrEmpty(data.sfxPathDeath))
+            LoLManager.instance.PlaySound(data.sfxPathDeath, false, false);
+
         //play death animation
         if(animator && !string.IsNullOrEmpty(takeDeath)) {
             animator.Play(takeDeath);

@@ -104,6 +104,10 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
 
     public ScoreWidget scoreWidget;
 
+    [Header("SFX")]
+    public string sfxPathCorrect = "Audio/correct.wav";
+    public string sfxPathWrong = "Audio/wrong.wav";
+
     [Header("Signals")]
     public M8.Signal signalExit;
 
@@ -282,10 +286,17 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         var question = questions[mCurQuestionInd];
 
         if(isCorrect) {
+            if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathCorrect))
+                LoLManager.instance.PlaySound(sfxPathCorrect, false, false);
+
             mCurScore += question.score;
 
             //show next
             if(nextGO) nextGO.SetActive(true);
+        }
+        else {
+            if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathWrong))
+                LoLManager.instance.PlaySound(sfxPathWrong, false, false);
         }
     }
 }
