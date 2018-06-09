@@ -82,8 +82,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 966d114d04e7ebf4da5e508ad4b0216f, type: 3}
   - {fileID: 21300000, guid: ed17d82577768c34ea9fa80cc5d31b90, type: 3}
   - {fileID: 21300000, guid: dc2133f6b0c63f04ebc89e34e2681b71, type: 3}
+  - {fileID: 21300000, guid: 2e64ab3c57355714f909ffaa041568e2, type: 3}
+  - {fileID: 21300000, guid: bc50bc20f03d02a4ab3217f5d03b4953, type: 3}
   - {fileID: 21300000, guid: db9d3b392c9a26f4e8a800682e6dfb9f, type: 3}
   - {fileID: 21300000, guid: 568761be69ec2e742bda368acef39850, type: 3}
+  - {fileID: 21300000, guid: dc760f373c435f5498299177d48b13c0, type: 3}
+  - {fileID: 21300000, guid: ad41d46a9ec80c34d81c7ce14f237667, type: 3}
+  - {fileID: 21300000, guid: 1a7187d6d97170844aa4f5b373ef9933, type: 3}
   - {fileID: 21300000, guid: 746da52fc76531649b4885936c250c39, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
@@ -106,15 +111,21 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 86d15521aafffda47bb8da65f8f51bac, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
   - {fileID: 21300000, guid: bb8a087995e8ab149b0f5c36c07f3d96, type: 3}
+  - {fileID: 21300000, guid: 6894285575ff91540992ec01bcd6e4c6, type: 3}
+  - {fileID: 21300000, guid: de49af91cb527f047bb7c5bc7a7b2ddd, type: 3}
   - {fileID: 21300000, guid: eaf5749cab7fa9b42865888fc1f6fa09, type: 3}
+  - {fileID: 21300000, guid: 517131851aa525741bc88747bafd4576, type: 3}
   - {fileID: 21300000, guid: 37cb2529e17560c4aba9fe7c5b457f0c, type: 3}
   - {fileID: 21300000, guid: b073d72a84e15ea469b2bd854d28dadb, type: 3}
   - {fileID: 21300000, guid: d182a5ba30a77ba42a2a00ead0446be8, type: 3}
   - {fileID: 21300000, guid: d5652bf40e85b084a9483d5488eb9a86, type: 3}
   - {fileID: 21300000, guid: 2856147daea854441834af17d7db2f8e, type: 3}
+  - {fileID: 21300000, guid: 19986cd0e45532e45ba0e3a97f4614c2, type: 3}
+  - {fileID: 21300000, guid: b2f6f37ed28a4cf44b8e8f59e9b06351, type: 3}
   - {fileID: 21300004, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: 2243d9b32e7cf6b4f96480e8e64436d2, type: 3}
   - {fileID: 21300000, guid: f1478339c1960a34bbb8e3a6bcc97373, type: 3}
+  - {fileID: 21300000, guid: 12835791529100a4695d955c7f015a13, type: 3}
   - {fileID: 21300000, guid: ef3370f1ed343d94aa0aa9f703aec7e8, type: 3}
   - {fileID: 21300000, guid: 550d62447ed7ff44f948f7a42f7ff2d8, type: 3}
   - {fileID: 21300000, guid: e5dc777390553e4499a405c82af83aef, type: 3}
@@ -131,6 +142,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b7ec1234c8f03a84eb9aeed151c72377, type: 3}
   - {fileID: 21300000, guid: 2acbaa78d70451745b8af9a4ddf7327d, type: 3}
   - {fileID: 21300000, guid: f430c5c3eb0f57445bfaeaecde3eb64f, type: 3}
+  - {fileID: 21300002, guid: 9266d2b7f220c4e4d9a757495f287763, type: 3}
   - {fileID: 21300000, guid: 9266d2b7f220c4e4d9a757495f287763, type: 3}
   - {fileID: 21300000, guid: d1cd2fb02ce66c34ab1ca87abd041e61, type: 3}
   - {fileID: 21300000, guid: cc83cb9bf80426640afe2b7943fd6d0d, type: 3}
@@ -240,8 +252,13 @@ SpriteAtlas:
   - climatePolarChill
   - eraNeoproterozoic
   - explodeFX
+  - rockCycle_compactCement
+  - rockCycle_weatheringErosion
   - collectionIconFrame
   - notebookClose
+  - rockCycle_Melt
+  - rockCycle_heatPressure
+  - rockCycle_Cool
   - ktBoundary
   - gnomeGlow
   - cannonBase
@@ -264,15 +281,21 @@ SpriteAtlas:
   - frameDecor
   - buttonNotebook
   - optionButton
+  - rockSedimentary
+  - questionMark
   - spikeyBoulder
+  - rockIgneous
   - buttonRestart
   - tutorialHandPoint
   - gnome1
   - buttonActionIconFlip
   - mole
+  - magmaBlob
+  - rockMetamorphic
   - result1RockLayers_gneiss
   - notebookTabIconOptions
   - tutorialHandPointDown
+  - sediments
   - buttonActionIconJump
   - frameDecorGnome
   - explodePixel4
@@ -289,6 +312,7 @@ SpriteAtlas:
   - ballArrow
   - button
   - notebookTabIconFossils
+  - tutorialArrow2_slice
   - tutorialArrow2
   - notebookTabIconStratigraphy
   - burrowHole

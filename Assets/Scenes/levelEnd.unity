@@ -182,8 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778bd303c0065954184cb33beae99ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicTrackIndex: 1
   signalProceed: {fileID: 11400000, guid: f465476b0495e1b41826238f66830cae, type: 2}
-  debugLevelIndex: 2
+  debugLevelIndex: 0
 --- !u!4 &1100774722
 Transform:
   m_ObjectHideFlags: 0

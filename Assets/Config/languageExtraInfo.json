@@ -34,6 +34,13 @@
 	"result_3_question_2":{ "voiceDuration":4 },
 	"result_3_end":{ "voiceDuration":8 },
 	
+	"rockCycle":{ "voiceDuration":1.5 },
+	"result_question_rockCycle":{ "voiceDuration":3 },
+	"result_summary_rockCycle":{ "voiceDuration":6 },
+	"rockSediment":{ "voiceDuration":1.5 },
+	"rockIgneous":{ "voiceDuration":1.5 },
+	"rockMetamorphic":{ "voiceDuration":1.5 },
+	
 	"rock_igneous_gabbro":{ "voiceDuration":1.5 },
 	"rock_igneous_gabbro_desc":{ "voiceDuration":5 },
 	"rock_metamorphic_gneiss":{ "voiceDuration":1.5 },

@@ -75,9 +75,7 @@
 	
 	"rockLayers": "Rock Layers",
 	"intrusiveRock": "Intrusive Rock",
-	
-	"magma": "Magma",
-	
+			
 	"rock_igneous_gabbro": "Gabbro",
 	"rock_igneous_gabbro_desc": "Gabbro is an intrusive igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
 	"rock_metamorphic_gneiss": "Gneiss",
@@ -124,7 +122,7 @@
 	
 	"result_2b_question": "Which layer does this correlate to in Column B?",
 	"result_2b_end": "Index Fossils allow us to correlate rock layers from one area to another. These layers can be as far apart as distant continents.",
-	
+			
 	"ktBoundary": "K-Pg Boundary",
 	"boundary": "boundary",
 	"correlationIndexFossil": "Correlation by Index Fossils",
@@ -144,6 +142,24 @@
 	"result_3_question_1": "What would be the climate at the bottom of the boundary?",
 	"result_3_question_2": "What would be the climate at the top of the boundary?",
 	"result_3_end": "The K-Pg Boundary (or K-T) is a key bed where its minerals come from a meteor. Based on the evidence of fossils found between the border, it is suggested that a mass extinction has occured due to a rapid change of climate.",
+	
+	"rockCycle": "Rock Cycle",
+	"rockCycleChart": "Rock Cycle Chart",
+	"result_question_rockCycle": "Create the following rocks:",
+	"result_summary_rockCycle": "Igneous rocks form when magma cools off.\n\nMetamorphic rocks form when pressure is applied to other rocks. Pressure generates heat, causing rocks to change.\n\nSedimentary rocks form when other types of rocks are broken down into sediments by weathering and erosion. These sediments cement together after a long period of time.",
+	
+	"rockSediment": "Sedimentary",
+	"rockIgneous": "Igneous",
+	"rockMetamorphic": "Metamorphic",
+	
+	"rockCycle_compactCement": "Compact & Cementation",
+	"rockCycle_heatPressure": "Pressure & Heat",
+	"rockCycle_weatheringErosion": "Weathering & Erosion",
+	"rockCycle_melt": "Melt",
+	"rockCycle_cool": "Cool Off",
+	
+	"sediments": "Sediments",
+	"magma": "Magma",
 		
 	"strataAnalysis": "STRATA ANALYSIS",
 	

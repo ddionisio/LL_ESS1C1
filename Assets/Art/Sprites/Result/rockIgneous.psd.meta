@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 9266d2b7f220c4e4d9a757495f287763
+guid: 517131851aa525741bc88747bafd4576
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: tutorialArrow2
-    21300002: tutorialArrow2_slice
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -40,11 +38,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 2
-  spritePivot: {x: 0.5, y: 1}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
@@ -115,51 +113,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: tutorialArrow2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 29
-        height: 31
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0c325363abf8bf4ba2d09f7376c4b83
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tutorialArrow2_slice
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 29
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 3, z: 0, w: 20}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00ee89975f4ae6f4f91a77cb9b7d47bc
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 558b14fea976fdd4fab1d7f146237414
+    spriteID: 98e9f8f8daf9adb46af0ebd808b29171
     vertices: []
     indices: 
     edges: []
