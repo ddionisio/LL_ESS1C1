@@ -97,10 +97,10 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     
     [Header("Result Animations")]
     public M8.Animator.AnimatorData animator;
-    public string takeResultEnter;
-    public string takeResultExit;
-    public string takeResultEndEnter;
-    public string takeResultEndExit;
+    public string takeResultEnter = "resultEnter";
+    public string takeResultExit = "resultExit";
+    public string takeResultEndEnter = "resultEndEnter";
+    public string takeResultEndExit = "resultEndExit";
 
     public ScoreWidget scoreWidget;
 
@@ -147,10 +147,12 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 }
                 else {
                     //add up score
+                    int curTotalScore = LoLManager.instance.curScore;
+
                     if(scoreWidget)
-                        scoreWidget.Init(LoLManager.instance.curScore, mCurScore);
-                    else
-                        LoLManager.instance.curScore += mCurScore;
+                        scoreWidget.Init(curTotalScore, mCurScore);
+
+                    LoLManager.instance.curScore = curTotalScore + mCurScore;
 
                     state = State.ResultExit;
                 }

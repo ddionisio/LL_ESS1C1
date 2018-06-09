@@ -41,6 +41,15 @@
 	"rockIgneous":{ "voiceDuration":1.5 },
 	"rockMetamorphic":{ "voiceDuration":1.5 },
 	
+	"result_question_superPosition":{ "voiceDuration":3.5 },
+	"result_summary_superPosition":{ "voiceDuration":6 },
+	
+	"drag_to_slot":{ "voiceDuration":3 },
+	
+	"rock_sedimentary_sandstone":{ "voiceDuration":1.5 },
+	"rock_sedimentary_sandstone_desc":{ "voiceDuration":5 },
+	"rock_metamorphic_marble":{ "voiceDuration":1.5 },
+	"rock_metamorphic_marble_desc":{ "voiceDuration":5 },
 	"rock_igneous_gabbro":{ "voiceDuration":1.5 },
 	"rock_igneous_gabbro_desc":{ "voiceDuration":5 },
 	"rock_metamorphic_gneiss":{ "voiceDuration":1.5 },

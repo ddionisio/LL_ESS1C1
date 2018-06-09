@@ -34,12 +34,12 @@ MonoBehaviour:
   - scene:
       name: level2
       path: Assets/Scenes/level2.unity
-    modalLevelEnd: level2Result
+    modalLevelEnd: levelResultSuperposition1
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity
-    modalLevelEnd: level2bResult
+    modalLevelEnd: levelResultSuperposition2
   - scene:
       name: level4
       path: Assets/Scenes/level4.unity
-    modalLevelEnd: level3Result
+    modalLevelEnd: level2Result

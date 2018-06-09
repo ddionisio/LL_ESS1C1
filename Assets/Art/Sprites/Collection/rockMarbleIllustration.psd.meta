@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-guid: b9b7751e631945647baadfefbb4051eb
+guid: df0d0bcbb0633b941b80880a02623a36
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: result1RockLayers
-    21300002: result1RockLayers_granite
-    21300004: result1RockLayers_gneiss
-    21300006: result1RockLayers_quartzine
-    21300008: result1RockLayers_gabbro
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -43,7 +38,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
@@ -118,111 +113,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: result1RockLayers
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 413d759391b993f499f73a00fcfc589e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_granite
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 213
-        width: 37
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd7fdf98361c56142878d6591b2cd762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_gneiss
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 153
-        width: 39
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd5b229bd040e5547809847368800323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_quartzine
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 46
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17b2fe5835ecf184590e8ac71dbcf8ea
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_gabbro
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 44
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5b87f98b65497248984a9fb9a1f0bfd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0023a328896818046b1bc45e450f50eb
+    spriteID: 19c8c937538795046ac01e1ca6005238
     vertices: []
     indices: 
     edges: []

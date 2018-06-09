@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: b9b7751e631945647baadfefbb4051eb
+guid: 766bdf4bf0a0a754bafc09a69b7afa49
 TextureImporter:
   fileIDToRecycleName:
-    21300000: result1RockLayers
-    21300002: result1RockLayers_granite
-    21300004: result1RockLayers_gneiss
-    21300006: result1RockLayers_quartzine
-    21300008: result1RockLayers_gabbro
+    21300000: result1RockLayersSuperposition
+    21300002: result1RockLayersSuperposition_sandstone
+    21300004: result1RockLayersSuperposition_marble
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -120,7 +118,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: result1RockLayers
+      name: result1RockLayersSuperposition
       rect:
         serializedVersion: 2
         x: 0
@@ -134,19 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 413d759391b993f499f73a00fcfc589e
+      spriteID: 0b102005d4dd8c949a400014b8237fea
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: result1RockLayers_granite
+      name: result1RockLayersSuperposition_sandstone
       rect:
         serializedVersion: 2
-        x: 163
-        y: 213
-        width: 37
-        height: 37
+        x: 114
+        y: 200
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,67 +152,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd7fdf98361c56142878d6591b2cd762
+      spriteID: d6b01e051f73428479c72e1803727e0b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: result1RockLayers_gneiss
+      name: result1RockLayersSuperposition_marble
       rect:
         serializedVersion: 2
-        x: 120
-        y: 153
-        width: 39
-        height: 39
+        x: 69
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd5b229bd040e5547809847368800323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_quartzine
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 46
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17b2fe5835ecf184590e8ac71dbcf8ea
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: result1RockLayers_gabbro
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 44
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5b87f98b65497248984a9fb9a1f0bfd
+      spriteID: 203f3126246e0b445b9bc659f878f131
       vertices: []
       indices: 
       edges: []
@@ -222,7 +180,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0023a328896818046b1bc45e450f50eb
+    spriteID: 4a8fb8ef9710b4c43922edf98175503d
     vertices: []
     indices: 
     edges: []

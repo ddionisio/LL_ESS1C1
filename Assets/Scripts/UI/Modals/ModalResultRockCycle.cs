@@ -125,10 +125,12 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                 //add up score
                 mCurScore = (GameData.instance.quizBonusPoints / 2) * rockOutputs.Length;
 
+                int curTotalScore = LoLManager.instance.curScore;
+
                 if(scoreWidget)
-                    scoreWidget.Init(LoLManager.instance.curScore, mCurScore);
-                else
-                    LoLManager.instance.curScore += mCurScore;
+                    scoreWidget.Init(curTotalScore, mCurScore);
+
+                LoLManager.instance.curScore = curTotalScore + mCurScore;
 
                 state = State.ResultExit;
                 break;

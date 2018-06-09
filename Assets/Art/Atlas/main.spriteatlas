@@ -39,6 +39,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
+  - {fileID: 21300000, guid: 766bdf4bf0a0a754bafc09a69b7afa49, type: 3}
   - {fileID: 21300000, guid: 8f0257a6dc5867c4da1b07600b7dea78, type: 3}
   - {fileID: 21300000, guid: b8e8369bd35fe6c4ba1918dc560f8ad6, type: 3}
   - {fileID: 21300000, guid: 1bdfaf81b1cff904482ec9d73e259ab9, type: 3}
@@ -59,6 +60,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c062de09e24227d47903291812741966, type: 3}
   - {fileID: 21300000, guid: a3b5a9abaea696a42a73855389f46869, type: 3}
   - {fileID: 21300000, guid: 68b79b6c9de051b4d8230cf58fd3889a, type: 3}
+  - {fileID: 21300000, guid: df0d0bcbb0633b941b80880a02623a36, type: 3}
+  - {fileID: 21300000, guid: bebe199648cf90d40a747c06a5ff0ba6, type: 3}
   - {fileID: 21300000, guid: 82d8d6c8a1e303f49ae2085f5422c43b, type: 3}
   - {fileID: 21300000, guid: 14fc9ca825586584287df9840243a5bd, type: 3}
   - {fileID: 21300000, guid: fde78cf21a65a2248a76a1c56c4b2bdf, type: 3}
@@ -89,8 +92,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dc760f373c435f5498299177d48b13c0, type: 3}
   - {fileID: 21300000, guid: ad41d46a9ec80c34d81c7ce14f237667, type: 3}
   - {fileID: 21300000, guid: 1a7187d6d97170844aa4f5b373ef9933, type: 3}
+  - {fileID: 21300004, guid: 766bdf4bf0a0a754bafc09a69b7afa49, type: 3}
   - {fileID: 21300000, guid: 746da52fc76531649b4885936c250c39, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
+  - {fileID: 21300002, guid: 766bdf4bf0a0a754bafc09a69b7afa49, type: 3}
   - {fileID: 21300000, guid: f6bc5f2114c260e4ebef9058ce33919f, type: 3}
   - {fileID: 21300000, guid: dc980b5d20c3ff94982f5d56c44c4fd2, type: 3}
   - {fileID: 21300000, guid: 41251edb67dcfd0459f59f383b74cd28, type: 3}
@@ -101,6 +106,7 @@ SpriteAtlas:
   - {fileID: 21300006, guid: b9b7751e631945647baadfefbb4051eb, type: 3}
   - {fileID: 21300000, guid: b6f71b114225dbc41a88c680ff46814c, type: 3}
   - {fileID: 21300000, guid: f00c9210524923f40849627bd726baae, type: 3}
+  - {fileID: 21300000, guid: f1871cdc2868c4b4e8caad98857dcc47, type: 3}
   - {fileID: 21300000, guid: c840d6ce3bfac3f488dfa664c6cadb8c, type: 3}
   - {fileID: 21300000, guid: 18aed5171f3c9fd43a6c5813f89e2302, type: 3}
   - {fileID: 21300000, guid: a6bd58ce7e86f914ea37ec9920224d81, type: 3}
@@ -108,6 +114,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 43bb0ac0208480940b2588f10873dede, type: 3}
   - {fileID: 21300000, guid: 6caf7cce8036f184da0312f96f48d846, type: 3}
   - {fileID: 21300000, guid: 3de7d782eae397b4bba0857f10b9e72b, type: 3}
+  - {fileID: 21300000, guid: f825dd1c691dcb24e886797125878c0c, type: 3}
   - {fileID: 21300000, guid: 86d15521aafffda47bb8da65f8f51bac, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
   - {fileID: 21300000, guid: bb8a087995e8ab149b0f5c36c07f3d96, type: 3}
@@ -209,6 +216,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 347fb75ced57bc64a8af4d140f9f3529, type: 3}
   m_PackedSpriteNamesToIndex:
   - result1RockLayers
+  - result1RockLayersSuperposition
   - fossilDimetrodonIllustration
   - fossilGlossopterisIllustration
   - fossilStegoIllustration
@@ -229,6 +237,8 @@ SpriteAtlas:
   - level3Thumbnail
   - fossilPerisphinctesIllustration
   - level4Thumbnail
+  - rockMarbleIllustration
+  - rockSandstoneIllustration
   - level1Thumbnail
   - level2Thumbnail
   - robotPortrait
@@ -259,8 +269,10 @@ SpriteAtlas:
   - rockCycle_Melt
   - rockCycle_heatPressure
   - rockCycle_Cool
+  - result1RockLayersSuperposition_marble
   - ktBoundary
   - gnomeGlow
+  - result1RockLayersSuperposition_sandstone
   - cannonBase
   - fossilDimetrodonIcon
   - fossilOpabiniaIcon
@@ -271,6 +283,7 @@ SpriteAtlas:
   - result1RockLayers_quartzine
   - rockGabbroIcon
   - fossilMammothIcon
+  - rockSandstoneIcon
   - fossilStegoIcon
   - rockGneissIcon
   - fossilParadoxidesIcon
@@ -278,6 +291,7 @@ SpriteAtlas:
   - retryButton
   - rockGraniteIcon
   - fossilGlossopterisIcon
+  - rockMarbleIcon
   - frameDecor
   - buttonNotebook
   - optionButton
