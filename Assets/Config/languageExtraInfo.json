@@ -85,5 +85,8 @@
 	"restart":{ "voiceDuration":1 },
 	"restartDesc":{ "voiceDuration":3 },
 	
+	"indexFossilCriteria":{ "voiceDuration":2 },
+	"indexFossilCriteriaDesc":{ "voiceDuration":5 },
+	
 	"welcome":{ "voiceDuration":1.5 }
 }
