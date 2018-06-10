@@ -88,5 +88,7 @@
 	"indexFossilCriteria":{ "voiceDuration":2 },
 	"indexFossilCriteriaDesc":{ "voiceDuration":5 },
 	
+	"tutorialDialog":{ "voiceDuration":3 },
+	
 	"welcome":{ "voiceDuration":1.5 }
 }

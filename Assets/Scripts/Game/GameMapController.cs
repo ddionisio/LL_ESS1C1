@@ -27,7 +27,7 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         curSceneName = M8.SceneManager.instance.curScene.name;
 
         //initialize hud stuff
-        HUD.instance.isGameActive = true;
+        HUD.instance.isGameActive = false;
 
         //grab relevant stuff from the scene
 
@@ -107,6 +107,8 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         while(M8.SceneManager.instance.isLoading)
             yield return null;
 
+        HUD.instance.isGameActive = true;
+
         //states
         score = 0;
         mDiedCheckpoint = false;
@@ -118,7 +120,7 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
                 
         curCheckpoint.SpawnPlayer(player);
     }
-        
+
     void OnSignalGoal() {
         //add score
         if(mDiedCheckpoint)

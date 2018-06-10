@@ -7,6 +7,7 @@ public class HUD : M8.SingletonBehaviour<HUD> {
     public RectTransform root;
 
     public GameObject gameRootGO; //gameplay related hud elements
+    public GameObject launchDialogGO;
 
     [Header("Signals")]
     public SignalBool signalGameActiveUpdate;

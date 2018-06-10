@@ -184,8 +184,8 @@
 	"complete": "COMPLETE",
 	"completeDesc": "Congratulations!\nThank you for playing!",
 	
-	"test": "TEST",
-	"questionPlaceholder": "This is the question?",
-	"answerPlaceholder": "answer"
+	"tutorialDialog": "Press anywhere to launch the Gnomatic!",
+	
+	"test": "TEST"
   }
 }
