@@ -32,7 +32,8 @@ public class TriggerPlayerMoveState : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        var player = collision.GetComponent<Player>();
+        //assume collision is player
+        var player = GameMapController.instance.player;
 
         player.isMoveActive = isMoveActive;
         player.isMoveSpeedLimit = isMoveSpeedLimit;

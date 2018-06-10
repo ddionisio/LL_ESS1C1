@@ -162,6 +162,10 @@ public class Player : M8.EntityBase {
         mGroundMoveDir.x *= -1f;
     }
 
+    public void ChangeGroundMoveDir(float x) {
+        mGroundMoveDir.x = x;
+    }
+
     public void Victory(Vector2 goalPos) {
         mVictoryPos = goalPos;
 

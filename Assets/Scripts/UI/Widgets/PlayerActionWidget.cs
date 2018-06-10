@@ -86,7 +86,7 @@ public class PlayerActionWidget : MonoBehaviour {
     }
 
     void SetInteractable(bool yes) {
-        mSelectable.interactable = yes;
+        if(mSelectable) mSelectable.interactable = yes;
 
         if(icon) icon.color = yes ? mIconDefaultColor : iconDisableColor;
     }
