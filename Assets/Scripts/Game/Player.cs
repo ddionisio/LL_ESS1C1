@@ -32,7 +32,7 @@ public class Player : M8.EntityBase {
     public float victoryMoveDelay = 0.5f;
     public float victoryMoveOutDelay = 0.5f;
     public float victoryMoveOutYOfs = 1.5f;
-        
+
     [Header("Signals")]
     public SignalBool signalCanJumpUpdate; //update on when we can explode
     public M8.Signal signalJump;
@@ -71,11 +71,30 @@ public class Player : M8.EntityBase {
             }
         }
     }
-    
+
     public Vector2 jumpPosition { get { return mJumpCheckHit.point; } }
 
     public bool isMoveSpeedLimit { get { return mIsMoveSpeedLimit; } set { mIsMoveSpeedLimit = value; } }
     public bool isMoveActive { get { return mIsMoveActive; } set { mIsMoveActive = value; } }
+
+    public bool inputEnabled {
+        get { return mInputEnabled; }
+        set {
+            if(mInputEnabled != value) {
+                mInputEnabled = value;
+                if(M8.InputManager.isInstantiated) {
+                    if(mInputEnabled) {
+                        M8.InputManager.instance.AddButtonCall(0, InputAction.Escape, OnInputEscape);
+                        M8.InputManager.instance.AddButtonCall(0, InputAction.Action, OnInputAction);
+                    }
+                    else {
+                        M8.InputManager.instance.RemoveButtonCall(OnInputEscape);
+                        M8.InputManager.instance.RemoveButtonCall(OnInputAction);
+                    }
+                }
+            }
+        }
+    }
 
     protected PhysicsMode physicsMode {
         get { return mPhysicsMode; }
@@ -102,14 +121,14 @@ public class Player : M8.EntityBase {
     private Vector2 mGameCamCurVel;
 
     private Coroutine mRout;
-    
+
     private Vector2 mVictoryPos;
 
     private bool mCanJump;
     private RaycastHit2D mJumpCheckHit;
 
     private float mLastJumpTime;
-        
+
     private Vector2 mGroundMoveDir = Vector2.zero;
 
     private bool mIsMoveSpeedLimit = true;
@@ -117,6 +136,7 @@ public class Player : M8.EntityBase {
     private bool mIsMoveTrigger = false;
 
     private float mCannonToMoveDirT;
+    private bool mInputEnabled;
 
     /// <summary>
     /// Apply current move power towards move dir, this will set player state to move
@@ -174,6 +194,8 @@ public class Player : M8.EntityBase {
 
     protected override void OnDespawned() {
         //reset stuff here
+        inputEnabled = false;
+
         ClearRoutine();
 
         physicsMode = PhysicsMode.Disabled;
@@ -189,6 +211,7 @@ public class Player : M8.EntityBase {
 
     protected override void OnSpawned(M8.GenericParams parms) {
         //populate data/state for ai, player control, etc.
+        inputEnabled = true;
 
         //stats
 
@@ -220,7 +243,7 @@ public class Player : M8.EntityBase {
 
                 mRout = StartCoroutine(DoSpawn());
                 break;
-                
+
             case EntityState.PlayerLaunchReady:
                 physicsMode = PhysicsMode.Disabled;
                 break;
@@ -272,6 +295,7 @@ public class Player : M8.EntityBase {
 
     protected override void OnDestroy() {
         //dealloc here
+        inputEnabled = false;
 
         base.OnDestroy();
     }
@@ -368,7 +392,7 @@ public class Player : M8.EntityBase {
 
         int nearestSideContactPointInd = -1;
         float nearestSideSeparation = float.MaxValue;
-                        
+
         for(int i = 0; i < mContactPointsCount; i++) {
             var contactPt = mContactPoints[i];
 
@@ -614,7 +638,7 @@ public class Player : M8.EntityBase {
         transform.up = moveDir;
 
         state = (int)EntityState.PlayerMove;
-                
+
         //initial impulse
         Vector2 initialImpulsePos = physicsBody.position - moveDir * physicsCircleCollider.radius;
 
@@ -662,7 +686,7 @@ public class Player : M8.EntityBase {
 
         Vector3 startUp = transform.up;
 
-        float curTime = 0f;                
+        float curTime = 0f;
         while(curTime < victoryMoveDelay) {
             yield return null;
             curTime += Time.deltaTime;
@@ -703,5 +727,31 @@ public class Player : M8.EntityBase {
             signalGoal.Invoke();
 
         mRout = null;
+    }
+
+    void OnInputEscape(M8.InputManager.Info data) {
+        if(data.state == M8.InputManager.State.Released) {
+            if(M8.UIModal.Manager.instance.ModalIsInStack(Modals.options))
+                M8.UIModal.Manager.instance.ModalCloseUpTo(Modals.options, true);
+            else
+                M8.UIModal.Manager.instance.ModalOpen(Modals.options);
+        }
+    }
+
+    void OnInputAction(M8.InputManager.Info data) {
+        if(data.state == M8.InputManager.State.Pressed) {
+            if(M8.UI.InputModule.instance.currentFocusedGameObject)
+                return;
+
+            switch((EntityState)state) {
+                case EntityState.PlayerLaunchReady:
+                    Launch();
+                    break;
+                case EntityState.PlayerMove:
+                    if(canJump)
+                        Jump();
+                    break;
+            }
+        }
     }
 }

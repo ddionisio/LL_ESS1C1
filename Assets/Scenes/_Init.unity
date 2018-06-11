@@ -605,7 +605,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 355903285}
---- !u!1001 &374365886
+--- !u!1001 &359563206
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

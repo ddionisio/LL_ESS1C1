@@ -31,8 +31,6 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
     void OnDestroy() {
         //fail-safe
         Pause(false);
-
-        UnhookInput();
     }
 
     void Awake() {
@@ -124,9 +122,7 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
 
     void M8.UIModal.Interface.IPush.Push(M8.GenericParams parms) {
         Pause(true);
-
-        M8.InputManager.instance.AddButtonCall(0, InputAction.Escape, OnInputEscape);
-
+        
         if(restartButton) {
             restartButton.interactable = GameMapController.isInstantiated;
         }
@@ -137,15 +133,8 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
             LoLManager.instance.ApplyVolumes(soundSlider.normalizedValue, musicSlider.normalizedValue, true);
 
         Pause(false);
-
-        UnhookInput();
     }
-
-    void OnInputEscape(M8.InputManager.Info data) {
-        if(data.state == M8.InputManager.State.Released)
-            Close();
-    }
-
+    
     void OnMusicSliderValue(float val) {
         LoLManager.instance.ApplyVolumes(soundSlider.normalizedValue, musicSlider.normalizedValue, false);
     }
@@ -154,11 +143,6 @@ public class ModalOptions : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M
         LoLManager.instance.ApplyVolumes(soundSlider.normalizedValue, musicSlider.normalizedValue, false);
     }
     
-    void UnhookInput() {
-        if(M8.InputManager.instance)
-            M8.InputManager.instance.RemoveButtonCall(OnInputEscape);
-    }
-
     void Pause(bool pause) {
         if(mIsPaused != pause) {
             mIsPaused = pause;
