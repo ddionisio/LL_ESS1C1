@@ -47,6 +47,7 @@
 	
 	"relativeAge": "Relative Age",
 	"older": "Older",
+	"oldest": "Oldest",
 	"younger": "Younger",
 	"youngest": "Youngest",
 	
@@ -76,8 +77,10 @@
 	"rockLayers": "Rock Layers",
 	"intrusiveRock": "Intrusive Rock",
 	
-	"magma": "Magma",
-	
+	"rock_sedimentary_sandstone": "Sandstone",
+	"rock_sedimentary_sandstone_desc": "Sandstone is a sedimentary rock composed of various fragments of rocks and tiny mineral particles. Its texture is rough and grainy with a wide range of colors based on the mixture of minerals.",
+	"rock_metamorphic_marble": "Marble",
+	"rock_metamorphic_marble_desc": "Marble is a metamorphic rock that are sometimes foliated. It is formed from the recrystallization of minerals due to pressure and heat.",
 	"rock_igneous_gabbro": "Gabbro",
 	"rock_igneous_gabbro_desc": "Gabbro is an intrusive igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
 	"rock_metamorphic_gneiss": "Gneiss",
@@ -120,11 +123,14 @@
 	"coreSamples": "Core Samples",
 	
 	"result_2_question": "Which one of these is an Index Fossil?",
-	"result_2_end": "Index Fossils are useful in identifying the Geological Timescale of a stratum.\n\nThe criteria are:\n- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
+	"result_2_end": "Index Fossils are used to determine the Geological Timescale of a stratum. It can also allow us to correlate rock layers from one area to another, as far apart as distant continents.",
+	
+	"indexFossilCriteria": "Index Fossil Criteria",
+	"indexFossilCriteriaDesc": "- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
 	
 	"result_2b_question": "Which layer does this correlate to in Column B?",
 	"result_2b_end": "Index Fossils allow us to correlate rock layers from one area to another. These layers can be as far apart as distant continents.",
-	
+			
 	"ktBoundary": "K-Pg Boundary",
 	"boundary": "boundary",
 	"correlationIndexFossil": "Correlation by Index Fossils",
@@ -144,6 +150,29 @@
 	"result_3_question_1": "What would be the climate at the bottom of the boundary?",
 	"result_3_question_2": "What would be the climate at the top of the boundary?",
 	"result_3_end": "The K-Pg Boundary (or K-T) is a key bed where its minerals come from a meteor. Based on the evidence of fossils found between the border, it is suggested that a mass extinction has occured due to a rapid change of climate.",
+	
+	"rockCycle": "Rock Cycle",
+	"rockCycleChart": "Rock Cycle Chart",
+	"result_question_rockCycle": "Create the following rocks:",
+	"result_summary_rockCycle": "Igneous rocks form when magma cools off.\n\nMetamorphic rocks form when pressure is applied to other rocks. Pressure generates heat, causing rocks to change.\n\nSedimentary rocks form when other types of rocks are broken down into sediments by weathering and erosion. These sediments cement together after a long period of time.",
+	
+	"rockSediment": "Sedimentary",
+	"rockIgneous": "Igneous",
+	"rockMetamorphic": "Metamorphic",
+	
+	"rockCycle_compactCement": "Compact & Cementation",
+	"rockCycle_heatPressure": "Pressure & Heat",
+	"rockCycle_weatheringErosion": "Weathering & Erosion",
+	"rockCycle_melt": "Melt",
+	"rockCycle_cool": "Cool Off",
+	
+	"result_question_superPosition": "Determine the youngest and oldest rock layer:",	
+	"result_summary_superPosition": "Based on Superposition in the Laws of Stratigraphy: Younger layers of rock sit atop older rocks.",
+	
+	"drag_to_slot": "Drag towards a slot.",
+	
+	"sediments": "Sediments",
+	"magma": "Magma",
 		
 	"strataAnalysis": "STRATA ANALYSIS",
 	
@@ -155,8 +184,8 @@
 	"complete": "COMPLETE",
 	"completeDesc": "Congratulations!\nThank you for playing!",
 	
-	"test": "TEST",
-	"questionPlaceholder": "This is the question?",
-	"answerPlaceholder": "answer"
+	"tutorialDialog": "Press anywhere to launch the Gnomatic!",
+	
+	"test": "TEST"
   }
 }

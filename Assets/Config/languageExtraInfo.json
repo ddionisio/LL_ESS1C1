@@ -35,7 +35,7 @@
 	"result_3_end":{ "voiceDuration":8 },
 	
 	"rockCycle":{ "voiceDuration":1.5 },
-	"result_question_rockCycle":{ "voiceDuration":3 },
+	"result_question_rockCycle":{ "voiceDuration":2.5 },
 	"result_summary_rockCycle":{ "voiceDuration":6 },
 	"rockSediment":{ "voiceDuration":1.5 },
 	"rockIgneous":{ "voiceDuration":1.5 },
