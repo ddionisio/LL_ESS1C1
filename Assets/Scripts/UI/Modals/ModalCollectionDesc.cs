@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ModalCollectionDesc : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M8.UIModal.Interface.IPop {
-    public const string parmCollectionData = "pcd";
-
     [Header("Display")]
     public Text titleLabel;
     public Image iconImage;
@@ -34,7 +32,7 @@ public class ModalCollectionDesc : M8.UIModal.Controller, M8.UIModal.Interface.I
     }
 
     void M8.UIModal.Interface.IPush.Push(M8.GenericParams parms) {
-        var collectData = parms.GetValue<CollectionData>(parmCollectionData);
+        var collectData = parms.GetValue<CollectionData>(CollectionData.parmCollectionData);
 
         if(mTitleLabelLocalizer) {
             mTitleLabelLocalizer.key = collectData.nameTextRef;

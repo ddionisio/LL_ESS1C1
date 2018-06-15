@@ -13,7 +13,7 @@ public class CollectionWidget : MonoBehaviour {
     public bool autoInit;
 
     public void OpenDesc() {
-        M8.UIModal.Manager.instance.ModalOpen(Modals.collectionInfo, new M8.GenericParamArg(ModalCollectionDesc.parmCollectionData, data));
+        data.OpenModal();
     }
 
     public void Init() {
