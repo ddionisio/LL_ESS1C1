@@ -19,7 +19,7 @@ public class CollectionData : ScriptableObject {
 
     [Header("UI")]
     public string modalRef; //use this for certain collection that opens a specialized UI
-    public GameObject modalIllustrationGOPrefab; //prefab to attach on the modal
+    public int modalDisplayIndex; //which display to show based on index
 
     public string nameTextRef { get { return _nameTextRef; } }
     public string descTextRef { get { return _descTextRef; } }
