@@ -102,6 +102,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 43bb0ac0208480940b2588f10873dede, type: 3}
   - {fileID: 21300000, guid: 6caf7cce8036f184da0312f96f48d846, type: 3}
   - {fileID: 21300000, guid: 3de7d782eae397b4bba0857f10b9e72b, type: 3}
+  - {fileID: 21300000, guid: c694fef99bc236d43b746e46503b0af4, type: 3}
   - {fileID: 21300000, guid: f825dd1c691dcb24e886797125878c0c, type: 3}
   - {fileID: 21300000, guid: 86d15521aafffda47bb8da65f8f51bac, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
@@ -267,6 +268,7 @@ SpriteAtlas:
   - retryButton
   - rockGraniteIcon
   - fossilGlossopterisIcon
+  - collectionIconLocked
   - rockMarbleIcon
   - frameDecor
   - buttonNotebook

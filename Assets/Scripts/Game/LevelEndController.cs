@@ -19,13 +19,15 @@ public class LevelEndController : MonoBehaviour {
         if(signalProceed) signalProceed.callback += OnSignalProceed;
 
         //initialize hud
-        HUD.instance.isGameActive = false;
+        HUD.instance.mode = HUD.Mode.None;
     }
 
     IEnumerator Start() {
         //wait for scene transition
         while(M8.SceneManager.instance.isLoading)
             yield return null;
+
+        HUD.instance.mode = HUD.Mode.Lesson;
 
         if(LoLMusicPlaylist.isInstantiated)
             LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);

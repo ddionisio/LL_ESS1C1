@@ -9,10 +9,26 @@ public class CollectionWidget : MonoBehaviour {
     [Header("Display")]
     public Image iconImage;
     public Text nameLabel;
+    public GameObject lockedGO;
 
     public bool autoInit;
 
+    public bool isLocked {
+        get { return lockedGO ? lockedGO.activeSelf : false; }
+        set {
+            if(lockedGO) {
+                lockedGO.SetActive(value);
+
+                if(iconImage)
+                    iconImage.gameObject.SetActive(!value);
+            }
+        }
+    }
+
     public void OpenDesc() {
+        if(isLocked)
+            return;
+
         data.OpenModal();
     }
 
@@ -25,6 +41,9 @@ public class CollectionWidget : MonoBehaviour {
         if(nameLabel) {
             nameLabel.text = data.nameText;
         }
+
+        //check if locked
+        isLocked = GameData.instance.CollectionIsUnlocked(data.name);
     }
 
     void Awake() {

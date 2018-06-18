@@ -10,9 +10,17 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     public const int progressPerLevel = 3; //includes: intro, play, end
 
     [System.Serializable]
+    public struct LevelUnlockData {
+        public CollectionData data;
+        public bool isDisplayed; //show on result, before quiz
+    }
+
+    [System.Serializable]
     public class LevelData {
         public M8.SceneAssetPath scene;
         public string modalLevelEnd; //which modal to use post-level
+
+        public LevelUnlockData[] collectionUnlocks;
     }
 
     [Header("Scenes")]
@@ -31,6 +39,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
 
     public bool isGameStarted { get; private set; } //true: we got through start normally, false: debug
     public int curLevelIndex { get; private set; }
+
+    private HashSet<string> mCollectionUnlocks = new HashSet<string>();
     
     /// <summary>
     /// Called in start scene
@@ -136,6 +146,15 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         }
     }
 
+    public void CollectionUnlock(string collectionName) {
+        if(!mCollectionUnlocks.Contains(collectionName))
+            mCollectionUnlocks.Add(collectionName);
+    }
+
+    public bool CollectionIsUnlocked(string collectionName) {
+        return mCollectionUnlocks.Contains(collectionName);
+    }
+
     protected override void OnInstanceInit() {
         //compute max progress
         if(LoLManager.isInstantiated) {            
@@ -143,6 +162,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         }
         else
             curLevelIndex = DebugControl.instance.levelIndex;
+
+        mCollectionUnlocks.Clear();
     }
 
     private void UpdateLevelIndexFromProgress(int progress) {

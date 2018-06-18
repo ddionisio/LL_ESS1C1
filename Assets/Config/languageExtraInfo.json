@@ -37,9 +37,13 @@
 	"rockCycle":{ "voiceDuration":1.5 },
 	"result_question_rockCycle":{ "voiceDuration":2.5 },
 	"result_summary_rockCycle":{ "voiceDuration":6 },
+	
 	"rockSediment":{ "voiceDuration":1.5 },
 	"rockIgneous":{ "voiceDuration":1.5 },
 	"rockMetamorphic":{ "voiceDuration":1.5 },
+	"rockSedimentDesc":{ "voiceDuration":4 },
+	"rockIgneousDesc":{ "voiceDuration":4 },
+	"rockMetamorphicDesc":{ "voiceDuration":4 },
 	
 	"result_question_superPosition":{ "voiceDuration":3.5 },
 	"result_summary_superPosition":{ "voiceDuration":6 },

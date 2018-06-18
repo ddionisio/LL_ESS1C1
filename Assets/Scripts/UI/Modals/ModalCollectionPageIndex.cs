@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ModalCollectionStratigraphyLaws : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M8.UIModal.Interface.IPop {
+public class ModalCollectionPageIndex : M8.UIModal.Controller, M8.UIModal.Interface.IPush, M8.UIModal.Interface.IPop {
     [System.Serializable]
     public struct IllustrationData {
         public GameObject displayGO;
@@ -44,19 +44,23 @@ public class ModalCollectionStratigraphyLaws : M8.UIModal.Controller, M8.UIModal
     void M8.UIModal.Interface.IPush.Push(M8.GenericParams parms) {
         var collectData = parms.GetValue<CollectionData>(CollectionData.parmCollectionData);
 
-        if(mTitleLabelLocalizer) {
-            mTitleLabelLocalizer.key = collectData.nameTextRef;
-            mTitleLabelLocalizer.Apply();
+        if(!string.IsNullOrEmpty(collectData.nameTextRef)) {
+            if(mTitleLabelLocalizer) {
+                mTitleLabelLocalizer.key = collectData.nameTextRef;
+                mTitleLabelLocalizer.Apply();
+            }
+            else if(titleLabel)
+                titleLabel.text = collectData.nameText;
         }
-        else if(titleLabel)
-            titleLabel.text = collectData.nameText;
 
-        if(mDescTextLabelLocalizer) {
-            mDescTextLabelLocalizer.key = collectData.descTextRef;
-            mDescTextLabelLocalizer.Apply();
+        if(!string.IsNullOrEmpty(collectData.descTextRef)) {
+            if(mDescTextLabelLocalizer) {
+                mDescTextLabelLocalizer.key = collectData.descTextRef;
+                mDescTextLabelLocalizer.Apply();
+            }
+            else if(descTextLabel)
+                descTextLabel.text = collectData.descText;
         }
-        else if(descTextLabel)
-            descTextLabel.text = collectData.descText;
 
         if(isSpeechAuto) {
             if(speechAutoDelay > 0f)
@@ -70,7 +74,8 @@ public class ModalCollectionStratigraphyLaws : M8.UIModal.Controller, M8.UIModal
         illustrations[mModalDisplayIndex].displayGO.SetActive(true);
 
         if(illustrateShowDelay > 0f) {
-            replayInteractive.interactable = false;
+            if(replayInteractive) replayInteractive.interactable = false;
+
             StartCoroutine(DoIllustrationDelay());
         }
         else {
@@ -109,16 +114,17 @@ public class ModalCollectionStratigraphyLaws : M8.UIModal.Controller, M8.UIModal
     }
 
     IEnumerator DoIllustration() {
-        replayInteractive.interactable = false;
+        if(replayInteractive) replayInteractive.interactable = false;
 
         var illustration = illustrations[mModalDisplayIndex];
                 
         var anim = illustration.animator;
+        if(anim) {
+            anim.Play(illustration.take);
+            while(anim.isPlaying)
+                yield return null;
+        }
 
-        anim.Play(illustration.take);
-        while(anim.isPlaying)
-            yield return null;
-
-        replayInteractive.interactable = true;
+        if(replayInteractive) replayInteractive.interactable = true;
     }
 }

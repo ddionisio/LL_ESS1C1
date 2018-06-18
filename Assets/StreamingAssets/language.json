@@ -160,6 +160,10 @@
 	"rockIgneous": "Igneous",
 	"rockMetamorphic": "Metamorphic",
 	
+	"rockSedimentDesc": "Sedimentary description here.",
+	"rockIgneousDesc": "Igneous description here.",
+	"rockMetamorphicDesc": "Metamorphic description here.",
+	
 	"rockCycle_compactCement": "Compact & Cementation",
 	"rockCycle_heatPressure": "Pressure & Heat",
 	"rockCycle_weatheringErosion": "Weathering & Erosion",

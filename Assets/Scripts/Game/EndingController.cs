@@ -13,7 +13,7 @@ public class EndingController : MonoBehaviour {
 
     void Awake() {
         //initialize hud
-        HUD.instance.isGameActive = false;
+        HUD.instance.mode = HUD.Mode.Lesson;
     }
 
     IEnumerator Start() {
