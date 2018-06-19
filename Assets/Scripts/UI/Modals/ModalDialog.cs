@@ -23,9 +23,10 @@ public class ModalDialog : M8.UIModal.Controller, M8.UIModal.Interface.IPush {
     public static void Open(string nameTextRef, string dialogTextRef) {
         //check to see if there's one already opened
         var uiMgr = M8.UIModal.Manager.instance;
+                
+        if(uiMgr.ModalIsInStack(modalName)) {
+            var dlg = uiMgr.ModalGetController<ModalDialog>(modalName);
 
-        var dlg = uiMgr.ModalGetController<ModalDialog>(modalName);
-        if(dlg) {
             dlg.SetupContent(nameTextRef, dialogTextRef);
 
             if(dlg.isTextSpeechAuto)
@@ -68,7 +69,12 @@ public class ModalDialog : M8.UIModal.Controller, M8.UIModal.Interface.IPush {
 
         mDialogTextRef = dialogTextRef;
 
-        nameLabel.text = M8.Localize.Get(nameTextRef);
-        textLabel.text = M8.Localize.Get(dialogTextRef);
+        if(nameLabel) {
+            nameLabel.text = !string.IsNullOrEmpty(nameTextRef) ? M8.Localize.Get(nameTextRef) : "";
+        }
+
+        if(textLabel) {
+            textLabel.text = !string.IsNullOrEmpty(dialogTextRef) ? M8.Localize.Get(dialogTextRef) : "";
+        }
     }
 }

@@ -27,6 +27,8 @@
 	"confirm": "CONFIRM",
 	"cancel": "CANCEL",
 	
+	"dialogCollectionLocked": "You must continue to play the game to access this knowledge.",
+	
 	"credits": "CREDITS",
 	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
 	

@@ -21,15 +21,18 @@ public class CollectionWidget : MonoBehaviour {
 
                 if(iconImage)
                     iconImage.gameObject.SetActive(!value);
+
+                if(nameLabel)
+                    nameLabel.gameObject.SetActive(!value);
             }
         }
     }
 
     public void OpenDesc() {
         if(isLocked)
-            return;
-
-        data.OpenModal();
+            ModalDialog.Open("", "dialogCollectionLocked");
+        else
+            data.OpenModal();
     }
 
     public void Init() {
@@ -43,10 +46,10 @@ public class CollectionWidget : MonoBehaviour {
         }
 
         //check if locked
-        isLocked = GameData.instance.CollectionIsUnlocked(data.name);
+        isLocked = !GameData.instance.CollectionIsUnlocked(data.name);
     }
 
-    void Awake() {
+    void OnEnable() {
         if(autoInit)
             Init();
     }
