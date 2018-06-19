@@ -183,8 +183,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f868b8b40c3a81a4890cc9648a2eb34a, type: 3}
   - {fileID: 21300000, guid: 41e18fa75e97e9345945588cc3bffe71, type: 3}
   - {fileID: 21300000, guid: 017915a8188f5424b9c2bb8be78f0b07, type: 3}
+  - {fileID: 21300000, guid: 93aa068aeddba574f8e7ab8d78bde31a, type: 3}
   - {fileID: 21300000, guid: 45e1f9c4fb66943478de246964cdefee, type: 3}
+  - {fileID: 21300000, guid: 06334b42e71d4ae479497d6298495de8, type: 3}
   - {fileID: 21300000, guid: 0986f06104813ec44ad429bc3676ff94, type: 3}
+  - {fileID: 21300000, guid: 02defc2088043804e8523b16043252a8, type: 3}
+  - {fileID: 21300000, guid: 146eaa2b26b843a47a610fd51977fba0, type: 3}
   - {fileID: 21300000, guid: 1fa0f8ce1d9877c4a90c71da5c7f16fa, type: 3}
   - {fileID: 21300000, guid: d974da4274e1be6488a1a5b076ceddda, type: 3}
   - {fileID: 21300000, guid: cc2697ba00f5e3746a131f23aa0596a1, type: 3}
@@ -355,8 +359,12 @@ SpriteAtlas:
   - panelFrameSimple
   - mouthHappy
   - spots1
+  - smokeTrail0
   - spots4
+  - tears
   - gnomeLiftFX3
+  - smokeTrail1
+  - smokeTrail2
   - gnomeLiftFX5
   - gnomeLiftFX4
   - gnomeLiftFX6

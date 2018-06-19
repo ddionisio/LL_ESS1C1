@@ -85,6 +85,8 @@ public class ModalCollectionPageIndex : M8.UIModal.Controller, M8.UIModal.Interf
 
     void M8.UIModal.Interface.IPop.Pop() {
         illustrations[mModalDisplayIndex].displayGO.SetActive(false);
+
+        if(replayInteractive) replayInteractive.interactable = false;
     }
 
     void PlayTextSpeech(CollectionData collectData) {
