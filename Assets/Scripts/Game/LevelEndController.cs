@@ -11,6 +11,8 @@ public class LevelEndController : MonoBehaviour {
     [Header("Debug")]
     public int debugLevelIndex;
 
+    private bool mIsUnlockNextWaiting;
+
     void OnDestroy() {
         if(signalProceed) signalProceed.callback -= OnSignalProceed;
     }
@@ -27,12 +29,10 @@ public class LevelEndController : MonoBehaviour {
         while(M8.SceneManager.instance.isLoading)
             yield return null;
 
-        HUD.instance.mode = HUD.Mode.Lesson;
-
         if(LoLMusicPlaylist.isInstantiated)
             LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
 
-        //open up the proper modal for the current level index
+        //grab level data
         int ind;
 
         if(GameData.instance.isGameStarted)
@@ -40,15 +40,32 @@ public class LevelEndController : MonoBehaviour {
         else
             ind = debugLevelIndex;
 
-        if(ind >= 0 && ind < GameData.instance.levels.Length) {
-            string modalRef = GameData.instance.levels[ind].modalLevelEnd;
-            if(!string.IsNullOrEmpty(modalRef)) {
-                M8.UIModal.Manager.instance.ModalOpen(modalRef);
-            }
-            else {
-                //fail-safe
-                GameData.instance.Progress();
-            }
+        if(ind < 0 || ind >= GameData.instance.levels.Length) {
+            //fail-safe
+            GameData.instance.Progress();
+            yield break;
+        }
+
+        var levelData = GameData.instance.levels[ind];
+
+        //open modal unlock
+        var collectUnlockParms = new M8.GenericParams();
+        collectUnlockParms.Add(ModalKnowledgeUnlocks.parmCollectionUnlocks, levelData.collectionUnlocks);
+
+        M8.UIModal.Manager.instance.ModalOpen(Modals.knowledgeUnlock, collectUnlockParms);
+        //
+        
+        HUD.instance.mode = HUD.Mode.Lesson;
+
+        //wait for next to be clicked
+        mIsUnlockNextWaiting = true;
+        while(mIsUnlockNextWaiting)
+            yield return null;
+
+        //open up the end part
+        string modalRef = levelData.modalLevelEnd;
+        if(!string.IsNullOrEmpty(modalRef)) {
+            M8.UIModal.Manager.instance.ModalOpen(modalRef);
         }
         else {
             //fail-safe
@@ -57,6 +74,9 @@ public class LevelEndController : MonoBehaviour {
     }
 
     void OnSignalProceed() {
-        GameData.instance.Progress();
+        if(mIsUnlockNextWaiting) //clicked next from knowledge unlock
+            mIsUnlockNextWaiting = false;
+        else
+            GameData.instance.Progress(); //go to next level
     }
 }

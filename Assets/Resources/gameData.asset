@@ -31,15 +31,31 @@ MonoBehaviour:
       name: level1
       path: Assets/Scenes/level1.unity
     modalLevelEnd: levelResultRockCycle
+    collectionUnlocks:
+    - data: {fileID: 11400000, guid: 9ce38d9838015fb4f9e4d1c6d5a80394, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: 6e4b6ccbccf0fd14fa81382df8438e63, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: 441d237038fbb9f4e9e997dd52626baa, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: b48611af6aeb80342ab0fd4df0edb756, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 4e3447887f5dd774587874a9eed798e3, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 749c33ab7f28a9f49993d7dbd447d21f, type: 2}
+      isDisplayed: 0
   - scene:
       name: level2
       path: Assets/Scenes/level2.unity
     modalLevelEnd: levelResultSuperposition1
+    collectionUnlocks: []
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity
     modalLevelEnd: levelResultSuperposition2
+    collectionUnlocks: []
   - scene:
       name: level4
       path: Assets/Scenes/level4.unity
     modalLevelEnd: level2Result
+    collectionUnlocks: []

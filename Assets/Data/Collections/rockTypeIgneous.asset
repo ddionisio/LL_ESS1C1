@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1496c640f0d872442b168b51b5346a2f, type: 3}
   m_Name: rockTypeIgneous
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 517131851aa525741bc88747bafd4576, type: 3}
+  icon: {fileID: 21300000, guid: b6f71b114225dbc41a88c680ff46814c, type: 3}
   _nameTextRef: rockIgneous
   descImage: {fileID: 0}
   _descTextRef: rockIgneousDesc

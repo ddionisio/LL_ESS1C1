@@ -23,7 +23,7 @@ public class LoLSpeakTextFromLocalizer : MonoBehaviour {
 
     void OnEnable() {
         if(autoPlay)
-            LoLManager.instance.SpeakTextQueue(localizer.key, playGroup, playIndex);
+            Play();
     }
 
     void Awake() {
