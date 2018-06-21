@@ -21,6 +21,8 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
     }
 
     public enum RockAction {
+        None = -1,
+
         CompactCement,
         HeatPressure,
         WeatheringErosion,
@@ -61,16 +63,24 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
         public ResultType to;
     }
 
+    public Sprite[] actionSprites;
+
     [Header("Rock Output")]
     public RockOutputData[] rockOutputs;
     public float outputMoveDelay = 1.0f;
 
     [Header("Rock Result")]
     public RockResultData[] rockResults;
-    public RockActionToResult[] actionToResults;
-    public Image rockResultIcon;
-    public M8.UI.Texts.Localizer rockResultLocalizer;
+    public RockActionToResult[] actionToResults;    
     public ResultType[] rockResultStart; //possible starting result
+
+    [Header("Rock Input")]
+    public Image rockInputIcon;
+    public M8.UI.Texts.Localizer rockInputLocalizer;
+
+    public Image rockActionIcon;
+
+    public Image rockOutputIcon;
     
     [Header("GameObject Roots")]
     public GameObject resultGO;
@@ -83,7 +93,9 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
     public string takeResultExit = "resultExit";
     public string takeResultEndEnter = "resultEndEnter";
     public string takeResultEndExit = "resultEndExit";
-    public string takeRockResultChange = "rockResultChange";
+
+    public string takeRockActionProcess = "rockActionProcess"; //apply action, display output, output to input
+    public string takeRockActionError = "rockActionError";
 
     public ScoreWidget scoreWidget;
 
@@ -160,7 +172,7 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
         }
 
         if(canConvert) {
-            ApplyResult(convertType, true);
+            RockOutputData outputCorrect = null;
 
             //check if this result matches output slots
             bool isOutputUnlocked = false;
@@ -168,18 +180,18 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
             for(int i = 0; i < rockOutputs.Length; i++) {
                 if(rockOutputs[i].resultKey == convertType) {
                     if(rockOutputs[i].isLocked) {
-                        rockOutputs[i].isLocked = false;
                         isOutputUnlocked = true;
-
-                        StartCoroutine(DoOutputCorrect(rockOutputs[i]));
+                        outputCorrect = rockOutputs[i];
                         break;
                     }
                 }
             }
 
+            ApplyResult(convertType, true, rockAction, outputCorrect);
+
             if(isOutputUnlocked) {
                 //check if we got all outputs unlocked
-                int unlockCount = 0;
+                int unlockCount = 1; //count the unlock found
                 for(int i = 0; i < rockOutputs.Length; i++) {
                     if(!rockOutputs[i].isLocked)
                         unlockCount++;
@@ -203,10 +215,18 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
             }
         }
         else {
+            if(animator && !string.IsNullOrEmpty(takeRockActionError))
+                animator.Play(takeRockActionError);
+
             //error
             if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathWrong))
                 LoLManager.instance.PlaySound(sfxPathWrong, false, false);
         }
+    }
+
+    public void ApplyIconOutputToInput() {
+        rockInputIcon.sprite = rockOutputIcon.sprite;
+        rockInputIcon.SetNativeSize();
     }
 
     RockResultData GetResultData(ResultType type) {
@@ -219,23 +239,40 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
         return null;
     }
 
-    void ApplyResult(ResultType type, bool isAnimate) {
+    void ApplyResult(ResultType type, bool isAnimate, RockAction rockAction, RockOutputData outputCorrect) {
         mCurResultType = type;
 
         RockResultData resultData = GetResultData(type);
         if(resultData == null)
             return;
 
-        if(isAnimate) {
-            if(animator && !string.IsNullOrEmpty(takeRockResultChange))
-                animator.Play(takeRockResultChange);
+        if(rockAction != RockAction.None) {
+            rockActionIcon.sprite = actionSprites[(int)rockAction];
+            rockActionIcon.SetNativeSize();
         }
 
-        rockResultIcon.sprite = resultData.sprite;
-        rockResultIcon.SetNativeSize();
+        //setup output, will be applied to input after animation
+        rockOutputIcon.sprite = resultData.sprite;
+        rockOutputIcon.SetNativeSize();
+        
+        //prepare input text
+        rockInputLocalizer.key = resultData.textRef;
+        rockInputLocalizer.Apply();
 
-        rockResultLocalizer.key = resultData.textRef;
-        rockResultLocalizer.Apply();
+        if(isAnimate) { //do the action animation, and process output to result, then update input
+            StartCoroutine(DoResult(outputCorrect));
+        }
+        else {
+            //apply icon
+            rockInputIcon.sprite = resultData.sprite;
+            rockInputIcon.SetNativeSize();
+
+            //reset display state
+            rockInputIcon.gameObject.SetActive(true);
+            rockInputLocalizer.gameObject.SetActive(true);
+            rockActionIcon.gameObject.SetActive(false);
+            rockOutputIcon.gameObject.SetActive(false);
+        }
     }
 
     void Awake() {
@@ -288,7 +325,7 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
         }
 
         //initialize result
-        ApplyResult(rockResultStart[Random.Range(0, rockResultStart.Length)], false);
+        ApplyResult(rockResultStart[Random.Range(0, rockResultStart.Length)], false, RockAction.None, null);
 
         state = State.Result;
     }
@@ -345,12 +382,29 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
             signalExit.Invoke();
     }
 
+    IEnumerator DoResult(RockOutputData outputData) {        
+        rockInputLocalizer.gameObject.SetActive(false);
+
+        if(animator && !string.IsNullOrEmpty(takeRockActionProcess)) {
+            animator.Play(takeRockActionProcess);
+            while(animator.isPlaying)
+                yield return null;
+        }
+
+        rockInputLocalizer.gameObject.SetActive(true);
+
+        if(outputData != null)
+            StartCoroutine(DoOutputCorrect(outputData));
+    }
+
     IEnumerator DoOutputCorrect(RockOutputData outputData) {
-        Vector2 fromPos = rockResultIcon.rectTransform.position;
+        Vector2 fromPos = rockInputIcon.rectTransform.position;
         Vector2 toPos = outputData.unlockedRoot.position;
 
-        outputData.unlockedRoot.position = toPos;
+        outputData.isLocked = false;
 
+        outputData.unlockedRoot.position = fromPos;
+        
         var easeFunc = DG.Tweening.Core.Easing.EaseManager.ToEaseFunction(DG.Tweening.Ease.OutSine);
 
         float curTime = 0f;

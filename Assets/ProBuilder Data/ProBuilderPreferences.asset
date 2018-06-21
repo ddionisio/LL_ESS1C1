@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Int_values: 01000000020000000200000001000000ffffffff0000000000000000
   m_Float_values:
   - 0
-  - 64
+  - 208
   m_String_values:
   - Assets/Data/Material Palette.asset
   - RGBA(0.902, 0.667, 0.525, 1.000)
