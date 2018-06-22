@@ -16,11 +16,19 @@ public class ScoreWidget : MonoBehaviour {
 
     public void Init(int curScore, int bonusScore) {
         mCurScore = curScore;
-        mBonusScore = bonusScore;
-
-        if(currentScoreLabel) currentScoreLabel.text = mCurScore.ToString();
-        if(bonusScoreLabel) bonusScoreLabel.text = "+" + mBonusScore.ToString();
+        
+        if(currentScoreLabel) currentScoreLabel.text = mCurScore.ToString();        
         if(resultScoreLabel) resultScoreLabel.text = "0";
+
+        UpdateBonusScore(bonusScore);
+    }
+
+    /// <summary>
+    /// Ideally call this after init, but before playing result. (deduct or increase bonus)
+    /// </summary>
+    public void UpdateBonusScore(int bonusScore) {
+        mBonusScore = bonusScore;
+        if(bonusScoreLabel) bonusScoreLabel.text = "+" + mBonusScore.ToString();
     }
 
     public void PlayResult() {

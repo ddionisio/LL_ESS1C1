@@ -105,6 +105,11 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
     public string sfxPathWrong = "Audio/wrong.wav";
     public string sfxPathResultChange = "Audio/correct.wav";
 
+    [Header("Error")]
+    public ErrorCounterWidget errorCounter;
+    public Transform errorDecrementPoint;
+    public float errorDecrementEndDelay = 0.3f;
+
     [Header("Signals")]
     public M8.Signal signalExit;
 
@@ -135,15 +140,13 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
         switch(state) {
             case State.Result:
                 //add up score
-                mCurScore = (GameData.instance.quizBonusPoints / 2) * rockOutputs.Length;
+                mCurScore = GameData.instance.quizBonusPoints * rockOutputs.Length;
 
                 int curTotalScore = LoLManager.instance.curScore;
 
                 if(scoreWidget)
                     scoreWidget.Init(curTotalScore, mCurScore);
-
-                LoLManager.instance.curScore = curTotalScore + mCurScore;
-
+                                
                 state = State.ResultExit;
                 break;
 
@@ -214,11 +217,12 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                     LoLManager.instance.PlaySound(sfxPathResultChange, false, false);
             }
         }
-        else {
+        else { //error
             if(animator && !string.IsNullOrEmpty(takeRockActionError))
                 animator.Play(takeRockActionError);
 
-            //error
+            errorCounter.Increment();
+                        
             if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathWrong))
                 LoLManager.instance.PlaySound(sfxPathWrong, false, false);
         }
@@ -299,11 +303,6 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                 break;
 
             case State.ResultEnd:
-                if(nextGO) nextGO.SetActive(true);
-
-                //apply score to text
-                //if(resultScoreLabel)
-                //resultScoreLabel.text = mResultScore.ToString(); //leading zeros?
 
                 mRout = StartCoroutine(DoResultEndEnter());
                 break;
@@ -326,6 +325,8 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
 
         //initialize result
         ApplyResult(rockResultStart[Random.Range(0, rockResultStart.Length)], false, RockAction.None, null);
+
+        errorCounter.Init();
 
         state = State.Result;
     }
@@ -362,6 +363,29 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
             while(animator.isPlaying)
                 yield return null;
         }
+
+        if(errorCounter.errorGOs.Length > 0) {
+            int errorScoreDeduction = (mCurScore - Mathf.RoundToInt(mCurScore * 0.1f)) / errorCounter.errorGOs.Length;
+
+            //reduce bonus score based on error counter
+            while(errorCounter.count > 0) {
+                errorCounter.DecrementTransfer(errorDecrementPoint.position);
+                while(errorCounter.isPlaying)
+                    yield return null;
+
+                mCurScore -= errorScoreDeduction;
+                scoreWidget.UpdateBonusScore(mCurScore);
+            }
+
+            if(errorDecrementEndDelay > 0f)
+                yield return new WaitForSeconds(errorDecrementEndDelay);
+        }
+                
+        scoreWidget.PlayResult();
+
+        LoLManager.instance.curScore += mCurScore;
+
+        if(nextGO) nextGO.SetActive(true);
 
         mRout = null;
     }

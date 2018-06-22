@@ -87,6 +87,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dc760f373c435f5498299177d48b13c0, type: 3}
   - {fileID: 21300000, guid: ad41d46a9ec80c34d81c7ce14f237667, type: 3}
   - {fileID: 21300000, guid: 1a7187d6d97170844aa4f5b373ef9933, type: 3}
+  - {fileID: 21300000, guid: 162262b3d1c666041b73b0202178e2f3, type: 3}
   - {fileID: 21300004, guid: 766bdf4bf0a0a754bafc09a69b7afa49, type: 3}
   - {fileID: 21300000, guid: 746da52fc76531649b4885936c250c39, type: 3}
   - {fileID: 21300000, guid: 7f2277c64f7a7ac40a42f85d1fbf5539, type: 3}
@@ -106,7 +107,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c694fef99bc236d43b746e46503b0af4, type: 3}
   - {fileID: 21300000, guid: f825dd1c691dcb24e886797125878c0c, type: 3}
   - {fileID: 21300000, guid: 86d15521aafffda47bb8da65f8f51bac, type: 3}
+  - {fileID: 21300000, guid: d29b22eaa1763be49ad9798a8ca953e1, type: 3}
   - {fileID: 21300000, guid: 28b835c93771f9b46b1763c4eeb09b64, type: 3}
+  - {fileID: 21300000, guid: ac32b3d5c23fd5149817b2f85be6680f, type: 3}
   - {fileID: 21300000, guid: bb8a087995e8ab149b0f5c36c07f3d96, type: 3}
   - {fileID: 21300000, guid: 6894285575ff91540992ec01bcd6e4c6, type: 3}
   - {fileID: 21300000, guid: de49af91cb527f047bb7c5bc7a7b2ddd, type: 3}
@@ -146,6 +149,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d1cd2fb02ce66c34ab1ca87abd041e61, type: 3}
   - {fileID: 21300000, guid: 1151315e3a08a124b91fa8445cea6de5, type: 3}
   - {fileID: 21300000, guid: cc83cb9bf80426640afe2b7943fd6d0d, type: 3}
+  - {fileID: 21300002, guid: d29b22eaa1763be49ad9798a8ca953e1, type: 3}
   - {fileID: 21300000, guid: 5dba8f1b98366824abb3c740f1def12f, type: 3}
   - {fileID: 21300000, guid: c83f3feef6a884e46840e19438debc18, type: 3}
   - {fileID: 21300000, guid: 2758efb878bb8f247b4b5995b7940cce, type: 3}
@@ -154,6 +158,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e8aece3e7263aa149b0b4a70b9f2f900, type: 3}
   - {fileID: 21300000, guid: a8d00823fe594a24dbe16bcfc8e8b570, type: 3}
   - {fileID: 21300000, guid: 7046fe5e687cd9546be34a003bc3c635, type: 3}
+  - {fileID: 21300000, guid: e1cb7c37b9a853045ad2a0b78b0cec2c, type: 3}
   - {fileID: 21300000, guid: 8c3fbe236c7721b45b5e903b5027bb88, type: 3}
   - {fileID: 21300000, guid: e4729b1b0406f2146ae64692512d2cb4, type: 3}
   - {fileID: 21300000, guid: 33306d04434fe2240ae2688852232df1, type: 3}
@@ -263,6 +268,7 @@ SpriteAtlas:
   - rockCycle_Melt
   - rockCycle_heatPressure
   - rockCycle_Cool
+  - rockCycle_illustration_volcano
   - result1RockLayersSuperposition_marble
   - ktBoundary
   - gnomeGlow
@@ -282,7 +288,9 @@ SpriteAtlas:
   - collectionIconLocked
   - rockMarbleIcon
   - frameDecor
+  - rockCycle_illustration_platform_0
   - buttonNotebook
+  - rockCycle_illustration_blob
   - optionButton
   - rockSedimentary
   - questionMark
@@ -322,6 +330,7 @@ SpriteAtlas:
   - notebookTabIconStratigraphy
   - sedimentaryIllustration1
   - burrowHole
+  - rockCycle_illustration_platform_1
   - confirmIcon
   - cannonStand
   - cancelIcon
@@ -330,6 +339,7 @@ SpriteAtlas:
   - fossilColumn_ankylosaurus
   - fossilColumn_stego
   - fossilColumn_glossopteris
+  - icon_face_sad
   - fossilColumn_triceratops
   - fossilColumn_mammoth
   - fossilColumn_smilodon

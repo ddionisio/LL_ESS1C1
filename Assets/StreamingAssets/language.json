@@ -156,15 +156,15 @@
 	"rockCycle": "Rock Cycle",
 	"rockCycleChart": "Rock Cycle Chart",
 	"result_question_rockCycle": "Create the following rocks:",
-	"result_summary_rockCycle": "Igneous rocks form when magma cools off.\n\nMetamorphic rocks form when pressure is applied to other rocks. Pressure generates heat, causing rocks to change.\n\nSedimentary rocks form when other types of rocks are broken down into sediments by weathering and erosion. These sediments cement together after a long period of time.",
+	"result_summary_rockCycle": "Rocks are continuously changing forms across time as forces acting upon the Earth lift them above ground and sink them back down in a never-ending cycle.",
 	
 	"rockSediment": "Sedimentary",
 	"rockIgneous": "Igneous",
 	"rockMetamorphic": "Metamorphic",
 	
-	"rockSedimentDesc": "Sedimentary description here.",
-	"rockIgneousDesc": "Igneous description here.",
-	"rockMetamorphicDesc": "Metamorphic description here.",
+	"rockSedimentDesc": "Sedimentary rocks form when other types of rocks are broken down into sediments by weathering and erosion. These sediments cement together after a long period of time.",
+	"rockIgneousDesc": "Igneous rocks form when magma cools off.",
+	"rockMetamorphicDesc": "Metamorphic rocks form when pressure is applied to other rocks. Pressure generates heat, causing rocks to change.",
 	
 	"rockCycle_compactCement": "Compact & Cementation",
 	"rockCycle_heatPressure": "Pressure & Heat",
