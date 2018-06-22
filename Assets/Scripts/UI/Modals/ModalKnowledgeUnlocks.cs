@@ -8,6 +8,8 @@ public class ModalKnowledgeUnlocks : M8.UIModal.Controller, M8.UIModal.Interface
     public CollectionUnlockWidget[] unlockWidgets;
     public GameObject nextGO;
 
+    public string soundPlayPath;
+
     [Header("Signals")]
     public M8.Signal signalNext;
 
@@ -72,6 +74,8 @@ public class ModalKnowledgeUnlocks : M8.UIModal.Controller, M8.UIModal.Interface
         }
 
         mUnlockDisplayCount = collects.Count;
+
+        LoLManager.instance.PlaySound(soundPlayPath, false, false);
     }
 
     void M8.UIModal.Interface.IPop.Pop() {

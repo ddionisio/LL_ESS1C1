@@ -375,10 +375,10 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
 
                 mCurScore -= errorScoreDeduction;
                 scoreWidget.UpdateBonusScore(mCurScore);
-            }
 
-            if(errorDecrementEndDelay > 0f)
-                yield return new WaitForSeconds(errorDecrementEndDelay);
+                if(errorDecrementEndDelay > 0f)
+                    yield return new WaitForSeconds(errorDecrementEndDelay);
+            }
         }
                 
         scoreWidget.PlayResult();
