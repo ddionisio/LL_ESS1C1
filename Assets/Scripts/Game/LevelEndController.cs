@@ -48,6 +48,8 @@ public class LevelEndController : MonoBehaviour {
 
         var levelData = GameData.instance.levels[ind];
 
+        HUD.instance.notebookOpenProxy.startPageIndex = levelData.notebookInitialIndex;
+
         //open modal unlock
         var collectUnlockParms = new M8.GenericParams();
         collectUnlockParms.Add(ModalKnowledgeUnlocks.parmCollectionUnlocks, levelData.collectionUnlocks);

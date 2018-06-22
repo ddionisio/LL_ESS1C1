@@ -73,6 +73,11 @@ public class ModalCollectionPageIndex : M8.UIModal.Controller, M8.UIModal.Interf
                 
         illustrations[mModalDisplayIndex].displayGO.SetActive(true);
 
+        //reset animation to prepare transition        
+        if(illustrations[mModalDisplayIndex].animator && !string.IsNullOrEmpty(illustrations[mModalDisplayIndex].take)) {
+            illustrations[mModalDisplayIndex].animator.ResetTake(illustrations[mModalDisplayIndex].take);
+        }
+
         if(illustrateShowDelay > 0f) {
             if(replayInteractive) replayInteractive.interactable = false;
 

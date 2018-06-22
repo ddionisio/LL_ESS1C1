@@ -21,6 +21,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         public string modalLevelEnd; //which modal to use post-level
 
         public LevelUnlockData[] collectionUnlocks;
+
+        public int notebookInitialIndex;
     }
 
     [Header("Scenes")]

@@ -14,6 +14,7 @@ public class EndingController : MonoBehaviour {
     void Awake() {
         //initialize hud
         HUD.instance.mode = HUD.Mode.Lesson;
+        HUD.instance.notebookOpenProxy.startPageIndex = 0;
     }
 
     IEnumerator Start() {

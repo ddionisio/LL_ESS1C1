@@ -44,18 +44,30 @@ MonoBehaviour:
       isDisplayed: 0
     - data: {fileID: 11400000, guid: 749c33ab7f28a9f49993d7dbd447d21f, type: 2}
       isDisplayed: 0
+    notebookInitialIndex: 0
   - scene:
       name: level2
       path: Assets/Scenes/level2.unity
     modalLevelEnd: levelResultSuperposition1
-    collectionUnlocks: []
+    collectionUnlocks:
+    - data: {fileID: 11400000, guid: b8330a4e790994d49858525d304097b7, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: 9e7e6bbf6137aef45bdab79c67a67a94, type: 2}
+      isDisplayed: 1
+    notebookInitialIndex: 1
   - scene:
       name: level3
       path: Assets/Scenes/level3.unity
     modalLevelEnd: levelResultSuperposition2
-    collectionUnlocks: []
+    collectionUnlocks:
+    - data: {fileID: 11400000, guid: 9598b5031ec575746a25d3fa74604734, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: c4e3e685ed4c263458f8303eb7edf9ed, type: 2}
+      isDisplayed: 1
+    notebookInitialIndex: 1
   - scene:
       name: level4
       path: Assets/Scenes/level4.unity
     modalLevelEnd: level2Result
     collectionUnlocks: []
+    notebookInitialIndex: 2

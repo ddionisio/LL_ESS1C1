@@ -12,10 +12,13 @@ public class HUD : M8.SingletonBehaviour<HUD> {
 
     public RectTransform root;
 
+    [Header("Mode Displays")]
     public GameObject gameRootGO; //gameplay related hud elements
-
     public GameObject lessonRootGO;
+
+    [Header("Notebook")]
     public Transform notebookIconRoot;
+    public ModalNotebookProxy notebookOpenProxy;
 
     [Header("Signals")]
     public SignalBool signalGameActiveUpdate;
