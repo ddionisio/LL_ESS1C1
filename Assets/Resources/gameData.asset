@@ -54,6 +54,14 @@ MonoBehaviour:
       isDisplayed: 1
     - data: {fileID: 11400000, guid: 9e7e6bbf6137aef45bdab79c67a67a94, type: 2}
       isDisplayed: 1
+    - data: {fileID: 11400000, guid: b48611af6aeb80342ab0fd4df0edb756, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 749c33ab7f28a9f49993d7dbd447d21f, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 2670a03e142665e4f943920744dde2fc, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 4312b1fb88312d343a3881ac36cc7ae5, type: 2}
+      isDisplayed: 0
     notebookInitialIndex: 1
   - scene:
       name: level3
@@ -64,6 +72,14 @@ MonoBehaviour:
       isDisplayed: 1
     - data: {fileID: 11400000, guid: c4e3e685ed4c263458f8303eb7edf9ed, type: 2}
       isDisplayed: 1
+    - data: {fileID: 11400000, guid: 4e3447887f5dd774587874a9eed798e3, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 2670a03e142665e4f943920744dde2fc, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 98a1e9326d28d55489bde4aa503ed4ec, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 749c33ab7f28a9f49993d7dbd447d21f, type: 2}
+      isDisplayed: 0
     notebookInitialIndex: 1
   - scene:
       name: level4

@@ -155,52 +155,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c15746fb601a384c854070481972151, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &519595728
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897860732311450, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1527048722365856, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2f95d5801ef6cf841adcf647f863c552, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1100774720
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTrackIndex: 1
   signalProceed: {fileID: 11400000, guid: f465476b0495e1b41826238f66830cae, type: 2}
-  debugLevelIndex: 0
+  debugLevelIndex: 2
 --- !u!4 &1100774722
 Transform:
   m_ObjectHideFlags: 0

@@ -96,6 +96,11 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
     public string sfxPathCorrect = "Audio/correct.wav";
     public string sfxPathWrong = "Audio/wrong.wav";
 
+    [Header("Error")]
+    public ErrorCounterWidget errorCounter;
+    public Transform errorDecrementPoint;
+    public float errorDecrementEndDelay = 0.3f;
+
     [Header("Signals")]
     public M8.Signal signalExit;
 
@@ -119,27 +124,26 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
 
     private State mState = State.Invalid;
     private Coroutine mRout;
-
-    private int mErrorCount;
-
+    
     private Vector2[] mAnswerPositions;
 
     public void Next() {
         switch(state) {
             case State.Result:
                 //add up score
-                int errorDeduction = Mathf.RoundToInt(GameData.instance.quizBonusPoints * 0.25f);
+                /*int errorDeduction = Mathf.RoundToInt(GameData.instance.quizBonusPoints * 0.25f);
                 int total = GameData.instance.quizBonusPoints * answerSlots.Length;
                 int minScore = GameData.instance.quizBonusPoints / 2;
 
-                mCurScore = Mathf.Clamp(total - errorDeduction * mErrorCount, minScore, total);
+                mCurScore = Mathf.Clamp(total - errorDeduction * mErrorCount, minScore, total);*/
+
+                //add up score
+                mCurScore = GameData.instance.quizBonusPoints * answerSlots.Length;
 
                 int curTotalScore = LoLManager.instance.curScore;
 
                 if(scoreWidget)
                     scoreWidget.Init(curTotalScore, mCurScore);
-
-                LoLManager.instance.curScore = curTotalScore + mCurScore;
 
                 state = State.ResultExit;
                 break;
@@ -189,8 +193,6 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
                 break;
 
             case State.ResultEnd:
-                if(nextGO) nextGO.SetActive(true);
-
                 //apply score to text
                 //if(resultScoreLabel)
                 //resultScoreLabel.text = mResultScore.ToString(); //leading zeros?
@@ -220,7 +222,8 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
         }
 
         mCurScore = 0;
-        mErrorCount = 0;
+
+        errorCounter.Init();
 
         state = State.Result;
     }
@@ -257,6 +260,29 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
             while(animator.isPlaying)
                 yield return null;
         }
+
+        if(errorCounter.errorGOs.Length > 0) {
+            int errorScoreDeduction = (mCurScore - Mathf.RoundToInt(mCurScore * 0.1f)) / errorCounter.errorGOs.Length;
+
+            //reduce bonus score based on error counter
+            while(errorCounter.count > 0) {
+                errorCounter.DecrementTransfer(errorDecrementPoint.position);
+                while(errorCounter.isPlaying)
+                    yield return null;
+
+                mCurScore -= errorScoreDeduction;
+                scoreWidget.UpdateBonusScore(mCurScore);
+
+                if(errorDecrementEndDelay > 0f)
+                    yield return new WaitForSeconds(errorDecrementEndDelay);
+            }
+        }
+
+        scoreWidget.PlayResult();
+
+        LoLManager.instance.curScore += mCurScore;
+
+        if(nextGO) nextGO.SetActive(true);
 
         mRout = null;
     }
@@ -351,13 +377,13 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
                         LoLManager.instance.PlaySound(sfxPathCorrect, false, false);
                 }
             }
-            else {
+            else { //error
                 if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathWrong))
                     LoLManager.instance.PlaySound(sfxPathWrong, false, false);
 
                 slot.Error();
 
-                mErrorCount++;
+                errorCounter.Increment();
 
                 answer.Revert();
             }
