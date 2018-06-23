@@ -61,7 +61,7 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 }
 
                 //compute score
-                int totalPoints = GameData.instance.quizBonusPoints * (answers.Length - 1);
+                //int totalPoints = GameData.instance.quizBonusPoints * (answers.Length - 1);
             }
             else { //wrong
                 answers[answerInd].state = QuizAnswerWidget.State.Wrong;
@@ -147,8 +147,6 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
 
                     if(scoreWidget)
                         scoreWidget.Init(curTotalScore, mCurScore);
-
-                    LoLManager.instance.curScore = curTotalScore + mCurScore;
 
                     state = State.ResultExit;
                 }
@@ -271,6 +269,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         }
 
         scoreWidget.PlayResult();
+
+        GameData.instance.SetCurrentLevelScore(mCurScore);
 
         LoLManager.instance.curScore += mCurScore;
 

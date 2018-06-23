@@ -280,6 +280,8 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
 
         scoreWidget.PlayResult();
 
+        GameData.instance.SetCurrentLevelScore(mCurScore);
+
         LoLManager.instance.curScore += mCurScore;
 
         if(nextGO) nextGO.SetActive(true);

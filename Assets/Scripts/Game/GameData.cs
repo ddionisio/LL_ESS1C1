@@ -43,6 +43,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     public int curLevelIndex { get; private set; }
 
     private HashSet<string> mCollectionUnlocks = new HashSet<string>();
+
+    private int[] mLevelScores;
     
     /// <summary>
     /// Called in start scene
@@ -157,6 +159,18 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         return mCollectionUnlocks.Contains(collectionName);
     }
 
+    public int GetLevelScore(int index) {
+        return mLevelScores[index];
+    }
+
+    public void SetLevelScore(int index, int score) {
+        mLevelScores[index] = score;
+    }
+
+    public void SetCurrentLevelScore(int score) {
+        mLevelScores[curLevelIndex] = score;
+    }
+
     protected override void OnInstanceInit() {
         //compute max progress
         if(LoLManager.isInstantiated) {            
@@ -166,6 +180,8 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
             curLevelIndex = DebugControl.instance.levelIndex;
 
         mCollectionUnlocks.Clear();
+
+        mLevelScores = new int[levels.Length];
     }
 
     private void UpdateLevelIndexFromProgress(int progress) {

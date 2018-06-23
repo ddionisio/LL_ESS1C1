@@ -34,6 +34,7 @@
 	
 	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers.",
 	"introDialog2": "But before we have a crack at it, let's first review the basis of Stratigraphy.",
+	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
 	
 	"introStratigraphy": "Stratigraphy",
 	"introStratigraphyDetail1": "A layer of rock is called a stratum. The study of these layers is called Stratigraphy. Each layer has a unique story to tell about the Earth.",
@@ -70,9 +71,7 @@
 	
 	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
 	"introLawStratigraphyLateralContinuityDesc": "Layers of rock fill up horizontally until it is broken apart by powerful forces such as water and earthquake. Layers on both sides will match up.",
-	
-	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
-	
+			
 	"stage_title_1": "Deep Into the Lithosphere",
 	"stage_title_2": "The Dark Crust",
 	"stage_title_3": "Rigid Crevice",
@@ -195,6 +194,11 @@
 	"tutorialDialog": "Press anywhere to launch the Gnomatic!",
 	
 	"knowledgeUnlockTitle": "New Knowledge Acquired",
+	
+	"quizTitle01": "01 - Rock Cycle",
+	"quizTitle02": "02 - Layer Superposition",
+	"quizTitle03": "03 - Layer Cross-cutting",
+	"quizTitle04": "04 - Index Fossil",
 	
 	"test": "TEST"
   }

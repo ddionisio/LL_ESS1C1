@@ -383,6 +383,8 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                 
         scoreWidget.PlayResult();
 
+        GameData.instance.SetCurrentLevelScore(mCurScore);
+
         LoLManager.instance.curScore += mCurScore;
 
         if(nextGO) nextGO.SetActive(true);

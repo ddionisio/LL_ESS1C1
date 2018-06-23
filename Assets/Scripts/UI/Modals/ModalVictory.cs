@@ -12,18 +12,18 @@ public class ModalVictory : M8.UIModal.Controller, M8.UIModal.Interface.IPush {
     public void Proceed() {
         Close();
 
-        if(LoLManager.isInstantiated)
-            LoLManager.instance.curScore = mCurScore + mBonusScore;
+        //if(LoLManager.isInstantiated)
+            //LoLManager.instance.curScore = mCurScore + mBonusScore;
 
         GameData.instance.Progress();
     }
 
     void M8.UIModal.Interface.IPush.Push(M8.GenericParams parms) {
-        if(scoreWidget) {
+        /*if(scoreWidget) {
             mCurScore = LoLManager.isInstantiated ? LoLManager.instance.curScore : 0;
             mBonusScore = GameMapController.isInstantiated ? GameMapController.instance.score : 0;
 
             scoreWidget.Init(mCurScore, mBonusScore);
-        }
+        }*/
     }
 }
