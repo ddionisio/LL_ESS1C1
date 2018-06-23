@@ -18,10 +18,7 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
         public QuizAnswerWidget[] answers;        
         public int answerCorrectIndex;
         public bool answerDisableShuffle;
-
-        public int score { get; private set; }
-        public int wrongCount { get; private set; }
-
+        
         public event System.Action<int, bool> answerCallback;
 
         private Vector2[] mAnswerLocalPoints;
@@ -49,9 +46,6 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
 
                 answers[i].Init(i);
             }
-
-            score = 0;
-            wrongCount = 0;
         }
 
         void OnAnswerSubmit(int answerInd) {
@@ -68,12 +62,9 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
 
                 //compute score
                 int totalPoints = GameData.instance.quizBonusPoints * (answers.Length - 1);
-
-                score = Mathf.Clamp(totalPoints - (GameData.instance.quizBonusPoints * wrongCount), 0, int.MaxValue);
             }
             else { //wrong
                 answers[answerInd].state = QuizAnswerWidget.State.Wrong;
-                wrongCount++;
 
                 //show points deduction?
             }
@@ -107,6 +98,11 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     [Header("SFX")]
     public string sfxPathCorrect = "Audio/correct.wav";
     public string sfxPathWrong = "Audio/wrong.wav";
+
+    [Header("Error")]
+    public ErrorCounterWidget errorCounter;
+    public Transform errorDecrementPoint;
+    public float errorDecrementEndDelay = 0.3f;
 
     [Header("Signals")]
     public M8.Signal signalExit;
@@ -195,8 +191,6 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 break;
 
             case State.ResultEnd:
-                if(nextGO) nextGO.SetActive(true);
-
                 //apply score to text
                 //if(resultScoreLabel)
                     //resultScoreLabel.text = mResultScore.ToString(); //leading zeros?
@@ -220,6 +214,8 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
 
         mCurQuestionInd = 0;
         mCurScore = 0;
+
+        errorCounter.Init();
 
         state = State.Result;
     }
@@ -257,6 +253,29 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
                 yield return null;
         }
 
+        if(errorCounter.errorGOs.Length > 0) {
+            int errorScoreDeduction = (mCurScore - Mathf.RoundToInt(mCurScore * 0.1f)) / errorCounter.errorGOs.Length;
+
+            //reduce bonus score based on error counter
+            while(errorCounter.count > 0) {
+                errorCounter.DecrementTransfer(errorDecrementPoint.position);
+                while(errorCounter.isPlaying)
+                    yield return null;
+
+                mCurScore -= errorScoreDeduction;
+                scoreWidget.UpdateBonusScore(mCurScore);
+
+                if(errorDecrementEndDelay > 0f)
+                    yield return new WaitForSeconds(errorDecrementEndDelay);
+            }
+        }
+
+        scoreWidget.PlayResult();
+
+        LoLManager.instance.curScore += mCurScore;
+
+        if(nextGO) nextGO.SetActive(true);
+
         mRout = null;
     }
 
@@ -285,18 +304,20 @@ public class ModalLevelResults : M8.UIModal.Controller, M8.UIModal.Interface.IPu
     }
 
     void OnAnswerSubmit(int answerInd, bool isCorrect) {
-        var question = questions[mCurQuestionInd];
+        //var question = questions[mCurQuestionInd];
 
         if(isCorrect) {
             if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathCorrect))
                 LoLManager.instance.PlaySound(sfxPathCorrect, false, false);
 
-            mCurScore += question.score;
+            mCurScore += GameData.instance.quizBonusPoints;
 
             //show next
             if(nextGO) nextGO.SetActive(true);
         }
-        else {
+        else { //error
+            errorCounter.Increment();
+
             if(LoLManager.isInstantiated && !string.IsNullOrEmpty(sfxPathWrong))
                 LoLManager.instance.PlaySound(sfxPathWrong, false, false);
         }

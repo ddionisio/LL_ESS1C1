@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTrackIndex: 1
   signalProceed: {fileID: 11400000, guid: f465476b0495e1b41826238f66830cae, type: 2}
-  debugLevelIndex: 2
+  debugLevelIndex: 3
 --- !u!4 &1100774722
 Transform:
   m_ObjectHideFlags: 0

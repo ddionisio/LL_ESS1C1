@@ -37,7 +37,9 @@
 	
 	"introStratigraphy": "Stratigraphy",
 	"introStratigraphyDetail1": "A layer of rock is called a stratum. The study of these layers is called Stratigraphy. Each layer has a unique story to tell about the Earth.",
-	"introStratigraphyDetail2": "Each layer of strata can give us information about the Earth's past.  These are categorized in geological time scale.",
+	"introStratigraphyDetail2": "Each layer of rocks can give us information about the Earth's past.  These are categorized in geological time scale.",
+	
+	"geologicalTimescale": "Geological Timescale",
 	
 	"coreSample": "Core Sample",	
 	"strata": "Strata",
@@ -125,7 +127,7 @@
 	"coreSamples": "Core Samples",
 	
 	"result_2_question": "Which one of these is an Index Fossil?",
-	"result_2_end": "Index Fossils are used to determine the Geological Timescale of a stratum. It can also allow us to correlate rock layers from one area to another, as far apart as distant continents.",
+	"result_2_end": "Index Fossils are used to determine the Geological Timescale of a layer. It can also allow us to correlate layers from one area to another, as far apart as distant continents.",
 	
 	"indexFossilCriteria": "Index Fossil Criteria",
 	"indexFossilCriteriaDesc": "- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",

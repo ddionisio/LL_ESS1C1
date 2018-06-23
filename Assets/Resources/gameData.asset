@@ -85,5 +85,17 @@ MonoBehaviour:
       name: level4
       path: Assets/Scenes/level4.unity
     modalLevelEnd: level2Result
-    collectionUnlocks: []
+    collectionUnlocks:
+    - data: {fileID: 11400000, guid: 868b0941d1fc7954bb8b5d6d19e27a02, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: b926bb9dda0f83745bbec364bfc07906, type: 2}
+      isDisplayed: 1
+    - data: {fileID: 11400000, guid: 26d65ecc20225cf41b1cb8d1ab48325c, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 136653a2af1f94443b8c1161f3440c14, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 3f1ae3ab25a368f4ba08752a3cbcc050, type: 2}
+      isDisplayed: 0
+    - data: {fileID: 11400000, guid: 5a2a4a28dae8c2e47a2b5c209fed9ab0, type: 2}
+      isDisplayed: 0
     notebookInitialIndex: 2

@@ -34,6 +34,8 @@
 	"result_3_question_2":{ "voiceDuration":4 },
 	"result_3_end":{ "voiceDuration":8 },
 	
+	"geologicalTimescale":{ "voiceDuration":1.6 },
+	
 	"rockCycle":{ "voiceDuration":1.5 },
 	"result_question_rockCycle":{ "voiceDuration":2.5 },
 	"result_summary_rockCycle":{ "voiceDuration":6 },
