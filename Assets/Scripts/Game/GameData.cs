@@ -156,7 +156,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     }
 
     public bool CollectionIsUnlocked(string collectionName) {
-        return mCollectionUnlocks.Contains(collectionName);
+        return mCollectionUnlocks.Contains(collectionName) || DebugControl.instance.collectionsUnlocked;
     }
 
     public int GetLevelScore(int index) {

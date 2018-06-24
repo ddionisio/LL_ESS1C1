@@ -8,16 +8,13 @@ public class LevelIntroController : MonoBehaviour {
     public struct LevelData {
         [M8.Localize]
         public string nameTextRef;
-
-        public string formatText;
-
+        
         public Transform anchor;
     }
 
     public LevelData[] levels;
 
     public Text titleLabel;
-    public Text formatLabel;
     public Transform highlightRoot;
 
     public int musicTrackIndex = 0;
@@ -38,10 +35,24 @@ public class LevelIntroController : MonoBehaviour {
 
         var levelDat = levels[ind];
 
-        //setup texts
-        if(titleLabel) titleLabel.text = LoLLocalize.Get(levelDat.nameTextRef);
+        string prependText = "";
+        switch(ind) {
+            case 0:
+                prependText = "I - ";
+                break;
+            case 1:
+                prependText = "II - ";
+                break;
+            case 2:
+                prependText = "III - ";
+                break;
+            case 3:
+                prependText = "IV - ";
+                break;
+        }
 
-        if(formatLabel) formatLabel.text = string.Format("{0} - ", levelDat.formatText);
+        //setup texts
+        if(titleLabel) titleLabel.text = prependText + LoLLocalize.Get(levelDat.nameTextRef);
 
         //apply highlight position
         if(highlightRoot && levelDat.anchor) {
