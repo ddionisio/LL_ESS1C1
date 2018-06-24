@@ -119,6 +119,8 @@ public class GameMapController : M8.SingletonBehaviour<GameMapController> {
         var curCheckpoint = GetCurrentCheckpoint();
                 
         curCheckpoint.SpawnPlayer(player);
+
+        HUD.instance.launchDialog.Show();
     }
 
     void OnSignalGoal() {

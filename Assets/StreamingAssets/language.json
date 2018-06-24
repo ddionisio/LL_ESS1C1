@@ -32,9 +32,9 @@
 	"credits": "CREDITS",
 	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
 	
-	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers.",
-	"introDialog2": "But before we have a crack at it, let's first review the basis of Stratigraphy.",
-	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
+	"introDialog1": "This is the Gnomatic Strata Analyzer, the latest in technology for studying the History of Planet Earth.",
+	"introDialog2": "Why don't you take it for a spin and uncover the deep mysteries of Earth!",
+	"introDialog3": "Tali-How!",
 	
 	"introStratigraphy": "Stratigraphy",
 	"introStratigraphyDetail1": "A layer of rock is called a stratum. The study of these layers is called Stratigraphy. Each layer has a unique story to tell about the Earth.",

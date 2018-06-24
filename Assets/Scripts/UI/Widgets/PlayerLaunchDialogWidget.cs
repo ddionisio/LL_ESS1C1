@@ -6,30 +6,22 @@ public class PlayerLaunchDialogWidget : MonoBehaviour {
     public GameObject displayGO;
     public float displayShowDelay = 5f;
 
-    [Header("Signals")]
-    public SignalBool signalGameHUDActive;
+    public void Show() {
+        StopAllCoroutines();
+        StartCoroutine(DoShowDisplay());
+    }
 
     void OnDisable() {
         if(displayGO) displayGO.SetActive(false);
     }
 
     void OnDestroy() {
-        if(signalGameHUDActive) signalGameHUDActive.callback -= OnSignalGameHUDActive;
     }
 
     void Awake() {
         if(displayGO) displayGO.SetActive(false);
-
-        if(signalGameHUDActive) signalGameHUDActive.callback += OnSignalGameHUDActive;
     }
-
-    void OnSignalGameHUDActive(bool active) {
-        if(active) {
-            StopAllCoroutines();
-            StartCoroutine(DoShowDisplay());
-        }
-    }
-
+        
     IEnumerator DoShowDisplay() {
         //wait for launch ready
         while(GameMapController.instance.player.state != (int)EntityState.PlayerLaunchReady)

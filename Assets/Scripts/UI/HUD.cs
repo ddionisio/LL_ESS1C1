@@ -16,6 +16,9 @@ public class HUD : M8.SingletonBehaviour<HUD> {
     public GameObject gameRootGO; //gameplay related hud elements
     public GameObject lessonRootGO;
 
+    [Header("Game")]
+    public PlayerLaunchDialogWidget launchDialog;
+
     [Header("Notebook")]
     public Transform notebookIconRoot;
     public ModalNotebookProxy notebookOpenProxy;
