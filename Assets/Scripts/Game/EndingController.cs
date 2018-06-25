@@ -8,7 +8,9 @@ public class EndingController : MonoBehaviour {
     public string take = "play";
 
     public Text[] levelScoreLabels;
+    public GameObject[] levelStarGOs;
     public Text scoreLabel;
+    public float showStarDelay = 0.35f;
 
     public int musicTrackIndex = 2;
 
@@ -16,6 +18,11 @@ public class EndingController : MonoBehaviour {
         //initialize hud
         HUD.instance.mode = HUD.Mode.Lesson;
         HUD.instance.notebookOpenProxy.startPageIndex = 0;
+
+        for(int i = 0; i < levelStarGOs.Length; i++) {
+            if(levelStarGOs[i])
+                levelStarGOs[i].SetActive(false);
+        }
     }
 
     IEnumerator Start() {
@@ -38,9 +45,24 @@ public class EndingController : MonoBehaviour {
 
         if(LoLMusicPlaylist.isInstantiated)
             LoLMusicPlaylist.instance.PlayTrack(musicTrackIndex);
-                
+
         //play animation
-        if(animator && !string.IsNullOrEmpty(take))
+        if(animator && !string.IsNullOrEmpty(take)) {
             animator.Play(take);
+            while(animator.isPlaying)
+                yield return null;
+        }
+
+        //show stars
+        for(int i = 0; i < levelStarGOs.Length; i++) {
+            int errorCount = GameData.instance.GetLevelMistakeCount(i);
+
+            if(errorCount <= 0) {
+                yield return new WaitForSeconds(showStarDelay);
+
+                if(levelStarGOs[i])
+                    levelStarGOs[i].SetActive(true);
+            }
+        }
     }
 }

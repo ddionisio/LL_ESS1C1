@@ -72,10 +72,10 @@
 	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
 	"introLawStratigraphyLateralContinuityDesc": "Layers of rock fill up horizontally until it is broken apart by powerful forces such as water and earthquake. Layers on both sides will match up.",
 			
-	"stage_title_1": "Deep Into the Lithosphere",
-	"stage_title_2": "The Dark Crust",
-	"stage_title_3": "Rigid Crevice",
-	"stage_title_4": "Out Into the Troposphere",
+	"stage_title_1": "Rigid Mantle",
+	"stage_title_2": "The Oceanic Crust",
+	"stage_title_3": "The Continental Crust",
+	"stage_title_4": "Out Into the Atmosphere",
 	
 	"rockLayers": "Rock Layers",
 	"intrusiveRock": "Intrusive Rock",

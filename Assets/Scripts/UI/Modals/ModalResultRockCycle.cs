@@ -364,6 +364,8 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                 yield return null;
         }
 
+        int errorCount = errorCounter.count;
+
         if(errorCounter.errorGOs.Length > 0) {
             int errorScoreDeduction = (mCurScore - Mathf.RoundToInt(mCurScore * 0.1f)) / errorCounter.errorGOs.Length;
 
@@ -383,7 +385,7 @@ public class ModalResultRockCycle : M8.UIModal.Controller, M8.UIModal.Interface.
                 
         scoreWidget.PlayResult();
 
-        GameData.instance.SetCurrentLevelScore(mCurScore);
+        GameData.instance.SetCurrentLevelScore(mCurScore, errorCount);
 
         LoLManager.instance.curScore += mCurScore;
 

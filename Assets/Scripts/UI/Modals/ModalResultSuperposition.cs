@@ -261,6 +261,8 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
                 yield return null;
         }
 
+        int errorCount = errorCounter.count;
+
         if(errorCounter.errorGOs.Length > 0) {
             int errorScoreDeduction = (mCurScore - Mathf.RoundToInt(mCurScore * 0.1f)) / errorCounter.errorGOs.Length;
 
@@ -280,7 +282,7 @@ public class ModalResultSuperposition : M8.UIModal.Controller, M8.UIModal.Interf
 
         scoreWidget.PlayResult();
 
-        GameData.instance.SetCurrentLevelScore(mCurScore);
+        GameData.instance.SetCurrentLevelScore(mCurScore, errorCount);
 
         LoLManager.instance.curScore += mCurScore;
 

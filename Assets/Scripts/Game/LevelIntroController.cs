@@ -10,6 +10,8 @@ public class LevelIntroController : MonoBehaviour {
         public string nameTextRef;
         
         public Transform anchor;
+
+        public GameObject activeGO;
     }
 
     public LevelData[] levels;
@@ -22,6 +24,11 @@ public class LevelIntroController : MonoBehaviour {
     void Awake() {
         //initialize hud
         HUD.instance.mode = HUD.Mode.Lesson;
+
+        for(int i = 0; i < levels.Length; i++) {
+            if(levels[i].activeGO)
+                levels[i].activeGO.SetActive(false);
+        }
     }
 
     IEnumerator Start() {
@@ -58,6 +65,9 @@ public class LevelIntroController : MonoBehaviour {
         if(highlightRoot && levelDat.anchor) {
             highlightRoot.position = levelDat.anchor.position;
         }
+
+        if(levelDat.activeGO)
+            levelDat.activeGO.SetActive(true);
 
         if(LoLManager.isInstantiated)
             LoLManager.instance.SpeakText(levelDat.nameTextRef);

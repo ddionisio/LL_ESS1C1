@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenCapacity: 500
-  sequenceCapacity: 50
+  sequenceCapacity: 125
 --- !u!114 &114468768111179502
 MonoBehaviour:
   m_ObjectHideFlags: 1

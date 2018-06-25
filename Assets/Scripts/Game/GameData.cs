@@ -45,6 +45,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
     private HashSet<string> mCollectionUnlocks = new HashSet<string>();
 
     private int[] mLevelScores;
+    private int[] mLevelMistakeCounts;
     
     /// <summary>
     /// Called in start scene
@@ -163,12 +164,17 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         return mLevelScores[index];
     }
 
-    public void SetLevelScore(int index, int score) {
-        mLevelScores[index] = score;
+    public int GetLevelMistakeCount(int index) {
+        return mLevelMistakeCounts[index];
     }
 
-    public void SetCurrentLevelScore(int score) {
-        mLevelScores[curLevelIndex] = score;
+    public void SetLevelScore(int index, int score, int mistakeCount) {
+        mLevelScores[index] = score;
+        mLevelMistakeCounts[index] = mistakeCount;
+    }
+
+    public void SetCurrentLevelScore(int score, int mistakeCount) {
+        SetLevelScore(curLevelIndex, score, mistakeCount);
     }
 
     protected override void OnInstanceInit() {
@@ -182,6 +188,7 @@ public class GameData : M8.SingletonScriptableObject<GameData> {
         mCollectionUnlocks.Clear();
 
         mLevelScores = new int[levels.Length];
+        mLevelMistakeCounts = new int[levels.Length];
     }
 
     private void UpdateLevelIndexFromProgress(int progress) {

@@ -46,6 +46,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c2b5b6b1fd3f65e4ba6d3f064af7a97e, type: 3}
   - {fileID: 21300000, guid: cb09664881c7429479652c1c997bf07b, type: 3}
   - {fileID: 21300000, guid: 52283705b414be94d8033a0010dd3fdf, type: 3}
+  - {fileID: 21300000, guid: c52d5648fbba71642814e3808a69151c, type: 3}
   - {fileID: 21300000, guid: 1f9fa4e22b9cd56408f941263cee9450, type: 3}
   - {fileID: 21300000, guid: 2e9dfb1545117414b83d6a4dfe7e8a72, type: 3}
   - {fileID: 21300000, guid: 431f740b037fdec46a7fee26d03ef2eb, type: 3}
@@ -233,6 +234,7 @@ SpriteAtlas:
   - fossilOpabiniaIllustration
   - fossilColumn
   - fossilColumn2
+  - quarterCircle
   - rockGraniteIllustration
   - rockGneissIllustration
   - rockQuartziteIllustration
