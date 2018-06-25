@@ -11,7 +11,7 @@
 	
 	"start": "START",
 	
-	"pageTitleStratigraphy": "STRATIGRAPHY",
+	"pageTitleStratigraphy": "LAWS OF STRATIGRAPHY",
 	"pageTitleFossils": "FOSSILS",
 	"pageTitleRocks": "ROCKS",
 	"pageTitleOptions": "OPTIONS",
@@ -27,15 +27,20 @@
 	"confirm": "CONFIRM",
 	"cancel": "CANCEL",
 	
+	"dialogCollectionLocked": "You must continue to play the game to access this knowledge.",
+	
 	"credits": "CREDITS",
 	"credits_desc": "Written By: David Dionisio\nMusic From: Kevin Macleod",
 	
-	"introDialog1": "This is the Gnomatic Strata Analyzer.  A bouncy contraption capable of transmogrifying information from rock layers.",
-	"introDialog2": "But before we have a crack at it, let's first review the basis of Stratigraphy.",
+	"introDialog1": "This is the Gnomatic Strata Analyzer, the latest in technology for studying the History of Planet Earth.",
+	"introDialog2": "Why don't you take it for a spin and uncover the deep mysteries of Earth!",
+	"introDialog3": "And off we go!",
 	
-	"introStratigraphy": "STRATIGRAPHY",
-	"introStratigraphyDetail1": "A study in geology that deals with the order and position of rock layers (strata).",
-	"introStratigraphyDetail2": "Each layer of strata can give us information about the Earth's past.  These are categorized in geological time scale.",
+	"introStratigraphy": "Stratigraphy",
+	"introStratigraphyDetail1": "A layer of rock is called a stratum. The study of these layers is called Stratigraphy. Each layer has a unique story to tell about the Earth.",
+	"introStratigraphyDetail2": "Each layer of rocks can give us information about the Earth's past.  These are categorized in geological time scale.",
+	
+	"geologicalTimescale": "Geological Timescale",
 	
 	"coreSample": "Core Sample",	
 	"strata": "Strata",
@@ -59,45 +64,43 @@
 	"introLawStratigraphySuperpositionDesc": "Younger layers of rock sit atop older rocks.",
 	
 	"introLawStratigraphyOriginalHorizontality": "Original Horizontality",
-	"introLawStratigraphyOriginalHorizontalityDesc": "Sedimentary rocks were originally deposited horizontally by weathering and erosions.  Layers that are tilted have since been altered by external force.",
+	"introLawStratigraphyOriginalHorizontalityDesc": "Sediments were deposited in flat layers. A tilted layer indicates a disturbance driven by external force such as earthquakes.",
 	
 	"introLawStratigraphyCrossCutting": "Cross-cutting Relationships",
-	"introLawStratigraphyCrossCuttingDesc": "A layer of rock that cuts across other layers is considered to be younger.",
+	"introLawStratigraphyCrossCuttingDesc": "A layer of rock can fill between the gaps of broken up layers. This layer of rock is considered to be an intrusion and is the youngest among the layers.",
 	
 	"introLawStratigraphyLateralContinuity": "Lateral Continuity",
-	"introLawStratigraphyLateralContinuityDesc": "Layers of rock are continuous until they are blocked or broken up by external force.",
-	
-	"introDialog3": "Now that you have learned the basis of stratigraphy, it's time to take the Gnomatic Strata Analyzer for a spin!",
-	
-	"stage_title_1": "Deep Into the Lithosphere",
-	"stage_title_2": "The Dark Crust",
-	"stage_title_3": "Rigid Crevice",
-	"stage_title_4": "Out Into the Troposphere",
+	"introLawStratigraphyLateralContinuityDesc": "Layers of rock fill up horizontally until it is broken apart by powerful forces such as water and earthquake. Layers on both sides will match up.",
+			
+	"stage_title_1": "Rigid Mantle",
+	"stage_title_2": "The Oceanic Crust",
+	"stage_title_3": "The Continental Crust",
+	"stage_title_4": "Out Into the Atmosphere",
 	
 	"rockLayers": "Rock Layers",
 	"intrusiveRock": "Intrusive Rock",
 	
 	"rock_sedimentary_sandstone": "Sandstone",
-	"rock_sedimentary_sandstone_desc": "Sandstone is a sedimentary rock composed of various fragments of rocks and tiny mineral particles. Its texture is rough and grainy with a wide range of colors based on the mixture of minerals.",
+	"rock_sedimentary_sandstone_desc": "Sandstone is a sedimentary rock composed of broken up rocks and minerals. Its texture is rough and course with a wide range of colors.",
 	"rock_metamorphic_marble": "Marble",
-	"rock_metamorphic_marble_desc": "Marble is a metamorphic rock that are sometimes foliated. It is formed from the recrystallization of minerals due to pressure and heat.",
+	"rock_metamorphic_marble_desc": "Marble is a metamorphic rock with cloudy patterns. It is formed from minerals that have crystalized due to pressure and heat. This makes the rock very hard and sturdy.",
 	"rock_igneous_gabbro": "Gabbro",
-	"rock_igneous_gabbro_desc": "Gabbro is an intrusive igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
+	"rock_igneous_gabbro_desc": "Gabbro is a coarse-grained igneous rock. Its color is usually black or dark green. Gabbro is commonly found in the deep oceanic crust.",
 	"rock_metamorphic_gneiss": "Gneiss",
-	"rock_metamorphic_gneiss_desc": "Gneiss is a foliated metamorphic rock. Its foliations are characterized by alternating dark and light bands. Gneiss is typically formed from shale that undergoes high pressure and heat.",
+	"rock_metamorphic_gneiss_desc": "Gneiss is a metamorphic rock with stripe patterns. Its stripes are formed from pre-existing rock formations that have undergone transformation due to high pressure and heat.",
 	"rock_ingeous_granite": "Granite",
-	"rock_ingeous_granite_desc": "Granite is a light-colored igneous rock with large visible grains. It's mostly composed of quartz and feldspar.",
+	"rock_ingeous_granite_desc": "Granite is a light-colored igneous rock with large visible grains. It's mostly composed of quartz and feldspar, making it hard and tough. Granite's color is mostly white, pink, or gray.",
 	"rock_metamorphic_quartzite": "Quartzite",
-	"rock_metamorphic_quartzite_desc": "Quartzite is a non-foliated metamorphic rock. It's mostly composed of quartz from sandstone after it undergoes high pressure and heat.",
+	"rock_metamorphic_quartzite_desc": "Quartzite is a metamorphic rock made from quartz. These quartz come from sandstone that has morphed due high pressure and heat.",
 
 	"fossil_perisphinctes": "Perisphinctes",
-	"fossil_perisphinctes_desc": "Perisphinctes is a genus of ammonite cephalopod that lived during the Jurassic Period. They are considered to live in warm-temperate shallow waters worldwide.",
+	"fossil_perisphinctes_desc": "Perisphinctes is a type of mollusk that lived during the Jurassic Period. They are considered to live in tropical shallow waters worldwide.",
 	"fossil_dimetrodon": "Dimetrodon",
-	"fossil_dimetrodon_desc": "Dimetrodon is a genus of synapsids that lived during the Permian Period. They have a large neural spine sail on their back formed by elongated spines extending from the vertebrae.",
+	"fossil_dimetrodon_desc": "Dimetrodon is a mammal-like reptile that lived during the Permian Period. Their spines are stretched to form a shape like that of a sail. Dimetrodons are the apex predators of its time, preying upon aquatic animals.",
 	"fossil_opabinia": "Opabinia",
-	"fossil_opabinia_desc": "Opabinia is a stem group arthropod that lived during the Cambrian Period. Their body is soft and have lobes along the sides, along with a fan-shaped tail. It is thought that they lived on the seafloor.",
+	"fossil_opabinia_desc": "Opabinia is an arthropod much like shrimps that lived during the Cambrian Period. Their body is soft with five eyes, gills on the sides, and a fan-shaped tail. Their mouth extends from beneath their head.",
 	"fossil_glossopteris": "Glossopteris",
-	"fossil_glossopteris_desc": "The Glossopteris arose during the beginning of the Permian Period. They are a genus of seed ferns known as Glossopteridales. The name is inspired by their tongue-shaped leaves.",
+	"fossil_glossopteris_desc": "The Glossopteris is a type of fern that arose during the beginning of the Permian Period. The name is based on the appearance of its leaves that are shaped like a tongue.",
 	
 	"fossil_triceratops": "Triceratops",
 	"fossil_triceratops_desc": "Triceratops is a genus of herbivorous ceratopsid dinosaur that lived during the Cretaceous Period. Their unique features are the three horns on their face, and the large bony frill. The Triceratops were herbivorous. Based on their size and teeth structure, they must have eaten fibrous and woody plants.",	
@@ -117,13 +120,13 @@
 	
 	"result_1_question": "Which rock layer is the oldest:",
 	"result_1_question_2": "Which rock layer is the youngest:",
-	"result_1_end": "By using the Laws of Stratigraphy, we have determined that the Quartzite layer is the oldest based on Superposition. While the Gabbro layer is the youngest based on Cross-cutting Relationships.",
+	"result_1_end": "By looking at how the Gabbro layer goes across the other layers, we can determine it to be the youngest based on Cross-cutting Relationships.",
 	
 	"indexFossil": "Index Fossil",
 	"coreSamples": "Core Samples",
 	
 	"result_2_question": "Which one of these is an Index Fossil?",
-	"result_2_end": "Index Fossils are used to determine the Geological Timescale of a stratum. It can also allow us to correlate rock layers from one area to another, as far apart as distant continents.",
+	"result_2_end": "Index Fossils are used to determine the Geological Timescale of a layer. It can also allow us to correlate layers from one area to another, as far apart as distant continents.",
 	
 	"indexFossilCriteria": "Index Fossil Criteria",
 	"indexFossilCriteriaDesc": "- The fossil must be easily recognizable and distinct.\n- It must be found over a large area.\n- It must have lived for a short time, such that it's only found in one stratum.",
@@ -154,11 +157,15 @@
 	"rockCycle": "Rock Cycle",
 	"rockCycleChart": "Rock Cycle Chart",
 	"result_question_rockCycle": "Create the following rocks:",
-	"result_summary_rockCycle": "Igneous rocks form when magma cools off.\n\nMetamorphic rocks form when pressure is applied to other rocks. Pressure generates heat, causing rocks to change.\n\nSedimentary rocks form when other types of rocks are broken down into sediments by weathering and erosion. These sediments cement together after a long period of time.",
+	"result_summary_rockCycle": "Rocks are continuously changing forms across time as they are lifted up above the Earth and sank back down below.",
 	
 	"rockSediment": "Sedimentary",
 	"rockIgneous": "Igneous",
 	"rockMetamorphic": "Metamorphic",
+	
+	"rockSedimentDesc": "Sedimentary rocks form when sediments cement together after a long period of time. These sediments come from various sources through weathering and erosion.",
+	"rockIgneousDesc": "Igneous rocks form when magma cools off and solidify into crystals.",
+	"rockMetamorphicDesc": "Metamorphic rocks form when pressure is applied to other rocks. The heat from pressure causes the rock to further harden and change form.",
 	
 	"rockCycle_compactCement": "Compact & Cementation",
 	"rockCycle_heatPressure": "Pressure & Heat",
@@ -185,6 +192,13 @@
 	"completeDesc": "Congratulations!\nThank you for playing!",
 	
 	"tutorialDialog": "Press anywhere to launch the Gnomatic!",
+	
+	"knowledgeUnlockTitle": "New Knowledge Acquired",
+	
+	"quizTitle01": "01 - Rock Cycle",
+	"quizTitle02": "02 - Layer Superposition",
+	"quizTitle03": "03 - Layer Cross-cutting",
+	"quizTitle04": "04 - Index Fossil",
 	
 	"test": "TEST"
   }
