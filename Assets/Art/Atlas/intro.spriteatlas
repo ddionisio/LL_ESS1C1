@@ -3,10 +3,11 @@
 --- !u!687078895 &4343727234628468602
 SpriteAtlas:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: intro
   m_EditorData:
+    serializedVersion: 2
     textureSettings:
       serializedVersion: 2
       anisoLevel: 1
@@ -18,8 +19,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 1
       sRGB: 1
-    platformSettings: []
-    packingParameters:
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
       serializedVersion: 2
       padding: 4
       blockOffset: 1
@@ -33,15 +45,15 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 0b4fe41434dfcf44fb0dd8bcebcb5984, type: 3}
-  - {fileID: 21300000, guid: 842fd21a878e9984ebc9ba55510e646c, type: 3}
   - {fileID: 21300000, guid: de0600954fe453743bd6053b07e0219d, type: 3}
-  - {fileID: 21300000, guid: 45dd5cea4e1b84745a6ad35a812317f8, type: 3}
+  - {fileID: 21300000, guid: 842fd21a878e9984ebc9ba55510e646c, type: 3}
   - {fileID: 21300000, guid: 65a2b8caf59cf2a42aa34e5c8acf756f, type: 3}
+  - {fileID: 21300000, guid: 45dd5cea4e1b84745a6ad35a812317f8, type: 3}
   m_PackedSpriteNamesToIndex:
   - strataIllustration
-  - stripCenozoic
   - stripMesozoic
-  - stripPaleozoic
+  - stripCenozoic
   - boulder
+  - stripPaleozoic
   m_Tag: intro
   m_IsVariant: 0
